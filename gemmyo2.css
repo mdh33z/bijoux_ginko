@@ -86,6 +86,32 @@ html, body {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
+/* Sur desktop, nav-links est transparent et inline */
+.nav-links {
+    display: contents; /* hérite du flex parent sans créer de boîte */
+}
+
+/* Le burger est invisible sur desktop */
+.burger-btn {
+    display: none;
+}
+
+/* nav-item-toggle : sur desktop ressemble à un lien normal */
+.nav-item-toggle {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #000;
+    cursor: pointer;
+    padding: 0 6px;
+    transition: color 0.3s ease;
+}
+.nav-item-toggle:hover { color: #d4a574; }
+.nav-arrow { display: none; }
+
 .header-nav a {
     text-decoration: none;
     color: #000;
@@ -687,36 +713,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .header-nav {
-        flex-wrap: wrap;
-        gap: 16px;
-        padding: 15px 20px;
-        position: relative;
-    }
-
-    .header-nav > *:not(.mobile-menu-btn) {
-        display: none;
-    }
-
-    .header-nav.nav-open > * {
-        display: flex;
-    }
-
-    .header-nav.nav-open {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .header-nav.nav-open .mobile-menu-btn {
-        display: flex;
-        align-self: flex-end;
-    }
-
-    .mobile-menu-btn {
-        display: flex !important;
-    }
-
     .image-grid,
     .baby-grid,
     .page-section {
@@ -1754,8 +1750,6 @@ a.back:hover {
 
 /* ═══════════════════════════════════════════════════════
    RESPONSIVE MOBILE — corrections téléphone
-   Toutes les règles ci-dessous ne s'appliquent qu'en
-   dessous de 768px et ne touchent pas l'affichage desktop
 ════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
 
@@ -1779,42 +1773,146 @@ a.back:hover {
         height: 60px;
     }
 
-    /* ── Navigation hamburger ── */
+    /* ── NAV MOBILE ── */
+
+    /* Le header-nav devient juste un conteneur pour le burger */
     .header-nav {
-        padding: 12px 16px;
+        display: flex;
         justify-content: flex-end;
+        align-items: center;
+        padding: 10px 16px;
+        gap: 0;
+        position: relative;
     }
-    /* quand fermé : seul le bouton burger est visible */
-    .header-nav > *:not(.mobile-menu-btn) {
-        display: none !important;
-    }
-    .mobile-menu-btn {
-        display: flex !important;
-        order: 99;
-    }
-    /* quand ouvert */
-    .header-nav.nav-open {
+
+    /* nav-links = la liste des liens, cachée par défaut */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-top: 1px solid #f0f0f0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        z-index: 999;
         flex-direction: column;
-        align-items: stretch;
-        padding: 12px 16px 20px;
-        gap: 4px;
+        padding: 8px 0 16px;
     }
-    .header-nav.nav-open > * {
-        display: flex !important;
+
+    /* Ouverte quand .nav-open est ajouté par le JS */
+    .nav-links.nav-open {
+        display: flex;
     }
-    .header-nav.nav-open > a,
-    .header-nav.nav-open .nav-item > a {
-        padding: 10px 6px;
-        font-size: 15px;
-        border-bottom: 1px solid #f0f0f0;
+
+    /* Liens directs dans le menu */
+    .nav-links > a {
+        display: block;
+        padding: 13px 20px;
+        font-size: 14px;
+        color: #1a1a1a;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        border-bottom: 1px solid #f7f7f7;
+        font-weight: 500;
     }
-    .header-nav.nav-open .mobile-menu-btn {
-        align-self: flex-end;
-        margin-bottom: 8px;
+
+    .nav-links > a:last-child {
         border-bottom: none;
     }
 
-    /* ── Mega-menu : désactivé sur mobile, lien simple ── */
+    .nav-links > a:active { color: #d4a574; }
+
+    /* nav-item (JOAILLERIE) */
+    .nav-links > .nav-item {
+        border-bottom: 1px solid #f7f7f7;
+    }
+
+    /* Bouton JOAILLERIE (remplace le <a>) */
+    .nav-item-toggle {
+        display: flex !important;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 13px 20px;
+        font-size: 14px;
+        color: #1a1a1a;
+        background: none;
+        border: none;
+        letter-spacing: 0.1em;
+        font-family: inherit;
+        font-weight: 500;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .nav-item-toggle.open { color: #d4a574; }
+
+    /* Flèche qui tourne */
+    .nav-arrow {
+        display: inline-block;
+        transition: transform 0.25s ease;
+        font-size: 14px;
+    }
+    .nav-item-toggle.open .nav-arrow {
+        transform: rotate(90deg);
+    }
+
+    /* Mega-menu désactivé sur mobile */
+    .mega-menu {
+        display: none !important;
+    }
+
+    /* Sous-menu mobile */
+    .mobile-submenu {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: #fdfaf6;
+    }
+    .mobile-submenu.open {
+        max-height: 300px;
+    }
+    .mobile-submenu a {
+        display: block;
+        padding: 11px 32px;
+        font-size: 13px;
+        color: #555;
+        text-decoration: none;
+        border-bottom: 1px solid #f0ede8;
+        letter-spacing: 0.06em;
+    }
+    .mobile-submenu a:last-child { border-bottom: none; }
+    .mobile-submenu a:active { color: #d4a574; }
+
+    /* Burger bouton */
+    .burger-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 36px;
+        height: 36px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 1000;
+    }
+    .burger-btn span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #1a1a1a;
+        border-radius: 2px;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .burger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger-btn.open span:nth-child(2) { opacity: 0; }
+    .burger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mega-menu toujours caché sur mobile */
     .mega-menu {
         display: none !important;
     }
