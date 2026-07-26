@@ -5,6 +5,12 @@
     font-family: Sackers-Gothic-Medium, Georgia, Cambria, Times New Roman, Times, sans-serif;
 }
 
+/* Empêche le scroll horizontal sur toute la page */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 /* Header Top Bar */
 .header-top {
     font-family:Sackers-Gothic-Medium, Georgia, Cambria, Times New Roman, Times, sans-serif;
@@ -180,9 +186,12 @@
     }
 }
 
-.nav-item:hover .mega-menu,
-.nav-item:focus-within .mega-menu {
-    display: block;
+/* Mega-menu ouvert au survol — seulement sur vrais appareils pointeurs (souris) */
+@media (hover: hover) and (pointer: fine) {
+    .nav-item:hover .mega-menu,
+    .nav-item:focus-within .mega-menu {
+        display: block;
+    }
 }
 
 .mega-columns {
@@ -1730,11 +1739,273 @@ a.back:hover {
         flex-direction: column;
         text-align: center;
     }
+    .footer-legal {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
     .config-section,
     .gravure-section,
     .atelier-section,
     .taille-section {
         padding: 50px 20px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE MOBILE — corrections téléphone
+   Toutes les règles ci-dessous ne s'appliquent qu'en
+   dessous de 768px et ne touchent pas l'affichage desktop
+════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    /* ── Header top bar ── */
+    .header-top {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 16px;
+        text-align: center;
+    }
+    .header-top-left {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+    .header-top-right {
+        justify-content: center;
+        gap: 20px;
+    }
+    .header-logo img {
+        height: 60px;
+    }
+
+    /* ── Navigation hamburger ── */
+    .header-nav {
+        padding: 12px 16px;
+        justify-content: flex-end;
+    }
+    /* quand fermé : seul le bouton burger est visible */
+    .header-nav > *:not(.mobile-menu-btn) {
+        display: none !important;
+    }
+    .mobile-menu-btn {
+        display: flex !important;
+        order: 99;
+    }
+    /* quand ouvert */
+    .header-nav.nav-open {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 16px 20px;
+        gap: 4px;
+    }
+    .header-nav.nav-open > * {
+        display: flex !important;
+    }
+    .header-nav.nav-open > a,
+    .header-nav.nav-open .nav-item > a {
+        padding: 10px 6px;
+        font-size: 15px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .header-nav.nav-open .mobile-menu-btn {
+        align-self: flex-end;
+        margin-bottom: 8px;
+        border-bottom: none;
+    }
+
+    /* ── Mega-menu : désactivé sur mobile, lien simple ── */
+    .mega-menu {
+        display: none !important;
+    }
+
+    /* ── Hero section : une colonne, hauteur réduite ── */
+    .hero-section {
+        flex-direction: column;
+    }
+    .hero-column {
+        min-height: 220px;
+        max-height: 300px;
+    }
+
+    /* ── Contenu milieu ── */
+    .contenue-milieu {
+        padding: 28px 16px;
+    }
+    .contenue-milieu h2 {
+        font-size: 22px;
+    }
+
+    /* ── Cards produits (3 colonnes → 1 colonne) ── */
+    .contenue-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 0 16px;
+    }
+    .contenue-item {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* ── Bannière promo : texte plus petit ── */
+    .promo-banner {
+        font-size: 11px;
+        padding: 10px 12px;
+        line-height: 1.6;
+    }
+
+    /* ── Carousel ── */
+    .carousel-section {
+        padding: 40px 16px 50px;
+    }
+    .carousel-thumbs {
+        gap: 8px;
+    }
+    .carousel-thumb {
+        width: 64px;
+        height: 44px;
+    }
+    .carousel-meta {
+        gap: 10px;
+    }
+
+    /* ── Configurateur ── */
+    .config-section {
+        padding: 40px 16px;
+    }
+    .config-wrapper {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .ring-visual {
+        width: 200px;
+        height: 200px;
+    }
+    .config-title {
+        font-size: 26px;
+    }
+    .config-options {
+        gap: 8px;
+    }
+    .config-opt {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+
+    /* ── Gravure ── */
+    .gravure-section {
+        padding: 40px 16px;
+    }
+    .gravure-wrapper {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .gravure-ring-outer {
+        width: 200px;
+        height: 200px;
+        border-width: 20px;
+    }
+    .gravure-title {
+        font-size: 26px;
+    }
+
+    /* ── Timeline atelier ── */
+    .atelier-section {
+        padding: 40px 16px;
+    }
+    .atelier-header h2 {
+        font-size: 26px;
+    }
+    .timeline {
+        padding-left: 44px;
+    }
+    .tl-dot {
+        left: -42px;
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+    }
+    .tl-content {
+        padding: 18px 16px;
+    }
+
+    /* ── Guide de taille ── */
+    .taille-section {
+        padding: 40px 16px;
+    }
+    .taille-header h2 {
+        font-size: 26px;
+    }
+    .taille-tabs {
+        max-width: 100%;
+    }
+    .taille-tab {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+    .taille-method-wrap {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .ruler-visual {
+        width: 140px;
+        height: 140px;
+    }
+    .result-num {
+        font-size: 40px;
+    }
+    .taille-table-wrap {
+        font-size: 12px;
+    }
+    .taille-table th,
+    .taille-table td {
+        padding: 9px 10px;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+        padding: 40px 16px 0;
+    }
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .footer-bottom {
+        padding: 16px 0;
+    }
+    .newsletter-form {
+        flex-direction: column;
+    }
+    .newsletter-input {
+        border-radius: 4px;
+    }
+    .newsletter-btn {
+        border-radius: 4px;
+        text-align: center;
+    }
+}
+
+/* ── Très petits écrans (< 400px) ── */
+@media (max-width: 400px) {
+    .hero-column {
+        min-height: 180px;
+        max-height: 240px;
+    }
+    .stat-item {
+        padding: 0 12px;
+    }
+    .stat-num {
+        font-size: 16px;
+    }
+    .config-title,
+    .gravure-title,
+    .atelier-header h2,
+    .taille-header h2 {
+        font-size: 22px;
+    }
+    .contenue-milieu h2 {
+        font-size: 18px;
     }
 }
 
