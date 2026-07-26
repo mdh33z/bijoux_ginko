@@ -671,6 +671,27 @@ elles célèbrent et accompagnent les femmes dans toutes les saisons de leur vie
                 headerNav.classList.toggle('nav-open');
             });
         }
+
+        // ─── BLOQUER LE MEGA-MENU SUR MOBILE ────────────────────
+        // Sur mobile, le tap sur JOAILLERIE ne doit pas ouvrir
+        // le mega-menu — on ferme immédiatement au touchstart
+        document.querySelectorAll('.nav-item > a').forEach(link => {
+            link.addEventListener('touchstart', function(e) {
+                if (window.innerWidth <= 768) {
+                    // laisse le lien fonctionner normalement, empêche le hover CSS
+                    const menu = this.parentElement.querySelector('.mega-menu');
+                    if (menu) menu.style.display = 'none';
+                }
+            }, { passive: true });
+        });
+
+        // ─── FERMER LE MENU EN CLIQUANT DEHORS ──────────────────
+        document.addEventListener('click', function(e) {
+            if (headerNav && !headerNav.contains(e.target)) {
+                headerNav.classList.remove('nav-open');
+                if (mobileMenuBtn) mobileMenuBtn.classList.remove('open');
+            }
+        });
         </script>
         </body>
 </html>
