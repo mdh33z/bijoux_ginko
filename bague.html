@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="gemmyo2.css">
+    <link rel="stylesheet" href="bague.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bagues EverBloom — Gemmyo</title>
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════
+         HERO IMMERSIF
+    ══════════════════════════════════════ -->
+    <section class="bague-hero">
+        <div class="bague-hero-bg">
+            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/collections/joaillerie_collections_everbloom/alta/baby-everbloom-alta-zoom-x.jpg" alt="EverBloom Hero">
+        </div>
+        <div class="bague-hero-overlay"></div>
+        <div class="bague-hero-content">
+            <a class="back-hero" href="gemmyo2.html">← Retour à l'accueil</a>
+            <p class="hero-eyebrow">Collection Signature</p>
+            <h1 class="hero-title">EverBloom</h1>
+            <p class="hero-sub">Des bagues qui célèbrent chaque saison de votre vie — du premier bourgeon à la fleur épanouie.</p>
+            <div class="hero-ctas">
+                <a href="#catalogue" class="hero-btn-primary">Découvrir la collection</a>
+                <a href="#configurateur-bague" class="hero-btn-secondary">Créer la mienne</a>
+            </div>
+        </div>
+        <div class="hero-scroll-hint">
+            <span>↓</span>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         BARRE CHIFFRES CLÉS
+    ══════════════════════════════════════ -->
+    <div class="stats-bar">
+        <div class="stat-item"><span class="stat-num">+12 000</span><span class="stat-label">bijoux créés</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num">6 semaines</span><span class="stat-label">de fabrication</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num">18 carats</span><span class="stat-label">d'or massif</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">sur-mesure</span></div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         INTRO EDITORIALE
+    ══════════════════════════════════════ -->
+    <section class="editorial-section">
+        <div class="editorial-inner">
+            <div class="editorial-text">
+                <p class="editorial-eyebrow">L'histoire de la collection</p>
+                <h2>Une métamorphose<br><em>en or et pierreries</em></h2>
+                <p>La collection EverBloom s'inspire du cycle naturel de la fleur — de son bourgeon fragile jusqu'à son épanouissement plein. Chaque bague capture un instant de cette transformation, fixé pour toujours dans l'or et la lumière d'une pierre précieuse.</p>
+                <p>Conçues par nos designers parisiens, façonnées à la main par nos orfèvres, ces pièces accompagnent les femmes dans leurs moments les plus précieux : une déclaration, des fiançailles, un anniversaire, ou simplement l'envie de se faire plaisir.</p>
+                <a href="#catalogue" class="editorial-link">Voir toutes les bagues →</a>
+            </div>
+            <div class="editorial-visual">
+                <div class="editorial-img-stack">
+                    <img class="stack-img stack-back" src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-little-everbloom-saphir-bleu-gris.png" alt="Little EverBloom">
+                    <img class="stack-img stack-front" src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="EverBloom diamant">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FILTRES + CATALOGUE
+    ══════════════════════════════════════ -->
+    <section class="catalogue-section" id="catalogue">
+        <div class="catalogue-inner">
+            <div class="catalogue-header">
+                <h2>Toutes les bagues</h2>
+                <p class="catalogue-count" id="catalogCount">12 modèles</p>
+            </div>
+
+            <!-- Filtres -->
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <span class="filter-label">Pierre</span>
+                    <div class="filter-pills" id="filterStone">
+                        <button class="filter-pill active" data-filter="all">Toutes</button>
+                        <button class="filter-pill" data-filter="diamant">Diamant</button>
+                        <button class="filter-pill" data-filter="saphir">Saphir</button>
+                        <button class="filter-pill" data-filter="rubis">Rubis</button>
+                        <button class="filter-pill" data-filter="emeraude">Émeraude</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Métal</span>
+                    <div class="filter-pills" id="filterMetal">
+                        <button class="filter-pill active" data-metal="all">Tous</button>
+                        <button class="filter-pill" data-metal="or-jaune">Or jaune</button>
+                        <button class="filter-pill" data-metal="or-blanc">Or blanc</button>
+                        <button class="filter-pill" data-metal="or-rose">Or rose</button>
+                    </div>
+                </div>
+                <div class="filter-group filter-sort">
+                    <span class="filter-label">Trier par</span>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="default">Sélection</option>
+                        <option value="price-asc">Prix croissant</option>
+                        <option value="price-desc">Prix décroissant</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grille produits -->
+            <div class="product-grid" id="productGrid">
+
+                <article class="product-card" data-stone="diamant" data-metal="or-jaune" data-price="1890">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Baby EverBloom Diamant">
+                        <div class="product-badges">
+                            <span class="badge badge-new">Nouveau</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Baby EverBloom</p>
+                        <h3 class="product-name">Diamant Solitaire</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · 0.30 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 890 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="saphir" data-metal="or-blanc" data-price="2150">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-little-everbloom-saphir-bleu-gris.png" alt="Little EverBloom Saphir">
+                        <div class="product-badges">
+                            <span class="badge badge-bestseller">Best-seller</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Little EverBloom</p>
+                        <h3 class="product-name">Saphir Bleu-Gris</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Saphir 0.45 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 150 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="saphir" data-metal="or-jaune" data-price="3200">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-everbloom-toi-et-moi-saphir.png" alt="ForeverBloom Toi & Moi">
+                        <div class="product-badges">
+                            <span class="badge badge-exclusive">Exclusif</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">ForeverBloom</p>
+                        <h3 class="product-name">Toi & Moi Saphir</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · 2 pierres</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 200 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="diamant" data-metal="or-blanc" data-price="4800">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="EverBloom Diamant Pavé">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">EverBloom Pavé</p>
+                        <h3 class="product-name">Diamant Pavé Pleine Fleur</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · 0.60 ct total</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">4 800 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="emeraude" data-metal="or-jaune" data-price="2750">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="EverBloom Émeraude">
+                        <div class="product-badges">
+                            <span class="badge badge-new">Nouveau</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">EverBloom Alta</p>
+                        <h3 class="product-name">Émeraude Octogonale</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · 0.50 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 750 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="rubis" data-metal="or-rose" data-price="3100">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="EverBloom Rubis">
+                        <div class="product-badges">
+                            <span class="badge badge-bestseller">Coup de cœur</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">EverBloom Rouge</p>
+                        <h3 class="product-name">Rubis Flamme</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Rubis 0.40 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 100 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="diamant" data-metal="or-rose" data-price="1650">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/collections/joaillerie_collections_everbloom/bbeb/baby-everbloom-x.jpg" alt="Baby EverBloom Or Rose">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Baby EverBloom</p>
+                        <h3 class="product-name">Diamant Or Rose</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · 0.20 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 650 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="saphir" data-metal="or-rose" data-price="2400">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/collections/joaillerie_collections_everbloom/little-everbloom/little-everbloom-pavee-x.jpg" alt="Little EverBloom Pavée">
+                        <div class="product-badges">
+                            <span class="badge badge-exclusive">Édition limitée</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Little EverBloom</p>
+                        <h3 class="product-name">Pavée Saphir & Diamants</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Pavage mixte</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 400 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="diamant" data-metal="or-blanc" data-price="5600">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/collections/joaillerie_collections_everbloom/alta/baby-everbloom-alta-2-x.jpg" alt="Alta EverBloom">
+                        <div class="product-badges">
+                            <span class="badge badge-bestseller">Best-seller</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">EverBloom Alta</p>
+                        <h3 class="product-name">Alta Diamant Brillant</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · 0.75 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">5 600 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="emeraude" data-metal="or-blanc" data-price="3900">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="EverBloom Émeraude Or Blanc">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">EverBloom Luxe</p>
+                        <h3 class="product-name">Émeraude Or Blanc</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · 0.60 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 900 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="rubis" data-metal="or-blanc" data-price="2900">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/collections/joaillerie_collections_everbloom/little-everbloom/little-everbloom-x.jpg" alt="Little EverBloom Rubis">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Little EverBloom</p>
+                        <h3 class="product-name">Rubis Oval Solitaire</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Rubis 0.35 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 900 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-stone="saphir" data-metal="or-blanc" data-price="6800">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="ForeverBloom Saphir Royal">
+                        <div class="product-badges">
+                            <span class="badge badge-exclusive">Pièce unique</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Coup de cœur">♡</button>
+                            <a href="#configurateur-bague" class="action-btn config-quick-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">ForeverBloom Haute Joaillerie</p>
+                        <h3 class="product-name">Saphir Royal 1 ct</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Platine · Saphir Royal 1.02 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">6 800 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div><!-- /product-grid -->
+
+            <p class="no-results" id="noResults" style="display:none">Aucun modèle ne correspond à vos filtres. <button class="reset-filters" id="resetFilters">Réinitialiser</button></p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         BANNER CTA PERSONNALISATION
+    ══════════════════════════════════════ -->
+    <div class="cta-banner" id="configurateur-bague">
+        <div class="cta-banner-inner">
+            <div class="cta-banner-text">
+                <p class="cta-eyebrow">Service exclusif</p>
+                <h2>Aucun modèle ne vous correspond ?<br><em>Créez le vôtre.</em></h2>
+                <p>Nos orfèvres parisiens réalisent votre bague de A à Z selon vos désirs : métal, pierre, taille, gravure, coffret personnalisé.</p>
+            </div>
+            <div class="cta-banner-actions">
+                <a href="gemmyo2.html#configurateur" class="cta-big-btn">Lancer le configurateur</a>
+                <a href="#" class="cta-rdv-btn">Prendre RDV en boutique</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         POURQUOI EVERBLOOM
+    ══════════════════════════════════════ -->
+    <section class="why-section">
+        <div class="why-inner">
+            <div class="why-header">
+                <p class="why-eyebrow">Nos engagements</p>
+                <h2>Pourquoi choisir<br><em>EverBloom ?</em></h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="20" stroke="#d4a574" stroke-width="1.5"/>
+                            <path d="M24 14 C18 14 14 18 14 24 C14 30 18 34 24 34" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M24 14 C30 14 34 18 34 24 C34 30 30 34 24 34" stroke="#e8c97a" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="24" cy="24" r="3" fill="#d4a574"/>
+                        </svg>
+                    </div>
+                    <h3>Pierres certifiées</h3>
+                    <p>Chaque pierre est certifiée par un laboratoire gemmologique indépendant. Vous recevez un certificat d'authenticité avec votre bijou.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 8 L26 16 H34 L27.5 21 L30 29 L24 24.5 L18 29 L20.5 21 L14 16 H22 Z" stroke="#d4a574" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="M16 34 Q24 40 32 34" stroke="#e8c97a" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Or 18 carats</h3>
+                    <p>Tout notre or est massif 18 carats — jamais plaqué, jamais doublé. Chaque alliage est formulé dans nos fonderies pour une durabilité et un éclat maximaux.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="14" width="28" height="22" rx="4" stroke="#d4a574" stroke-width="1.5"/>
+                            <path d="M18 14 V11 Q24 8 30 11 V14" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M18 25 L22 29 L30 21" stroke="#e8c97a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Satisfait ou remboursé</h3>
+                    <p>30 jours pour changer d'avis, retours gratuits, échanges sans frais. Votre satisfaction est notre seule priorité.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="20" r="8" stroke="#d4a574" stroke-width="1.5"/>
+                            <path d="M12 38 C12 32 17.4 28 24 28 C30.6 28 36 32 36 38" stroke="#e8c97a" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M30 16 L34 12" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M30 24 L34 28" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Créé pour vous</h3>
+                    <p>Chaque bague est fabriquée sur commande à Paris. Votre taille, votre pierre, votre métal, votre gravure — une pièce unique qui vous ressemble.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         ZOOM MATIÈRE
+    ══════════════════════════════════════ -->
+    <section class="matiere-section">
+        <div class="matiere-inner">
+            <div class="matiere-visual">
+                <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Zoom pierre précieuse" id="matiereImg">
+            </div>
+            <div class="matiere-text">
+                <p class="matiere-eyebrow">Nos pierres précieuses</p>
+                <h2>La lumière<br><em>au cœur du bijou</em></h2>
+                <p>Nos gemmologues sélectionnent chaque pierre à la main dans les bourses mondiales d'Anvers, Jaipur et Bangkok. Seules les pierres présentant une couleur, une transparence et un éclat exceptionnels rejoignent nos ateliers.</p>
+
+                <div class="matiere-tabs">
+                    <button class="mat-tab active" data-img="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" data-txt="Le diamant est la pierre la plus dure qui soit — et la plus lumineuse. Chaque diamant EverBloom est certifié GIA et sélectionné pour son feu exceptionnel.">Diamant</button>
+                    <button class="mat-tab" data-img="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" data-txt="Le saphir bleu évoque la profondeur des cieux. Nos saphirs non chauffés viennent du Sri Lanka et du Cachemire — une rareté absolue.">Saphir</button>
+                    <button class="mat-tab" data-img="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" data-txt="Le rubis est la pierre du désir et de la passion. Sa couleur sang-de-pigeon, inimitable, en fait l'une des pierres les plus recherchées du monde.">Rubis</button>
+                    <button class="mat-tab" data-img="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" data-txt="L'émeraude est la pierre du renouveau et de l'espoir. Nos émeraudes colombiennes de haute qualité portent les inclusions naturelles qui témoignent de leur authenticité.">Émeraude</button>
+                </div>
+                <p class="mat-desc-text" id="matDescText">Le diamant est la pierre la plus dure qui soit — et la plus lumineuse. Chaque diamant EverBloom est certifié GIA et sélectionné pour son feu exceptionnel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         QUIZ — QUELLE BAGUE ES-TU ?
+    ══════════════════════════════════════ -->
+    <section class="quiz-section">
+        <div class="quiz-inner">
+            <div class="quiz-header">
+                <p class="quiz-eyebrow">Trouvez votre bague</p>
+                <h2>Quel est votre<br><em>style EverBloom ?</em></h2>
+                <p>Répondez à 3 questions et nous vous recommandons la bague faite pour vous.</p>
+            </div>
+
+            <div class="quiz-card" id="quizCard">
+                <!-- Step 1 -->
+                <div class="quiz-step active" id="step1">
+                    <p class="quiz-q">Quelle occasion vous tient à cœur ?</p>
+                    <div class="quiz-choices">
+                        <button class="quiz-choice" data-val="quotidien">Le quotidien précieux</button>
+                        <button class="quiz-choice" data-val="fiancailles">Une demande en mariage</button>
+                        <button class="quiz-choice" data-val="cadeau">Un cadeau inoubliable</button>
+                        <button class="quiz-choice" data-val="anniversaire">Un anniversaire marquant</button>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="quiz-step" id="step2">
+                    <p class="quiz-q">Quelle couleur vous attire ?</p>
+                    <div class="quiz-choices">
+                        <button class="quiz-choice" data-val="blanc">Le blanc brillant</button>
+                        <button class="quiz-choice" data-val="bleu">Le bleu profond</button>
+                        <button class="quiz-choice" data-val="rose">Le rose délicat</button>
+                        <button class="quiz-choice" data-val="vert">Le vert intense</button>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="quiz-step" id="step3">
+                    <p class="quiz-q">Quel style vous définit ?</p>
+                    <div class="quiz-choices">
+                        <button class="quiz-choice" data-val="classique">Classique & intemporel</button>
+                        <button class="quiz-choice" data-val="bold">Audacieux & graphique</button>
+                        <button class="quiz-choice" data-val="romantique">Romantique & délicat</button>
+                        <button class="quiz-choice" data-val="nature">Nature & organique</button>
+                    </div>
+                </div>
+                <!-- Résultat -->
+                <div class="quiz-step" id="stepResult">
+                    <div class="quiz-result-content">
+                        <p class="quiz-result-label">Votre bague idéale est</p>
+                        <div class="quiz-result-img-wrap">
+                            <img id="quizResultImg" src="" alt="Bague recommandée">
+                        </div>
+                        <h3 id="quizResultName"></h3>
+                        <p id="quizResultDesc"></p>
+                        <div class="quiz-result-actions">
+                            <a href="#catalogue" class="quiz-see-btn">Voir ce modèle</a>
+                            <button class="quiz-restart-btn" id="quizRestart">Recommencer →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-progress" id="quizProgress">
+                <div class="qprog active" id="qp1"></div>
+                <div class="qprog" id="qp2"></div>
+                <div class="qprog" id="qp3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         TÉMOIGNAGES
+    ══════════════════════════════════════ -->
+    <section class="reviews-section">
+        <div class="reviews-inner">
+            <div class="reviews-header">
+                <p class="reviews-eyebrow">Vos avis</p>
+                <h2>Elles l'ont adoptée</h2>
+                <div class="reviews-stars-global">★★★★★ <span>4.9 / 5 — 843 avis vérifiés</span></div>
+            </div>
+            <div class="reviews-grid">
+                <article class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"J'ai reçu ma Baby EverBloom diamant pour mon anniversaire. Elle est absolument parfaite — l'éclat de la pierre, la finesse de l'anneau… Je ne la quitte plus."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">S</div>
+                        <div>
+                            <p class="review-name">Sophie L.</p>
+                            <p class="review-date">Baby EverBloom · Janvier 2025</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"La bague Toi & Moi est exactement ce que je cherchais pour ma demande en mariage. Le service client Gemmyo a été d'une aide précieuse pour choisir les pierres. Elle a dit oui !"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">A</div>
+                        <div>
+                            <p class="review-name">Antoine M.</p>
+                            <p class="review-date">ForeverBloom Toi & Moi · Décembre 2024</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Le saphir bleu-gris est d'une beauté rare. La gravure intérieure a été exécutée avec une précision parfaite. Un bijou qui me ressemble vraiment."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">C</div>
+                        <div>
+                            <p class="review-name">Camille R.</p>
+                            <p class="review-date">Little EverBloom Saphir · Novembre 2024</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FAQ ACCORDÉON
+    ══════════════════════════════════════ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+            <div class="faq-header">
+                <p class="faq-eyebrow">Questions fréquentes</p>
+                <h2>Tout savoir sur<br><em>vos bagues</em></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">Combien de temps faut-il pour fabriquer ma bague ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Chaque bague EverBloom est fabriquée sur commande dans nos ateliers parisiens. Le délai de fabrication est de 4 à 6 semaines à compter de la validation de votre commande. Vous recevez des photos de votre bijou à chaque étape clé de la fabrication.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Puis-je faire graver un message ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Oui, la gravure intérieure est incluse dans le prix de toutes nos bagues EverBloom. Vous pouvez y faire inscrire une date, un prénom, ou une phrase de votre choix (28 caractères maximum). La gravure est réalisée à la main par nos orfèvres.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Comment connaître ma taille de bague ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Rendez-vous sur notre guide de taille interactif dans la page d'accueil — il vous permet de mesurer votre doigt avec un anneau existant ou une bandelette de papier. Si vous hésitez, nous pouvons vous envoyer gratuitement un kit de mesure à domicile.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Puis-je modifier ma commande après validation ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Vous disposez d'un délai de 48h après la confirmation de commande pour apporter des modifications (taille, gravure, métal). Au-delà, la fabrication étant lancée, les modifications ne peuvent plus être effectuées.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Vos bijoux sont-ils couverts par une garantie ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Toutes nos bagues EverBloom sont garanties à vie contre les défauts de fabrication. Nous offrons également un service de polissage annuel gratuit dans nos boutiques parisiennes, et un contrôle des serti tous les 3 ans pour maintenir votre bijou en parfait état.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Les pierres sont-elles éthiques et certifiées ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Oui, toutes nos pierres respectent le processus de Kimberley pour les diamants et proviennent de sources tracées pour les pierres de couleur. Chaque pierre est accompagnée d'un certificat gemmologique (GIA, HRD, IGI) attestant de son origine, ses caractéristiques et son authenticité.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         BOUTON BACK-TO-TOP
+    ══════════════════════════════════════ -->
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
+    <!-- ══════════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════════ -->
+    <script>
+    // ─── FILTRES CATALOGUE ──────────────────────────────────────
+    let activeStone = 'all';
+    let activeMetal = 'all';
+    let activeSort = 'default';
+
+    function applyFilters() {
+        const grid = document.getElementById('productGrid');
+        const cards = Array.from(grid.querySelectorAll('.product-card'));
+        let visible = 0;
+
+        cards.forEach(card => {
+            const stoneMatch = activeStone === 'all' || card.dataset.stone === activeStone;
+            const metalMatch = activeMetal === 'all' || card.dataset.metal === activeMetal;
+            if (stoneMatch && metalMatch) {
+                card.style.display = '';
+                visible++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Sort
+        if (activeSort !== 'default') {
+            const visCards = cards.filter(c => c.style.display !== 'none');
+            visCards.sort((a, b) => {
+                const pa = parseInt(a.dataset.price), pb = parseInt(b.dataset.price);
+                return activeSort === 'price-asc' ? pa - pb : pb - pa;
+            });
+            visCards.forEach(c => grid.appendChild(c));
+        }
+
+        document.getElementById('catalogCount').textContent = visible + ' modèle' + (visible > 1 ? 's' : '');
+        document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    document.querySelectorAll('#filterStone .filter-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('#filterStone .filter-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeStone = btn.dataset.filter;
+            applyFilters();
+        });
+    });
+
+    document.querySelectorAll('#filterMetal .filter-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('#filterMetal .filter-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeMetal = btn.dataset.metal;
+            applyFilters();
+        });
+    });
+
+    document.getElementById('sortSelect').addEventListener('change', e => {
+        activeSort = e.target.value;
+        applyFilters();
+    });
+
+    document.getElementById('resetFilters').addEventListener('click', () => {
+        activeStone = 'all'; activeMetal = 'all'; activeSort = 'default';
+        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#filterStone .filter-pill[data-filter="all"]')[0].classList.add('active');
+        document.querySelectorAll('#filterMetal .filter-pill[data-metal="all"]')[0].classList.add('active');
+        document.getElementById('sortSelect').value = 'default';
+        applyFilters();
+    });
+
+    // ─── WISHLIST ────────────────────────────────────────────────
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const active = this.classList.toggle('wished');
+            this.textContent = active ? '♥' : '♡';
+        });
+    });
+
+    // ─── ZOOM MATIÈRE TABS ───────────────────────────────────────
+    const matiereImg = document.getElementById('matiereImg');
+    const matDesc = document.getElementById('matDescText');
+    document.querySelectorAll('.mat-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.mat-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            matiereImg.style.opacity = '0';
+            setTimeout(() => {
+                matiereImg.src = tab.dataset.img;
+                matDesc.textContent = tab.dataset.txt;
+                matiereImg.style.opacity = '1';
+            }, 300);
+        });
+    });
+
+    // ─── QUIZ ────────────────────────────────────────────────────
+    const results = {
+        default: {
+            name: 'Baby EverBloom Diamant',
+            img: 'https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png',
+            desc: 'Une bague intemporelle qui s\'adapte à toutes les occasions. Son diamant solitaire délicat incarne l\'élégance pure.'
+        },
+        fiancailles: {
+            name: 'ForeverBloom Toi & Moi',
+            img: 'https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-everbloom-toi-et-moi-saphir.png',
+            desc: 'Deux pierres réunies pour symboliser deux âmes liées. La bague idéale pour une demande en mariage inoubliable.'
+        },
+        saphir: {
+            name: 'Little EverBloom Saphir',
+            img: 'https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-little-everbloom-saphir-bleu-gris.png',
+            desc: 'Le saphir bleu-gris capte la lumière avec une profondeur unique. Un choix raffiné pour les âmes sensibles à la nature.'
+        },
+        rubis: {
+            name: 'EverBloom Rubis Flamme',
+            img: 'https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg',
+            desc: 'La passion et l\'intensité incarnées dans une pierre. Pour celle qui ose affirmer son caractère avec élégance.'
+        },
+        emeraude: {
+            name: 'EverBloom Émeraude Octogonale',
+            img: 'https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg',
+            desc: 'La fraîcheur et la rareté de l\'émeraude dans une monture contemporaine. Pour une personnalité unique et authentique.'
+        }
+    };
+
+    let quizAnswers = {};
+    let currentStep = 1;
+
+    document.querySelectorAll('.quiz-choice').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const step = this.closest('.quiz-step');
+            const stepNum = parseInt(step.id.replace('step', ''));
+            quizAnswers['step' + stepNum] = this.dataset.val;
+
+            step.classList.remove('active');
+            document.getElementById('qp' + stepNum).classList.add('done');
+
+            if (stepNum < 3) {
+                currentStep = stepNum + 1;
+                document.getElementById('step' + currentStep).classList.add('active');
+                if (currentStep > 1) document.getElementById('qp' + currentStep).classList.add('active');
+            } else {
+                showQuizResult();
+            }
+        });
+    });
+
+    function showQuizResult() {
+        const color = quizAnswers.step2;
+        let result;
+        if (quizAnswers.step1 === 'fiancailles') result = results.fiancailles;
+        else if (color === 'bleu') result = results.saphir;
+        else if (color === 'rose') result = results.rubis;
+        else if (color === 'vert') result = results.emeraude;
+        else result = results.default;
+
+        document.getElementById('quizResultImg').src = result.img;
+        document.getElementById('quizResultName').textContent = result.name;
+        document.getElementById('quizResultDesc').textContent = result.desc;
+        document.getElementById('stepResult').classList.add('active');
+        document.querySelectorAll('.qprog').forEach(p => p.classList.add('done'));
+    }
+
+    document.getElementById('quizRestart').addEventListener('click', () => {
+        quizAnswers = {}; currentStep = 1;
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step1').classList.add('active');
+        document.querySelectorAll('.qprog').forEach(p => { p.classList.remove('active', 'done'); });
+        document.getElementById('qp1').classList.add('active');
+    });
+
+    // ─── FAQ ACCORDÉON ───────────────────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const item = this.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+
+    // ─── BACK TO TOP ─────────────────────────────────────────────
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ─── ACTIVE NAV LINK au scroll ───────────────────────────────
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.page-links a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        navLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+    });
+    </script>
+
+</body>
+</html>
