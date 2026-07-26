@@ -32,7 +32,8 @@
             <span></span><span></span><span></span>
         </button>
         <div class="nav-item">
-            <a href="#">JOAILLERIE</a>
+            <a href="#" class="nav-item-toggle">JOAILLERIE <span class="nav-arrow">›</span></a>
+            <!-- Mega-menu desktop -->
             <div class="mega-menu" aria-hidden="true">
                 <div class="mega-columns">
                     <div class="mega-column">
@@ -60,6 +61,15 @@
                         <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Visuel Joaillerie">
                     </div>
                 </div>
+            </div>
+            <!-- Sous-menu mobile uniquement -->
+            <div class="mobile-submenu" id="mobileSubmenuJoaillerie">
+                <a href="bague.html">Bagues</a>
+                <a href="pendentifs.html">Pendentifs</a>
+                <a href="boucles-doreilles.html">Boucles d'oreilles</a>
+                <a href="bracelets.html">Bracelets</a>
+                <a href="#">Nouveautés</a>
+                <a href="#">Idées cadeaux</a>
             </div>
         </div>
         <a href="#">FIANÇAILLES</a>
@@ -672,24 +682,28 @@ elles célèbrent et accompagnent les femmes dans toutes les saisons de leur vie
             });
         }
 
-        // ─── BLOQUER LE MEGA-MENU SUR MOBILE ────────────────────
-        // Sur mobile, le tap sur JOAILLERIE ne doit pas ouvrir
-        // le mega-menu — on ferme immédiatement au touchstart
-        document.querySelectorAll('.nav-item > a').forEach(link => {
-            link.addEventListener('touchstart', function(e) {
-                if (window.innerWidth <= 768) {
-                    // laisse le lien fonctionner normalement, empêche le hover CSS
-                    const menu = this.parentElement.querySelector('.mega-menu');
-                    if (menu) menu.style.display = 'none';
-                }
-            }, { passive: true });
-        });
+        // ─── SOUS-MENU MOBILE JOAILLERIE ────────────────────────
+        const navToggle = document.querySelector('.nav-item-toggle');
+        const mobileSubmenu = document.getElementById('mobileSubmenuJoaillerie');
+        const navArrow = document.querySelector('.nav-arrow');
 
-        // ─── FERMER LE MENU EN CLIQUANT DEHORS ──────────────────
+        if (navToggle && mobileSubmenu) {
+            navToggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const isOpen = mobileSubmenu.classList.toggle('open');
+                    navArrow.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+                }
+            });
+        }
+
+        // ─── FERMER TOUT EN CLIQUANT DEHORS ─────────────────────
         document.addEventListener('click', function(e) {
             if (headerNav && !headerNav.contains(e.target)) {
                 headerNav.classList.remove('nav-open');
                 if (mobileMenuBtn) mobileMenuBtn.classList.remove('open');
+                if (mobileSubmenu) mobileSubmenu.classList.remove('open');
+                if (navArrow) navArrow.style.transform = 'rotate(0deg)';
             }
         });
         </script>
