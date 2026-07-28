@@ -1,13 +1,1031 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="gemmyo2.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendentifs - Gemmyo</title>
+    <link rel="stylesheet" href="bague.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pendentifs — Ginko Joaillerie</title>
+    <style>
+
+    /* ══════════════════════════════════════════════
+       HERO — plein écran centré, fond sombre
+    ══════════════════════════════════════════════ */
+    .pend-hero {
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pend-hero-bg {
+        position: absolute;
+        inset: 0;
+    }
+    .pend-hero-bg img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        display: block;
+        filter: brightness(0.55);
+        transform: scale(1.04);
+        transition: transform 10s ease;
+    }
+    .pend-hero:hover .pend-hero-bg img { transform: scale(1); }
+    .pend-hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        padding: 0 24px;
+        max-width: 760px;
+    }
+    .pend-hero-content .back-hero {
+        display: inline-block;
+        color: rgba(255,255,255,0.55);
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        text-decoration: none;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        transition: color 0.2s;
+    }
+    .pend-hero-content .back-hero:hover { color: #d4a574; }
+    .pend-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: #d4a574;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    .pend-hero-title {
+        font-size: clamp(52px, 9vw, 100px);
+        font-weight: 200;
+        letter-spacing: 0.06em;
+        line-height: 1;
+        margin: 0 0 12px;
+    }
+    .pend-hero-title em {
+        font-style: italic;
+        font-weight: 400;
+        color: #d4a574;
+    }
+    .pend-hero-sub {
+        font-size: 16px;
+        color: rgba(255,255,255,0.72);
+        line-height: 1.8;
+        margin: 0 auto 40px;
+        max-width: 520px;
+    }
+    .pend-hero-scroll {
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255,255,255,0.4);
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+    .pend-hero-scroll::after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 40px;
+        background: rgba(255,255,255,0.3);
+        animation: growLine 1.6s ease-in-out infinite;
+    }
+    @keyframes growLine {
+        0%,100% { transform: scaleY(0); transform-origin: top; opacity:0; }
+        50% { transform: scaleY(1); transform-origin: top; opacity:1; }
+    }
+
+    /* ══════════════════════════════════════════════
+       BANDE SIGNATURE — citation poétique
+    ══════════════════════════════════════════════ */
+    .pend-signature {
+        background: #1a1a1a;
+        padding: 28px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+    }
+    .pend-signature-line {
+        flex: 1;
+        height: 1px;
+        background: rgba(212,165,116,0.25);
+        max-width: 200px;
+    }
+    .pend-signature p {
+        color: rgba(255,255,255,0.6);
+        font-size: 13px;
+        font-style: italic;
+        letter-spacing: 0.08em;
+        text-align: center;
+    }
+    .pend-signature strong {
+        color: #d4a574;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    /* ══════════════════════════════════════════════
+       STORY SECTION — plein écran côte à côte
+    ══════════════════════════════════════════════ */
+    .pend-story {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 580px;
+    }
+    .pend-story-img {
+        overflow: hidden;
+    }
+    .pend-story-img img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s ease;
+    }
+    .pend-story-img:hover img { transform: scale(1.04); }
+    .pend-story-text {
+        background: #fdfaf6;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 72px 68px;
+    }
+    .pend-story-num {
+        font-size: 80px;
+        font-weight: 200;
+        color: #f0e8dc;
+        line-height: 1;
+        margin-bottom: 8px;
+        letter-spacing: -0.03em;
+    }
+    .pend-story-text h2 {
+        font-size: clamp(28px, 3.5vw, 42px);
+        color: #1a1a1a;
+        line-height: 1.15;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+    .pend-story-text h2 em { font-style: italic; color: #d4a574; }
+    .pend-story-text p {
+        font-size: 15px;
+        color: #666;
+        line-height: 1.85;
+        margin-bottom: 14px;
+        max-width: 420px;
+    }
+    .pend-story-link {
+        display: inline-block;
+        margin-top: 12px;
+        color: #1a1a1a;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-bottom: 1.5px solid #1a1a1a;
+        padding-bottom: 2px;
+        transition: color .2s, border-color .2s;
+    }
+    .pend-story-link:hover { color: #d4a574; border-color: #d4a574; }
+    @media (max-width: 800px) {
+        .pend-story { grid-template-columns: 1fr; }
+        .pend-story-text { padding: 48px 28px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       CATALOGUE
+    ══════════════════════════════════════════════ */
+    /* réutilise .catalogue-section, .product-grid etc. de bague.css */
+
+    /* ══════════════════════════════════════════════
+       SECTION LONGUEUR — guide interactif chaîne
+    ══════════════════════════════════════════════ */
+    .chaine-section {
+        padding: 90px 40px;
+        background: #fff;
+        border-top: 1px solid #f0e8dc;
+    }
+    .chaine-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+    .chaine-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: #d4a574;
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+    .chaine-inner h2 {
+        font-size: clamp(26px, 3.5vw, 38px);
+        color: #1a1a1a;
+        line-height: 1.15;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+    .chaine-inner h2 em { font-style: italic; color: #d4a574; }
+    .chaine-inner > div > p {
+        font-size: 15px; color: #666; line-height: 1.8; margin-bottom: 28px;
+    }
+    .chaine-options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .chaine-opt {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 18px 22px;
+        border: 1.5px solid #f0e8dc;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: border-color 0.2s, background 0.2s;
+        background: #fff;
+    }
+    .chaine-opt:hover, .chaine-opt.active {
+        border-color: #d4a574;
+        background: #fdfaf6;
+    }
+    .chaine-opt-len {
+        font-size: 22px;
+        font-weight: 700;
+        color: #d4a574;
+        min-width: 52px;
+        letter-spacing: -0.02em;
+    }
+    .chaine-opt-desc { font-size: 13px; color: #555; line-height: 1.5; }
+    .chaine-opt-desc strong { display: block; color: #1a1a1a; font-size: 14px; margin-bottom: 2px; }
+    /* visuel silhouette */
+    .chaine-visual {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fdfaf6;
+        border-radius: 20px;
+        min-height: 420px;
+        border: 1px solid #f0e8dc;
+    }
+    .chaine-svg-wrap svg { display: block; }
+    @media (max-width: 800px) {
+        .chaine-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════════
+       MOODBOARD — 3 ambiances
+    ══════════════════════════════════════════════ */
+    .mood-section {
+        padding: 90px 40px;
+        background: #1a1a1a;
+    }
+    .mood-inner { max-width: 1100px; margin: 0 auto; }
+    .mood-header {
+        text-align: center;
+        margin-bottom: 56px;
+    }
+    .mood-eyebrow {
+        font-size: 11px; letter-spacing: 0.4em;
+        text-transform: uppercase; color: #d4a574;
+        margin-bottom: 12px; font-weight: 600;
+    }
+    .mood-header h2 {
+        font-size: clamp(28px,4vw,44px);
+        color: #fff;
+        font-weight: 200;
+        letter-spacing: 0.04em;
+        line-height: 1.15;
+    }
+    .mood-header h2 em { font-style: italic; color: #d4a574; font-weight: 400; }
+    .mood-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .mood-card {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+        cursor: pointer;
+    }
+    .mood-card img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.7);
+        transition: filter 0.4s ease, transform 0.6s ease;
+    }
+    .mood-card:hover img { filter: brightness(0.5); transform: scale(1.05); }
+    .mood-card-label {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        padding: 28px 24px;
+        background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+    }
+    .mood-card-tag {
+        font-size: 10px; letter-spacing: 0.3em;
+        text-transform: uppercase; color: #d4a574;
+        font-weight: 600; margin-bottom: 6px;
+    }
+    .mood-card-label h3 {
+        font-size: 20px; font-weight: 300;
+        color: #fff; letter-spacing: 0.03em; line-height: 1.2;
+    }
+    .mood-card-label p {
+        font-size: 12px; color: rgba(255,255,255,0.65);
+        line-height: 1.5; margin-top: 6px;
+    }
+    @media (max-width: 700px) { .mood-grid { grid-template-columns: 1fr; } }
+
+    /* ══════════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════════ */
+    /* réutilise .faq-section de bague.css */
+
+    </style>
 </head>
 <body>
-    <h1>Pendentifs</h1>
-    <p>Voici notre sélection de pendentifs.</p>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="pend-hero">
+        <div class="pend-hero-bg">
+            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendentifs Ginko">
+        </div>
+        <div class="pend-hero-content">
+            <a class="back-hero" href="index.html">← Retour à l'accueil</a>
+            <p class="pend-eyebrow">Joaillerie intime</p>
+            <h1 class="pend-hero-title">Pendentifs<br><em>Ginko</em></h1>
+            <p class="pend-hero-sub">Il repose contre votre peau. Invisible sous un col, lumineux sur un décolleté. Le pendentif est le bijou le plus personnel qui soit — et le plus puissant.</p>
+            <div class="hero-ctas">
+                <a href="#catalogue" class="hero-btn-primary">Voir la collection</a>
+                <a href="index.html#configurateur" class="hero-btn-secondary">Créer le mien →</a>
+            </div>
+        </div>
+        <div class="pend-hero-scroll">Défiler</div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CITATION SIGNATURE
+    ══════════════════════════════════════ -->
+    <div class="pend-signature">
+        <div class="pend-signature-line"></div>
+        <p>"Un pendentif ne se choisit pas — il <strong>vous choisit</strong>."</p>
+        <div class="pend-signature-line"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         STORY — le bijou de la confidence
+    ══════════════════════════════════════ -->
+    <section class="pend-story">
+        <div class="pend-story-img">
+            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Pendentif diamant porté">
+        </div>
+        <div class="pend-story-text">
+            <div class="pend-story-num">01</div>
+            <h2>Le bijou de<br><em>la confidence</em></h2>
+            <p>Un pendentif ne se montre qu'à ceux qui méritent de le voir. Il vit contre votre peau, à mi-chemin entre l'intime et le visible. Chaque mouvement le fait briller — une seconde, pas plus.</p>
+            <p>Chez Ginko, chaque pendentif est pensé pour cet instant fugace : la lumière qui accroche la pierre, le regard qui se pose, puis qui cherche.</p>
+            <a href="#catalogue" class="pend-story-link">Voir tous les pendentifs</a>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CATALOGUE
+    ══════════════════════════════════════ -->
+    <section class="catalogue-section" id="catalogue">
+        <div class="catalogue-inner">
+            <div class="catalogue-header">
+                <h2>Tous les pendentifs</h2>
+                <p class="catalogue-count" id="catalogCount">12 modèles</p>
+            </div>
+
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <span class="filter-label">Pierre</span>
+                    <div class="filter-pills" id="filterStone">
+                        <button class="filter-pill active" data-filter="all">Toutes</button>
+                        <button class="filter-pill" data-filter="diamant">Diamant</button>
+                        <button class="filter-pill" data-filter="saphir">Saphir</button>
+                        <button class="filter-pill" data-filter="rubis">Rubis</button>
+                        <button class="filter-pill" data-filter="emeraude">Émeraude</button>
+                        <button class="filter-pill" data-filter="opale">Opale</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Métal</span>
+                    <div class="filter-pills" id="filterMetal">
+                        <button class="filter-pill active" data-metal="all">Tous</button>
+                        <button class="filter-pill" data-metal="or-jaune">Or jaune</button>
+                        <button class="filter-pill" data-metal="or-blanc">Or blanc</button>
+                        <button class="filter-pill" data-metal="or-rose">Or rose</button>
+                        <button class="filter-pill" data-metal="platine">Platine</button>
+                    </div>
+                </div>
+                <div class="filter-group filter-sort">
+                    <span class="filter-label">Trier par</span>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="default">Sélection</option>
+                        <option value="price-asc">Prix croissant</option>
+                        <option value="price-desc">Prix décroissant</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+
+                <!-- 1 -->
+                <article class="product-card" data-stone="diamant" data-metal="or-blanc" data-price="1480">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Pendentif Étoile Filante">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Nuit</p>
+                        <h3 class="product-name">Étoile Filante</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Diamant 0.22 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 480 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2 -->
+                <article class="product-card" data-stone="saphir" data-metal="or-jaune" data-price="1990">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendentif Abysses">
+                        <div class="product-badges"><span class="badge badge-bestseller">Coup de cœur</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Profondeur</p>
+                        <h3 class="product-name">Abysses</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Saphir bleu 0.45 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 990 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3 -->
+                <article class="product-card" data-stone="opale" data-metal="or-rose" data-price="1250">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Pendentif Brume Rosée">
+                        <div class="product-badges"><span class="badge badge-exclusive">Édition limitée</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Brume Rosée</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Opale rose</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 250 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4 -->
+                <article class="product-card" data-stone="emeraude" data-metal="or-jaune" data-price="2640">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Pendentif Forêt Vierge">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Forêt</p>
+                        <h3 class="product-name">Forêt Vierge</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Émeraude 0.55 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 640 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5 -->
+                <article class="product-card" data-stone="diamant" data-metal="platine" data-price="4800">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Pendentif Pleine Lune">
+                        <div class="product-badges"><span class="badge badge-exclusive">Pièce unique</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Pleine Lune</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#c8cdd6"></span>
+                            <span class="product-detail">Platine · Diamant 0.90 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">4 800 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6 -->
+                <article class="product-card" data-stone="rubis" data-metal="or-blanc" data-price="2100">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Pendentif Flamme Douce">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Flamme</p>
+                        <h3 class="product-name">Flamme Douce</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Rubis 0.38 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 100 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7 -->
+                <article class="product-card" data-stone="saphir" data-metal="platine" data-price="5400">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendentif Minuit">
+                        <div class="product-badges"><span class="badge badge-bestseller">Best-seller</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Minuit</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#c8cdd6"></span>
+                            <span class="product-detail">Platine · Saphir royal 1.10 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">5 400 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 8 -->
+                <article class="product-card" data-stone="opale" data-metal="or-jaune" data-price="890">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-little-everbloom-saphir-bleu-gris.png" alt="Pendentif Première Fois">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Première Fois</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Opale blanche</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">890 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 9 -->
+                <article class="product-card" data-stone="diamant" data-metal="or-rose" data-price="1100">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-everbloom-toi-et-moi-saphir.png" alt="Pendentif Poudre d'Or">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Nuit</p>
+                        <h3 class="product-name">Poudre d'Or</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Diamant 0.18 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 100 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 10 -->
+                <article class="product-card" data-stone="emeraude" data-metal="or-blanc" data-price="3200">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Pendentif Jardin Secret">
+                        <div class="product-badges"><span class="badge badge-exclusive">Exclusif</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Forêt</p>
+                        <h3 class="product-name">Jardin Secret</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Émeraude 0.70 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 200 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 11 -->
+                <article class="product-card" data-stone="rubis" data-metal="or-rose" data-price="1760">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Pendentif Désir Rouge">
+                        <div class="product-badges"><span class="badge badge-bestseller">Coup de cœur</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Flamme</p>
+                        <h3 class="product-name">Désir Rouge</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Rubis 0.42 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 760 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 12 -->
+                <article class="product-card" data-stone="saphir" data-metal="or-blanc" data-price="2350">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendentif Horizon">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Profondeur</p>
+                        <h3 class="product-name">Horizon</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Saphir bleu-gris 0.50 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 350 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+            <p class="no-results" id="noResults" style="display:none">Aucun modèle ne correspond. <button class="reset-filters" id="resetFilters">Réinitialiser</button></p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         GUIDE LONGUEUR DE CHAÎNE
+    ══════════════════════════════════════ -->
+    <section class="chaine-section">
+        <div class="chaine-inner">
+            <div>
+                <p class="chaine-eyebrow">Guide pratique</p>
+                <h2>Quelle longueur<br><em>de chaîne ?</em></h2>
+                <p>La longueur change tout — l'endroit où la pierre repose, l'effet qu'elle produit. Cliquez pour visualiser chaque style.</p>
+                <div class="chaine-options">
+                    <div class="chaine-opt active" data-len="40" data-y="72">
+                        <span class="chaine-opt-len">40 cm</span>
+                        <div class="chaine-opt-desc">
+                            <strong>Ras du cou · Choker</strong>
+                            Met en valeur la clavicule. Parfait sur un col rond ou une robe dos-nu.
+                        </div>
+                    </div>
+                    <div class="chaine-opt" data-len="45" data-y="100">
+                        <span class="chaine-opt-len">45 cm</span>
+                        <div class="chaine-opt-desc">
+                            <strong>Longueur classique</strong>
+                            La plus polyvalente — entre la gorge et le buste. S'adapte à toutes les tenues.
+                        </div>
+                    </div>
+                    <div class="chaine-opt" data-len="60" data-y="140">
+                        <span class="chaine-opt-len">60 cm</span>
+                        <div class="chaine-opt-desc">
+                            <strong>Longue · Sautoir</strong>
+                            Tombe sur le buste ou le décolleté. Effet statement, à superposer ou porter seul.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Silhouette SVG interactive -->
+            <div class="chaine-visual">
+                <div class="chaine-svg-wrap">
+                    <svg id="chaineSvg" viewBox="0 0 220 320" width="220" height="320" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Silhouette cou / épaules -->
+                        <path d="M70 60 Q110 20 150 60 L165 120 Q150 130 110 135 Q70 130 55 120 Z" fill="#f5e8d8" stroke="#e0c8a8" stroke-width="1"/>
+                        <!-- Buste schématique -->
+                        <path d="M55 120 Q40 160 42 220 L178 220 Q180 160 165 120" fill="#f5e8d8" stroke="#e0c8a8" stroke-width="1"/>
+                        <!-- Chaîne dynamique -->
+                        <line id="chaineLeft"  x1="82"  y1="82" x2="110" y2="72" stroke="#d4a574" stroke-width="1.5"/>
+                        <line id="chaineRight" x1="138" y1="82" x2="110" y2="72" stroke="#d4a574" stroke-width="1.5"/>
+                        <line id="chaineDrop"  x1="110" y1="72" x2="110" y2="100" stroke="#d4a574" stroke-width="1.5"/>
+                        <!-- Pierre -->
+                        <circle id="chainePierre" cx="110" cy="100" r="7" fill="#5a8fd4" stroke="#d4a574" stroke-width="1.5"/>
+                        <ellipse cx="107" cy="97" rx="2.5" ry="1.5" fill="white" opacity="0.4" transform="rotate(-30 107 97)"/>
+                        <!-- Labels longueur -->
+                        <text id="chaineLabel" x="125" y="105" font-size="9" fill="#d4a574" font-family="Georgia">40 cm</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         MOODBOARD — 3 collections
+    ══════════════════════════════════════ -->
+    <section class="mood-section">
+        <div class="mood-inner">
+            <div class="mood-header">
+                <p class="mood-eyebrow">Les univers Ginko</p>
+                <h2>Trois collections,<br><em>une seule âme</em></h2>
+            </div>
+            <div class="mood-grid">
+                <div class="mood-card">
+                    <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Collection Nuit">
+                    <div class="mood-card-label">
+                        <div class="mood-card-tag">Collection</div>
+                        <h3>Nuit</h3>
+                        <p>Diamants et or blanc. La lumière dans l'obscurité.</p>
+                    </div>
+                </div>
+                <div class="mood-card">
+                    <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Collection Profondeur">
+                    <div class="mood-card-label">
+                        <div class="mood-card-tag">Collection</div>
+                        <h3>Profondeur</h3>
+                        <p>Saphirs et or jaune. Le mystère des grands fonds.</p>
+                    </div>
+                </div>
+                <div class="mood-card">
+                    <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Collection Forêt">
+                    <div class="mood-card-label">
+                        <div class="mood-card-tag">Collection</div>
+                        <h3>Forêt</h3>
+                        <p>Émeraudes et or. La vie à l'état pur.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CTA SUR-MESURE
+    ══════════════════════════════════════ -->
+    <div class="cta-banner">
+        <div class="cta-banner-inner">
+            <div class="cta-banner-text">
+                <p class="cta-eyebrow">Sur-mesure</p>
+                <h2>Le pendentif de vos<br><em>rêves n'existe pas encore.</em></h2>
+                <p>Longueur de chaîne, forme de la pierre, métal, gravure au revers — nos artisans créent votre pendentif de A à Z, rien que pour vous.</p>
+            </div>
+            <div class="cta-banner-actions">
+                <a href="index.html#configurateur" class="cta-big-btn">Configurer le mien</a>
+                <a href="#" class="cta-rdv-btn">Prendre RDV</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+            <div class="faq-header">
+                <p class="faq-eyebrow">Vos questions</p>
+                <h2>Tout savoir sur<br><em>les pendentifs Ginko</em></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">Quelle longueur de chaîne est livrée avec le pendentif ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Chaque pendentif Ginko est livré avec une chaîne en or massif 18 carats de 45 cm. Sur demande, nous pouvons ajuster la longueur à 40 cm ou 60 cm sans supplément. Mentionnez-le simplement dans les instructions de votre commande.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Peut-on commander le pendentif sans la chaîne ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Oui, chaque pendentif peut être commandé seul (le prix affiché comprend la chaîne — une réduction est appliquée si vous la retirez). Le bail d'accroche peut être adapté à l'épaisseur de votre propre chaîne.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Peut-on faire graver un message au revers ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Pour certains modèles, une micro-gravure est possible au revers du pendant. Nos orfèvres réalisent des gravures à la main (initiales, date, mot court). Contactez-nous avant commande pour confirmer la faisabilité sur votre modèle.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Combien de temps faut-il pour recevoir mon pendentif ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Chaque pièce est fabriquée sur commande. Comptez 4 à 6 semaines. Livraison sécurisée dans un écrin Ginko signature, accompagnée d'un certificat gemmologique et d'une note personnalisée.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Les chaînes sont-elles en or massif ou plaquées ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Toutes nos chaînes sont en or massif 18 carats — jamais plaquées, jamais dorées. Elles sont poinçonnées et accompagnées d'un certificat de matière. Un bijou Ginko est fait pour durer des décennies.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <div class="footer-logo-wrap">
+                    <img src="ginko2.jpg" alt="Ginko" class="footer-logo">
+                </div>
+                <p class="footer-about">Ginko, la nouvelle maison joaillerie qui s'impose. Chaque pièce est créée sur-mesure, à partir de pierres sélectionnées à la main — parce que vous méritez l'exceptionnel.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Pinterest">PT</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Collections</h4>
+                <a href="bague.html">Bagues</a>
+                <a href="pendentifs.html">Pendentifs</a>
+                <a href="boucles-doreilles.html">Boucles d'oreilles</a>
+                <a href="bracelets.html">Bracelets</a>
+            </div>
+            <div class="footer-col">
+                <h4>Service client</h4>
+                <a href="#">Prendre rendez-vous</a>
+                <a href="#">Nous contacter</a>
+                <a href="#">Livraison & retours</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>La Maison</h4>
+                <a href="#">Notre histoire</a>
+                <a href="#">Savoir-faire</a>
+                <a href="#">Nos pierres</a>
+                <a href="#">Boutiques</a>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Recevez la nouvelle gamme Ginko en avant-première.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Votre e-mail" class="newsletter-input">
+                    <button class="newsletter-btn">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 Ginko · Tous droits réservés</span>
+            <div class="footer-legal">
+                <a href="#">Mentions légales</a>
+                <a href="#">CGV</a>
+                <a href="#">Politique de confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ─── FILTRES + TRI ───────────────────────────────────
+    var allCards = Array.from(document.querySelectorAll('.product-card'));
+    var activeStone = 'all', activeMetal = 'all', activeSort = 'default';
+
+    function applyFilters() {
+        var visible = allCards.filter(function(c) {
+            return (activeStone === 'all' || c.dataset.stone === activeStone) &&
+                   (activeMetal === 'all' || c.dataset.metal === activeMetal);
+        });
+        if (activeSort === 'price-asc')  visible.sort(function(a,b){ return +a.dataset.price - +b.dataset.price; });
+        if (activeSort === 'price-desc') visible.sort(function(a,b){ return +b.dataset.price - +a.dataset.price; });
+        var grid = document.getElementById('productGrid');
+        allCards.forEach(function(c){ c.style.display = 'none'; });
+        visible.forEach(function(c){ c.style.display = ''; grid.appendChild(c); });
+        document.getElementById('noResults').style.display = visible.length ? 'none' : 'block';
+        document.getElementById('catalogCount').textContent = visible.length + ' modèle' + (visible.length > 1 ? 's' : '');
+    }
+    document.querySelectorAll('#filterStone .filter-pill').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#filterStone .filter-pill').forEach(function(b){ b.classList.remove('active'); });
+            btn.classList.add('active'); activeStone = btn.dataset.filter; applyFilters();
+        });
+    });
+    document.querySelectorAll('#filterMetal .filter-pill').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#filterMetal .filter-pill').forEach(function(b){ b.classList.remove('active'); });
+            btn.classList.add('active'); activeMetal = btn.dataset.metal; applyFilters();
+        });
+    });
+    document.getElementById('sortSelect').addEventListener('change', function() {
+        activeSort = this.value; applyFilters();
+    });
+    var rf = document.getElementById('resetFilters');
+    if (rf) rf.addEventListener('click', function() {
+        activeStone = 'all'; activeMetal = 'all'; activeSort = 'default';
+        document.querySelectorAll('.filter-pill').forEach(function(b){ b.classList.remove('active'); });
+        document.querySelectorAll('.filter-pill[data-filter="all"], .filter-pill[data-metal="all"]').forEach(function(b){ b.classList.add('active'); });
+        document.getElementById('sortSelect').value = 'default';
+        applyFilters();
+    });
+
+    // ─── WISHLIST ────────────────────────────────────────
+    document.querySelectorAll('.wishlist-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            btn.classList.toggle('wished');
+            btn.textContent = btn.classList.contains('wished') ? '♥' : '♡';
+        });
+    });
+
+    // ─── GUIDE LONGUEUR CHAÎNE ───────────────────────────
+    var chaineDropEl  = document.getElementById('chaineDrop');
+    var chaineLabel   = document.getElementById('chaineLabel');
+    var chainePierre  = document.getElementById('chainePierre');
+    var chaineYMap    = { '40': 100, '45': 126, '60': 162 };
+
+    document.querySelectorAll('.chaine-opt').forEach(function(opt) {
+        opt.addEventListener('click', function() {
+            document.querySelectorAll('.chaine-opt').forEach(function(o){ o.classList.remove('active'); });
+            opt.classList.add('active');
+            var len = opt.dataset.len;
+            var y   = chaineYMap[len];
+            chaineDropEl.setAttribute('y2', y);
+            chainePierre.setAttribute('cy', y);
+            chaineLabel.setAttribute('y', y + 5);
+            chaineLabel.textContent = len + ' cm';
+        });
+    });
+
+    // ─── FAQ ─────────────────────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.parentElement;
+            var isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+    </script>
+
 </body>
 </html>
