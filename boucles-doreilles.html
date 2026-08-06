@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="gemmyo2.css">
+    <link rel="stylesheet" href="bague.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Boucles d'oreilles — Ginko Joaillerie</title>
+    <meta name="description" content="Boucles d'oreilles Ginko en or 18 carats et pierres précieuses certifiées. Puces, créoles, pendantes — créées sur-mesure dans nos ateliers parisiens.">
+    <style>
+    .bo-hero {
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .bo-hero-bg { position: absolute; inset: 0; }
+    .bo-hero-bg img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        display: block;
+        filter: brightness(0.52);
+        transform: scale(1.04);
+        transition: transform 10s ease;
+    }
+    .bo-hero:hover .bo-hero-bg img { transform: scale(1); }
+    .bo-hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        padding: 0 24px;
+        max-width: 780px;
+    }
+    .bo-hero-content .back-hero {
+        display: inline-block;
+        color: rgba(255,255,255,0.5);
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        text-decoration: none;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        transition: color .2s;
+    }
+    .bo-hero-content .back-hero:hover { color: #d4a574; }
+    .bo-eyebrow {
+        font-size: 11px; letter-spacing: 0.5em;
+        text-transform: uppercase; color: #d4a574;
+        margin-bottom: 20px; font-weight: 600;
+    }
+    .bo-hero-title {
+        font-size: clamp(48px, 9vw, 96px);
+        font-weight: 200;
+        letter-spacing: 0.06em;
+        line-height: 1;
+        margin: 0 0 12px;
+    }
+    .bo-hero-title em { font-style: italic; font-weight: 400; color: #d4a574; }
+    .bo-hero-sub {
+        font-size: 16px;
+        color: rgba(255,255,255,0.7);
+        line-height: 1.8;
+        margin: 0 auto 40px;
+        max-width: 520px;
+    }
+    .bo-hero-scroll {
+        position: absolute;
+        bottom: 36px; left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        color: rgba(255,255,255,0.4);
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+    .bo-hero-scroll::after {
+        content: '';
+        display: block;
+        width: 1px; height: 40px;
+        background: rgba(255,255,255,0.3);
+        margin: 8px auto 0;
+        animation: growLine 1.6s ease-in-out infinite;
+    }
+    @keyframes growLine {
+        0%,100% { transform: scaleY(0); transform-origin: top; opacity:0; }
+        50%      { transform: scaleY(1); transform-origin: top; opacity:1; }
+    }
+
+    /* SIGNATURE */
+    .bo-signature {
+        background: #1a1a1a;
+        padding: 28px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+    }
+    .bo-signature-line { flex:1; height:1px; background:rgba(212,165,116,0.25); max-width:200px; }
+    .bo-signature p { color:rgba(255,255,255,0.6); font-size:13px; font-style:italic; letter-spacing:.08em; text-align:center; }
+    .bo-signature strong { color:#d4a574; font-style:normal; font-weight:600; }
+
+    /* STORY */
+    .bo-story {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 580px;
+    }
+    .bo-story-img { overflow: hidden; }
+    .bo-story-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .8s ease; }
+    .bo-story-img:hover img { transform: scale(1.04); }
+    .bo-story-text {
+        background: #fdfaf6;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 72px 68px;
+    }
+    .bo-story-num { font-size:80px; font-weight:200; color:#f0e8dc; line-height:1; margin-bottom:8px; letter-spacing:-0.03em; }
+    .bo-story-text h2 { font-size:clamp(28px,3.5vw,42px); color:#1a1a1a; line-height:1.15; margin-bottom:20px; letter-spacing:-0.02em; }
+    .bo-story-text h2 em { font-style:italic; color:#d4a574; }
+    .bo-story-text p { font-size:15px; color:#666; line-height:1.85; margin-bottom:14px; max-width:420px; }
+    .bo-story-link {
+        display:inline-block; margin-top:12px; color:#1a1a1a;
+        font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+        text-decoration:none; border-bottom:1.5px solid #1a1a1a; padding-bottom:2px;
+        transition:color .2s, border-color .2s;
+    }
+    .bo-story-link:hover { color:#d4a574; border-color:#d4a574; }
+    @media(max-width:800px) {
+        .bo-story { grid-template-columns:1fr; }
+        .bo-story-text { padding:48px 28px; }
+    }
+
+    /* MOODBOARD */
+    .bo-mood { padding:90px 40px; background:#1a1a1a; }
+    .bo-mood-inner { max-width:1100px; margin:0 auto; }
+    .bo-mood-header { text-align:center; margin-bottom:56px; }
+    .bo-mood-eyebrow { font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:#d4a574; margin-bottom:12px; font-weight:600; }
+    .bo-mood-header h2 { font-size:clamp(28px,4vw,44px); color:#fff; font-weight:200; letter-spacing:.04em; line-height:1.15; }
+    .bo-mood-header h2 em { font-style:italic; color:#d4a574; font-weight:400; }
+    .bo-mood-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .bo-mood-card { position:relative; border-radius:16px; overflow:hidden; aspect-ratio:3/4; cursor:pointer; }
+    .bo-mood-card img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.7); transition:filter .4s ease,transform .6s ease; }
+    .bo-mood-card:hover img { filter:brightness(.5); transform:scale(1.05); }
+    .bo-mood-label { position:absolute; bottom:0; left:0; right:0; padding:28px 24px; background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 100%); }
+    .bo-mood-tag { font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:#d4a574; font-weight:600; margin-bottom:6px; }
+    .bo-mood-label h3 { font-size:20px; font-weight:300; color:#fff; letter-spacing:.03em; line-height:1.2; }
+    .bo-mood-label p { font-size:12px; color:rgba(255,255,255,.65); line-height:1.5; margin-top:6px; }
+    @media(max-width:700px){ .bo-mood-grid { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+    <!-- ══ TICKER PROMO ══ -->
+    <div class="promo-ticker">
+        <div class="ticker-track">
+            <span>✦ Livraison offerte dès 500 € &nbsp;·&nbsp; Retours gratuits 30 jours</span>
+            <span>✦ Chaque bijou fabriqué à la main en 4–6 semaines</span>
+            <span>✦ Pierres certifiées GIA &nbsp;·&nbsp; Or 18 carats massif</span>
+            <span>✦ Livraison offerte dès 500 € &nbsp;·&nbsp; Retours gratuits 30 jours</span>
+            <span>✦ Chaque bijou fabriqué à la main en 4–6 semaines</span>
+            <span>✦ Pierres certifiées GIA &nbsp;·&nbsp; Or 18 carats massif</span>
+        </div>
+    </div>
+
+    <!-- ══ HEADER ══ -->
+    <div class="header-top">
+        <div class="header-top-left">
+            <a href="#">FR/EUR</a>
+            <a href="#">PRENDRE RDV</a>
+            <a href="#">NOUS CONTACTER</a>
+        </div>
+        <div class="header-logo">
+            <a href="index.html"><img src="ginko2.jpg" alt="Ginko Joaillerie"></a>
+        </div>
+        <div class="header-top-right">
+            <a href="#" title="Mon Compte">👤</a>
+            <a href="#" title="Rechercher">🔍</a>
+            <a href="panier.html" title="Panier" class="cart-icon">🛒 <span class="cart-count" id="cartCount">0</span></a>
+        </div>
+    </div>
+    <div class="header-nav" id="headerNav">
+        <button class="burger-btn" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+        <div class="nav-links" id="navLinks">
+            <div class="nav-item">
+                <button class="nav-item-toggle" id="joaillerieToggle">JOAILLERIE <span class="nav-arrow">›</span></button>
+                <div class="mega-menu">
+                    <div class="mega-columns">
+                        <div class="mega-column">
+                            <h4>Collections</h4>
+                            <a href="#">Ginko Signature</a>
+                            <a href="#">Aurore</a>
+                            <a href="#">Profondeur</a>
+                            <a href="#">Forêt</a>
+                            <a href="#">Nuit</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Bijoux Femme</h4>
+                            <a href="bague.html">Bagues</a>
+                            <a href="pendentifs.html">Pendentifs</a>
+                            <a href="boucles-doreilles.html">Boucles d'oreilles</a>
+                            <a href="bracelets.html">Bracelets</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Sélections</h4>
+                            <a href="#">Nouveautés</a>
+                            <a href="#">Idées cadeaux</a>
+                            <a href="#">Disponibles immédiatement</a>
+                        </div>
+                        <div class="mega-column mega-visual">
+                            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Visuel Joaillerie">
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-submenu" id="joaillerieSubmenu">
+                    <a href="bague.html">Bagues</a>
+                    <a href="pendentifs.html">Pendentifs</a>
+                    <a href="boucles-doreilles.html">Boucles d'oreilles</a>
+                    <a href="bracelets.html">Bracelets</a>
+                    <a href="#">Nouveautés</a>
+                    <a href="#">Idées cadeaux</a>
+                </div>
+            </div>
+            <a href="#">FIANÇAILLES</a>
+            <a href="#">MARIAGE</a>
+            <a href="#">NOS PIERRES</a>
+            <a href="#">LA MAISON</a>
+            <a href="#">BOUTIQUES</a>
+            <a href="#">GUIDES</a>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="bo-hero">
+        <div class="bo-hero-bg">
+            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Boucles d'oreilles Ginko">
+        </div>
+        <div class="bo-hero-content">
+            <a class="back-hero" href="index.html">← Retour à l'accueil</a>
+            <p class="bo-eyebrow">Joaillerie de caractère</p>
+            <h1 class="bo-hero-title">Boucles<br><em>d'oreilles</em></h1>
+            <p class="bo-hero-sub">Puces discrètes ou pendantes spectaculaires — chaque paire Ginko est une déclaration. Portées au plus près du visage, elles capturent la lumière comme nulle autre.</p>
+            <div class="hero-ctas">
+                <a href="#catalogue" class="hero-btn-primary">Voir la collection</a>
+                <a href="index.html#configurateur" class="hero-btn-secondary">Créer les miennes →</a>
+            </div>
+        </div>
+        <div class="bo-hero-scroll">Défiler</div>
+    </section>
+
+    <!-- ══ STATS ══ -->
+    <div class="stats-bar">
+        <div class="stat-item"><span class="stat-num">+8 000</span><span class="stat-label">paires créées</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num">4–6 sem.</span><span class="stat-label">de fabrication</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num">18 carats</span><span class="stat-label">d'or massif</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">sur-mesure</span></div>
+    </div>
+
+    <!-- ══ CITATION ══ -->
+    <div class="bo-signature">
+        <div class="bo-signature-line"></div>
+        <p>"Les boucles d'oreilles sont le premier bijou qu'on <strong>remarque</strong>."</p>
+        <div class="bo-signature-line"></div>
+    </div>
+
+    <!-- ══ STORY ══ -->
+    <section class="bo-story">
+        <div class="bo-story-img">
+            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Boucles portées">
+        </div>
+        <div class="bo-story-text">
+            <div class="bo-story-num">01</div>
+            <h2>Au plus près<br><em>du visage</em></h2>
+            <p>Aucun bijou n'est plus intime que les boucles d'oreilles. Elles encadrent le regard, captent chaque éclat de lumière, révèlent la courbe de la nuque à chaque mouvement de tête.</p>
+            <p>Chez Ginko, chaque paire est pensée pour cet instant où la lumière accroche la pierre : une fraction de seconde qui marque les esprits.</p>
+            <a href="#catalogue" class="bo-story-link">Voir toutes les boucles</a>
+        </div>
+    </section>
+
+    <!-- ══ CATALOGUE ══ -->
+    <section class="catalogue-section" id="catalogue">
+        <div class="catalogue-inner">
+            <div class="catalogue-header">
+                <h2>Toutes les boucles d'oreilles</h2>
+                <p class="catalogue-count" id="catalogCount">16 modèles</p>
+            </div>
+
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <span class="filter-label">Type</span>
+                    <div class="filter-pills" id="filterType">
+                        <button class="filter-pill active" data-filter="all">Tous</button>
+                        <button class="filter-pill" data-filter="puce">Puces</button>
+                        <button class="filter-pill" data-filter="creole">Créoles</button>
+                        <button class="filter-pill" data-filter="pendante">Pendantes</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Pierre</span>
+                    <div class="filter-pills" id="filterStone">
+                        <button class="filter-pill active" data-filter="all">Toutes</button>
+                        <button class="filter-pill" data-filter="diamant">Diamant</button>
+                        <button class="filter-pill" data-filter="saphir">Saphir</button>
+                        <button class="filter-pill" data-filter="rubis">Rubis</button>
+                        <button class="filter-pill" data-filter="emeraude">Émeraude</button>
+                        <button class="filter-pill" data-filter="opale">Opale</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Métal</span>
+                    <div class="filter-pills" id="filterMetal">
+                        <button class="filter-pill active" data-metal="all">Tous</button>
+                        <button class="filter-pill" data-metal="or-jaune">Or jaune</button>
+                        <button class="filter-pill" data-metal="or-blanc">Or blanc</button>
+                        <button class="filter-pill" data-metal="or-rose">Or rose</button>
+                        <button class="filter-pill" data-metal="platine">Platine</button>
+                    </div>
+                </div>
+                <div class="filter-group filter-sort">
+                    <span class="filter-label">Trier par</span>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="default">Sélection</option>
+                        <option value="price-asc">Prix croissant</option>
+                        <option value="price-desc">Prix décroissant</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+
+                <!-- 1 -->
+                <article class="product-card" data-type="puce" data-stone="diamant" data-metal="or-blanc" data-price="980">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Puces Étoile Diamant">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-01" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Nuit</p>
+                        <h3 class="product-name">Puces Étoile Diamant</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Diamant 0.15 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">980 €</span>
+                            <a href="produit.html?id=bo-01" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2 -->
+                <article class="product-card" data-type="pendante" data-stone="saphir" data-metal="or-jaune" data-price="2200">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendantes Abysses Saphir">
+                        <div class="product-badges"><span class="badge badge-bestseller">Coup de cœur</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-02" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Profondeur</p>
+                        <h3 class="product-name">Pendantes Abysses</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Saphir 0.35 ct × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 200 €</span>
+                            <a href="produit.html?id=bo-02" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3 -->
+                <article class="product-card" data-type="creole" data-stone="diamant" data-metal="or-rose" data-price="1640">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Créoles Diamant Pavé">
+                        <div class="product-badges"><span class="badge badge-exclusive">Édition limitée</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-03" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Créoles Diamant Pavé</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Pavage diamant 0.20 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 640 €</span>
+                            <a href="produit.html?id=bo-03" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4 -->
+                <article class="product-card" data-type="pendante" data-stone="emeraude" data-metal="or-jaune" data-price="3100">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Pendantes Forêt Émeraude">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-04" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Forêt</p>
+                        <h3 class="product-name">Pendantes Forêt Vierge</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Émeraude 0.50 ct × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 100 €</span>
+                            <a href="produit.html?id=bo-04" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5 -->
+                <article class="product-card" data-type="puce" data-stone="diamant" data-metal="platine" data-price="5400">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Puces Pleine Lune">
+                        <div class="product-badges"><span class="badge badge-exclusive">Haute Joaillerie</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-05" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Puces Pleine Lune</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#c8cdd6"></span>
+                            <span class="product-detail">Platine · Diamant 0.80 ct × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">5 400 €</span>
+                            <a href="produit.html?id=bo-05" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6 -->
+                <article class="product-card" data-type="pendante" data-stone="rubis" data-metal="or-blanc" data-price="2480">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Pendantes Flamme Douce Rubis">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-06" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Flamme</p>
+                        <h3 class="product-name">Pendantes Flamme Douce</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Rubis 0.30 ct × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 480 €</span>
+                            <a href="produit.html?id=bo-06" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7 -->
+                <article class="product-card" data-type="creole" data-stone="saphir" data-metal="or-blanc" data-price="3600">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Créoles Minuit Saphir">
+                        <div class="product-badges"><span class="badge badge-bestseller">Best-seller</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-07" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Créoles Minuit Saphir</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Saphir royal × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 600 €</span>
+                            <a href="produit.html?id=bo-07" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 8 -->
+                <article class="product-card" data-type="puce" data-stone="opale" data-metal="or-jaune" data-price="760">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-little-everbloom-saphir-bleu-gris.png" alt="Puces Opale Aurore">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-08" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Puces Opale Aurore</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Opale rose × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">760 €</span>
+                            <a href="produit.html?id=bo-08" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 9 -->
+                <article class="product-card" data-type="pendante" data-stone="diamant" data-metal="or-rose" data-price="1380">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-everbloom-toi-et-moi-saphir.png" alt="Pendantes Poudre d'Or">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-09" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Nuit</p>
+                        <h3 class="product-name">Pendantes Poudre d'Or</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Diamant 0.12 ct × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 380 €</span>
+                            <a href="produit.html?id=bo-09" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 10 -->
+                <article class="product-card" data-type="creole" data-stone="emeraude" data-metal="or-blanc" data-price="4200">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Créoles Jardin Secret">
+                        <div class="product-badges"><span class="badge badge-exclusive">Exclusif</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-10" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Forêt</p>
+                        <h3 class="product-name">Créoles Jardin Secret</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Émeraude 0.60 ct × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">4 200 €</span>
+                            <a href="produit.html?id=bo-10" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 11 -->
+                <article class="product-card" data-type="puce" data-stone="rubis" data-metal="or-rose" data-price="1920">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Puces Désir Rouge">
+                        <div class="product-badges"><span class="badge badge-bestseller">Coup de cœur</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-11" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Flamme</p>
+                        <h3 class="product-name">Puces Désir Rouge</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Rubis 0.28 ct × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 920 €</span>
+                            <a href="produit.html?id=bo-11" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 12 -->
+                <article class="product-card" data-type="pendante" data-stone="saphir" data-metal="platine" data-price="6200">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendantes Horizon">
+                        <div class="product-badges"><span class="badge badge-exclusive">Pièce unique</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-12" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Pendantes Horizon</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#c8cdd6"></span>
+                            <span class="product-detail">Platine · Saphir royal 1 ct × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">6 200 €</span>
+                            <a href="produit.html?id=bo-12" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 13 -->
+                <article class="product-card" data-type="creole" data-stone="diamant" data-metal="or-jaune" data-price="2100">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Créoles Lumière Dorée">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-13" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Nuit</p>
+                        <h3 class="product-name">Créoles Lumière Dorée</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Pavage diamant intérieur</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 100 €</span>
+                            <a href="produit.html?id=bo-13" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 14 -->
+                <article class="product-card" data-type="puce" data-stone="opale" data-metal="or-rose" data-price="890">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Puces Opale Rose">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-14" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Puces Opale Tendre</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Opale blanche × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">890 €</span>
+                            <a href="produit.html?id=bo-14" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 15 -->
+                <article class="product-card" data-type="pendante" data-stone="diamant" data-metal="or-blanc" data-price="3400">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Pendantes Cascade Diamant">
+                        <div class="product-badges"><span class="badge badge-bestseller">Best-seller</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-15" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Pendantes Cascade</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Diamant 0.55 ct total</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 400 €</span>
+                            <a href="produit.html?id=bo-15" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 16 -->
+                <article class="product-card" data-type="creole" data-stone="rubis" data-metal="or-jaune" data-price="2750">
+                    <div class="product-img-wrap">
+                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Créoles Rubis Passion">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="produit.html?id=bo-16" class="action-btn">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Flamme</p>
+                        <h3 class="product-name">Créoles Passion</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Rubis 0.40 ct × 2</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 750 €</span>
+                            <a href="produit.html?id=bo-16" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+            <p class="no-results" id="noResults" style="display:none">Aucun modèle ne correspond. <button class="reset-filters" id="resetFilters">Réinitialiser</button></p>
+        </div>
+    </section>
+
+    <!-- ══ MOODBOARD ══ -->
+    <section class="bo-mood">
+        <div class="bo-mood-inner">
+            <div class="bo-mood-header">
+                <p class="bo-mood-eyebrow">Les univers Ginko</p>
+                <h2>Trois collections,<br><em>une seule âme</em></h2>
+            </div>
+            <div class="bo-mood-grid">
+                <div class="bo-mood-card">
+                    <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Collection Nuit">
+                    <div class="bo-mood-label">
+                        <div class="bo-mood-tag">Collection</div>
+                        <h3>Nuit</h3>
+                        <p>Diamants et or blanc. La lumière dans l'obscurité.</p>
+                    </div>
+                </div>
+                <div class="bo-mood-card">
+                    <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Collection Profondeur">
+                    <div class="bo-mood-label">
+                        <div class="bo-mood-tag">Collection</div>
+                        <h3>Profondeur</h3>
+                        <p>Saphirs et or jaune. Le mystère des grands fonds.</p>
+                    </div>
+                </div>
+                <div class="bo-mood-card">
+                    <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Collection Forêt">
+                    <div class="bo-mood-label">
+                        <div class="bo-mood-tag">Collection</div>
+                        <h3>Forêt</h3>
+                        <p>Émeraudes et or. La vie à l'état pur.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CTA SUR-MESURE ══ -->
+    <div class="cta-banner">
+        <div class="cta-banner-inner">
+            <div class="cta-banner-text">
+                <p class="cta-eyebrow">Sur-mesure</p>
+                <h2>La paire de vos<br><em>rêves n'existe pas encore.</em></h2>
+                <p>Forme, longueur, pierre, métal, type de fermoir — nos artisans créent vos boucles d'oreilles de A à Z, rien que pour vous.</p>
+            </div>
+            <div class="cta-banner-actions">
+                <a href="index.html#configurateur" class="cta-big-btn">Configurer les miennes</a>
+                <a href="#" class="cta-rdv-btn">Prendre RDV</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ SECTION POURQUOI GINKO ══ -->
+    <section class="why-section">
+        <div class="why-inner">
+            <div class="why-header">
+                <p class="why-eyebrow">Nos engagements</p>
+                <h2>Pourquoi choisir<br><em>Ginko ?</em></h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#d4a574" stroke-width="1.5"/><path d="M24 14 C18 14 14 18 14 24 C14 30 18 34 24 34" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/><path d="M24 14 C30 14 34 18 34 24 C34 30 30 34 24 34" stroke="#e8c97a" stroke-width="1.5" stroke-linecap="round"/><circle cx="24" cy="24" r="3" fill="#d4a574"/></svg></div>
+                    <h3>Pierres certifiées</h3>
+                    <p>Chaque pierre est certifiée GIA. Vous recevez un certificat d'authenticité avec votre bijou.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 8 L26 16 H34 L27.5 21 L30 29 L24 24.5 L18 29 L20.5 21 L14 16 H22 Z" stroke="#d4a574" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 34 Q24 40 32 34" stroke="#e8c97a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                    <h3>Or 18 carats massif</h3>
+                    <p>Jamais plaqué, jamais doublé. Chaque alliage est formulé pour une durabilité maximale.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><rect x="10" y="14" width="28" height="22" rx="4" stroke="#d4a574" stroke-width="1.5"/><path d="M18 14 V11 Q24 8 30 11 V14" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/><path d="M18 25 L22 29 L30 21" stroke="#e8c97a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Satisfait ou remboursé</h3>
+                    <p>30 jours pour changer d'avis, retours gratuits, échanges sans frais.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="8" stroke="#d4a574" stroke-width="1.5"/><path d="M12 38 C12 32 17.4 28 24 28 C30.6 28 36 32 36 38" stroke="#e8c97a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                    <h3>Créé pour vous</h3>
+                    <p>Chaque paire est fabriquée sur commande. Une pièce unique qui vous ressemble.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FAQ ══ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+            <div class="faq-header">
+                <p class="faq-eyebrow">Vos questions</p>
+                <h2>Tout savoir sur<br><em>les boucles Ginko</em></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">Les boucles d'oreilles sont-elles adaptées aux oreilles percées ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Toutes nos boucles d'oreilles sont conçues pour oreilles percées standard (trou de 0.8 à 1.2 mm). Puces avec fermoir papillon sécurisé, créoles avec fermoir à charnière dorée, pendantes avec crochet de haute qualité. Sur demande, nous pouvons adapter le système de fermeture.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Puis-je commander une seule boucle ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Oui, pour les modèles symétriques, il est possible de commander une seule pièce (en cas de perte par exemple). Le prix est la moitié du prix de la paire, avec un supplément de fabrication de 80 €.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Combien de temps pour recevoir ma paire ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Chaque paire est fabriquée sur commande dans nos ateliers parisiens. Comptez 4 à 6 semaines. Vous pouvez suivre l'avancement de la fabrication depuis votre espace client.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Les tiges sont-elles hypoallergéniques ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Oui, toutes les tiges de nos boucles puces et créoles sont en or massif 18 carats — le métal le plus toléré par la peau. L'or 18 carats Ginko ne contient aucun nickel et convient aux peaux les plus sensibles.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Puis-je faire personnaliser le modèle (métal, pierre, taille) ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Absolument. Chaque boucle peut être déclinée dans votre choix de métal (or jaune, or blanc, or rose, platine) et de pierre. Pour une demande entièrement sur-mesure (forme personnalisée, combinaison unique), contactez-nous ou prenez rendez-vous en boutique.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <div class="footer-logo-wrap">
+                    <img src="ginko2.jpg" alt="Ginko" class="footer-logo">
+                </div>
+                <p class="footer-about">Ginko, joaillerie parisienne sur-mesure. Chaque pièce est créée à partir de pierres sélectionnées à la main — parce que vous méritez l'exceptionnel.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Pinterest">PT</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Collections</h4>
+                <a href="bague.html">Bagues</a>
+                <a href="pendentifs.html">Pendentifs</a>
+                <a href="boucles-doreilles.html">Boucles d'oreilles</a>
+                <a href="bracelets.html">Bracelets</a>
+            </div>
+            <div class="footer-col">
+                <h4>Service client</h4>
+                <a href="#">Prendre rendez-vous</a>
+                <a href="#">Nous contacter</a>
+                <a href="#">Livraison &amp; retours</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>La Maison</h4>
+                <a href="#">Notre histoire</a>
+                <a href="#">Savoir-faire</a>
+                <a href="#">Nos pierres</a>
+                <a href="#">Boutiques</a>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Recevez la nouvelle gamme Ginko en avant-première.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Votre e-mail" class="newsletter-input">
+                    <button class="newsletter-btn">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 Ginko · Tous droits réservés</span>
+            <div class="footer-legal">
+                <a href="#">Mentions légales</a>
+                <a href="#">CGV</a>
+                <a href="#">Politique de confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
+    <script>
+    // ─── PANIER localStorage ──────────────────────────────────
+    function updateCartCount() {
+        var cart = JSON.parse(localStorage.getItem('ginko_cart') || '[]');
+        var count = cart.reduce(function(s,i){ return s + (i.qty||1); }, 0);
+        var el = document.getElementById('cartCount');
+        if (el) { el.textContent = count > 0 ? count : ''; }
+    }
+    updateCartCount();
+
+    // ─── WISHLIST localStorage ────────────────────────────────
+    var wishlist = JSON.parse(localStorage.getItem('ginko_wishlist') || '[]');
+    document.querySelectorAll('.wishlist-btn').forEach(function(btn) {
+        var id = btn.closest('.product-card') && btn.closest('.product-card').querySelector('.product-cta') && btn.closest('.product-card').querySelector('.product-cta').href.split('=')[1];
+        if (id && wishlist.includes(id)) { btn.classList.add('wished'); btn.textContent='♥'; }
+        btn.addEventListener('click', function() {
+            var pid = btn.closest('.product-card').querySelector('.product-cta').href.split('=')[1];
+            var idx = wishlist.indexOf(pid);
+            if (idx === -1) { wishlist.push(pid); btn.classList.add('wished'); btn.textContent='♥'; }
+            else { wishlist.splice(idx,1); btn.classList.remove('wished'); btn.textContent='♡'; }
+            localStorage.setItem('ginko_wishlist', JSON.stringify(wishlist));
+        });
+    });
+
+    // ─── FILTRES ──────────────────────────────────────────────
+    var allCards = Array.from(document.querySelectorAll('.product-card'));
+    var activeType='all', activeStone='all', activeMetal='all', activeSort='default';
+    function applyFilters() {
+        var visible = allCards.filter(function(c) {
+            return (activeType==='all' || c.dataset.type===activeType) &&
+                   (activeStone==='all' || c.dataset.stone===activeStone) &&
+                   (activeMetal==='all' || c.dataset.metal===activeMetal);
+        });
+        if (activeSort==='price-asc')  visible.sort(function(a,b){ return +a.dataset.price - +b.dataset.price; });
+        if (activeSort==='price-desc') visible.sort(function(a,b){ return +b.dataset.price - +a.dataset.price; });
+        var grid = document.getElementById('productGrid');
+        allCards.forEach(function(c){ c.style.display='none'; });
+        visible.forEach(function(c){ c.style.display=''; grid.appendChild(c); });
+        document.getElementById('noResults').style.display = visible.length ? 'none' : 'block';
+        document.getElementById('catalogCount').textContent = visible.length + ' modèle' + (visible.length>1?'s':'');
+    }
+    document.querySelectorAll('#filterType .filter-pill').forEach(function(btn){
+        btn.addEventListener('click', function(){ document.querySelectorAll('#filterType .filter-pill').forEach(function(b){b.classList.remove('active');}); btn.classList.add('active'); activeType=btn.dataset.filter; applyFilters(); });
+    });
+    document.querySelectorAll('#filterStone .filter-pill').forEach(function(btn){
+        btn.addEventListener('click', function(){ document.querySelectorAll('#filterStone .filter-pill').forEach(function(b){b.classList.remove('active');}); btn.classList.add('active'); activeStone=btn.dataset.filter; applyFilters(); });
+    });
+    document.querySelectorAll('#filterMetal .filter-pill').forEach(function(btn){
+        btn.addEventListener('click', function(){ document.querySelectorAll('#filterMetal .filter-pill').forEach(function(b){b.classList.remove('active');}); btn.classList.add('active'); activeMetal=btn.dataset.metal; applyFilters(); });
+    });
+    document.getElementById('sortSelect').addEventListener('change', function(){ activeSort=this.value; applyFilters(); });
+    var rf = document.getElementById('resetFilters');
+    if(rf) rf.addEventListener('click', function(){
+        activeType='all'; activeStone='all'; activeMetal='all'; activeSort='default';
+        document.querySelectorAll('.filter-pill').forEach(function(b){b.classList.remove('active');});
+        document.querySelectorAll('.filter-pill[data-filter="all"],.filter-pill[data-metal="all"]').forEach(function(b){b.classList.add('active');});
+        document.getElementById('sortSelect').value='default'; applyFilters();
+    });
+
+    // ─── FAQ ──────────────────────────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(function(btn){
+        btn.addEventListener('click', function(){
+            var item = btn.parentElement;
+            var isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+            if(!isOpen) item.classList.add('open');
+        });
+    });
+
+    // ─── BACK TO TOP ──────────────────────────────────────────
+    var btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', function(){ btt.classList.toggle('visible', window.scrollY > 500); });
+    btt.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+    // ─── NAV MOBILE ───────────────────────────────────────────
+    var burgerBtn = document.getElementById('burgerBtn');
+    var navLinks  = document.getElementById('navLinks');
+    var joaillerieBtn = document.getElementById('joaillerieToggle');
+    var joaillerieSubmenu = document.getElementById('joaillerieSubmenu');
+    burgerBtn.addEventListener('click', function(e){ e.stopPropagation(); var o=navLinks.classList.toggle('nav-open'); burgerBtn.classList.toggle('open',o); if(!o){ joaillerieSubmenu.classList.remove('open'); joaillerieBtn.classList.remove('open'); } });
+    joaillerieBtn.addEventListener('click', function(e){ e.stopPropagation(); if(window.innerWidth<=768){ var o=joaillerieSubmenu.classList.toggle('open'); joaillerieBtn.classList.toggle('open',o); } });
+    document.addEventListener('click', function(){ navLinks.classList.remove('nav-open'); burgerBtn.classList.remove('open'); joaillerieSubmenu.classList.remove('open'); joaillerieBtn.classList.remove('open'); });
+    navLinks.addEventListener('click', function(e){ e.stopPropagation(); });
+    </script>
+</body>
+</html>
