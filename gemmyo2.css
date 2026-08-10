@@ -11,6 +11,52 @@ html, body {
     overflow-x: hidden;
 }
 
+/* ══════════════════════════════════════════════
+   TICKER PROMOTIONNEL
+══════════════════════════════════════════════ */
+.promo-ticker {
+    background: #1a1a1a;
+    color: rgba(255,255,255,0.75);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    overflow: hidden;
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+.ticker-track {
+    display: flex;
+    gap: 80px;
+    white-space: nowrap;
+    animation: tickerScroll 28s linear infinite;
+}
+.ticker-track span { flex-shrink: 0; }
+@keyframes tickerScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.promo-ticker:hover .ticker-track { animation-play-state: paused; }
+
+/* ══════════════════════════════════════════════
+   PANIER — icône avec compteur
+══════════════════════════════════════════════ */
+.cart-icon { position: relative; display: inline-flex; align-items: center; gap: 4px; }
+.cart-count {
+    background: #d4a574;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+}
+.cart-count:empty, .cart-count[data-count="0"] { display: none; }
+
 /* Header Top Bar */
 .header-top {
     font-family:Sackers-Gothic-Medium, Georgia, Cambria, Times New Roman, Times, sans-serif;
@@ -287,6 +333,19 @@ html, body {
 
 .mega-column a:hover:before {
     opacity: 1;
+}
+
+.mega-column a.nav-active {
+    color: #d4a574;
+    font-weight: 700;
+    padding-left: 8px;
+}
+.mega-column a.nav-active:before {
+    opacity: 1;
+}
+.mobile-submenu a.nav-active {
+    color: #d4a574;
+    font-weight: 700;
 }
 
 .mega-visual {
