@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Pendentifs — Ginko Joaillerie</title>
+    <meta name="description" content="Découvrez les pendentifs Ginko, créés sur-mesure en or 18 carats et pierres précieuses certifiées. Collection exclusive de joaillerie artisanale parisienne.">
     <style>
 
     /* ══════════════════════════════════════════════
@@ -273,7 +274,8 @@
     }
     .chaine-opt-desc { font-size: 13px; color: #555; line-height: 1.5; }
     .chaine-opt-desc strong { display: block; color: #1a1a1a; font-size: 14px; margin-bottom: 2px; }
-    /* visuel silhouette */
+
+    /* ── Visuel silhouette ── */
     .chaine-visual {
         position: relative;
         display: flex;
@@ -281,10 +283,16 @@
         justify-content: center;
         background: #fdfaf6;
         border-radius: 20px;
-        min-height: 420px;
         border: 1px solid #f0e8dc;
+        padding: 32px 24px;
     }
     .chaine-svg-wrap svg { display: block; }
+    @keyframes shimmer {
+        0%,100% { opacity: 0.2; transform: scale(1); }
+        50%      { opacity: 1;   transform: scale(1.08); }
+    }
+    .gem-shine { animation: shimmer 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+
     @media (max-width: 800px) {
         .chaine-inner { grid-template-columns: 1fr; }
     }
@@ -359,10 +367,218 @@
        FAQ
     ══════════════════════════════════════════════ */
     /* réutilise .faq-section de bague.css */
+ 
+    /* ══════════════════════════════════════════════
+       ANATOMIE D'UN PENDENTIF — section exclusive
+    ══════════════════════════════════════════════ */
+    .anatomie-section {
+        padding: 90px 40px;
+        background: #1a1a1a;
+        border-top: 1px solid #2a2a2a;
+    }
+    .anatomie-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+    .anatomie-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: #d4a574;
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+    .anatomie-inner h2 {
+        font-size: clamp(26px, 3.5vw, 38px);
+        color: #fff;
+        font-weight: 200;
+        line-height: 1.15;
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+    }
+    .anatomie-inner h2 em { font-style: italic; color: #d4a574; font-weight: 400; }
+    .anatomie-intro {
+        font-size: 14px;
+        color: rgba(255,255,255,0.55);
+        line-height: 1.75;
+        margin-bottom: 28px;
+        max-width: 440px;
+    }
+    .anatomie-list {
+        list-style: none;
+        padding: 0; margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .anatomie-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 14px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+        border: 1px solid transparent;
+    }
+    .anatomie-list li:hover,
+    .anatomie-list li.active {
+        background: rgba(212,165,116,0.08);
+        border-color: rgba(212,165,116,0.25);
+    }
+    .anatomie-num {
+        font-size: 11px;
+        font-weight: 700;
+        color: #d4a574;
+        min-width: 22px;
+        padding-top: 2px;
+        letter-spacing: 0.05em;
+    }
+    .anatomie-part-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        display: block;
+        margin-bottom: 3px;
+    }
+    .anatomie-part-desc {
+        font-size: 12px;
+        color: rgba(255,255,255,0.5);
+        line-height: 1.55;
+    }
+
+    /* Visuel SVG côté droit */
+    .anatomie-visual {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #111;
+        border-radius: 20px;
+        border: 1px solid #2a2a2a;
+        padding: 40px 32px;
+    }
+    /* Points hotspot sur le SVG */
+    .anat-dot {
+        cursor: pointer;
+        transition: r 0.2s;
+    }
+    .anat-dot circle.outer { opacity: 0; transition: opacity 0.2s; }
+    .anat-dot.active circle.outer,
+    .anat-dot:hover circle.outer { opacity: 1; }
+
+    @media (max-width: 800px) {
+        .anatomie-inner { grid-template-columns: 1fr; }
+        .anatomie-visual { padding: 24px 16px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       BACK TO TOP
+    ══════════════════════════════════════════════ */
+    #backTop {
+        position: fixed;
+        bottom: 32px; right: 32px;
+        width: 44px; height: 44px;
+        background: #1a1a1a;
+        border: 1px solid rgba(212,165,116,0.4);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: #d4a574;
+        font-size: 18px;
+        text-decoration: none;
+        opacity: 0; pointer-events: none;
+        transition: opacity 0.3s;
+        z-index: 900;
+    }
+    #backTop.visible { opacity: 1; pointer-events: auto; }
+    #backTop:hover { background: #d4a574; color: #fff; border-color: #d4a574; }
 
     </style>
 </head>
 <body>
+
+    <!-- ══ TICKER PROMO ══ -->
+    <div class="promo-ticker">
+        <div class="ticker-track">
+            <span>✦ Livraison offerte dès 500 € &nbsp;·&nbsp; Retours gratuits 30 jours</span>
+            <span>✦ Chaque bijou fabriqué à la main en 4–6 semaines</span>
+            <span>✦ Pierres certifiées GIA &nbsp;·&nbsp; Or 18 carats massif</span>
+            <span>✦ Livraison offerte dès 500 € &nbsp;·&nbsp; Retours gratuits 30 jours</span>
+            <span>✦ Chaque bijou fabriqué à la main en 4–6 semaines</span>
+            <span>✦ Pierres certifiées GIA &nbsp;·&nbsp; Or 18 carats massif</span>
+        </div>
+    </div>
+
+    <!-- ══ HEADER ══ -->
+    <div class="header-top">
+        <div class="header-top-left">
+            <a href="#">FR/EUR</a>
+            <a href="#">PRENDRE RDV</a>
+            <a href="#">NOUS CONTACTER</a>
+        </div>
+        <div class="header-logo">
+            <a href="index.html"><img src="ginko2.jpg"></a>
+        </div>
+        <div class="header-top-right">
+            <a href="#" title="Mon Compte">👤</a>
+            <a href="#" title="Rechercher">🔍</a>
+            <a href="panier.html" title="Panier" class="cart-icon">🛒 <span class="cart-count" id="cartCount">0</span></a>
+        </div>
+    </div>
+    <div class="header-nav" id="headerNav">
+        <button class="burger-btn" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+        <div class="nav-links" id="navLinks">
+            <div class="nav-item">
+                <button class="nav-item-toggle" id="joaillerieToggle">JOAILLERIE <span class="nav-arrow">›</span></button>
+                <div class="mega-menu">
+                    <div class="mega-columns">
+                        <div class="mega-column">
+                            <h4>Collections</h4>
+                            <a href="#">Ginko Signature</a>
+                            <a href="#">Aurore</a>
+                            <a href="#">Profondeur</a>
+                            <a href="#">Forêt</a>
+                            <a href="#">Nuit</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Bijoux Femme</h4>
+                            <a href="bague.html">Bagues</a>
+                            <a href="pendentifs.html" class="nav-active">Pendentifs</a>
+                            <a href="boucles-doreilles.html">Boucles d'oreilles</a>
+                            <a href="bracelets.html">Bracelets</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Sélections</h4>
+                            <a href="#">Nouveautés</a>
+                            <a href="#">Idées cadeaux</a>
+                            <a href="#">Disponibles immédiatement</a>
+                        </div>
+                        <div class="mega-column mega-visual">
+                            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Visuel Joaillerie">
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-submenu" id="joaillerieSubmenu">
+                    <a href="bague.html">Bagues</a>
+                    <a href="pendentifs.html" class="nav-active">Pendentifs</a>
+                    <a href="boucles-doreilles.html">Boucles d'oreilles</a>
+                    <a href="bracelets.html">Bracelets</a>
+                    <a href="#">Nouveautés</a>
+                    <a href="#">Idées cadeaux</a>
+                </div>
+            </div>
+            <a href="#">FIANÇAILLES</a>
+            <a href="#">MARIAGE</a>
+            <a href="#">NOS PIERRES</a>
+            <a href="#">LA MAISON</a>
+            <a href="#">BOUTIQUES</a>
+            <a href="#">GUIDES</a>
+        </div>
+    </div>
 
     <!-- ══════════════════════════════════════
          HERO
@@ -383,6 +599,36 @@
         </div>
         <div class="pend-hero-scroll">Défiler</div>
     </section>
+
+    <!-- ══════════════════════════════════════
+         STATS BAR
+    ══════════════════════════════════════ -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-num">36</span>
+            <span class="stat-label">Modèles exclusifs</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Longueurs de chaîne</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num">6</span>
+            <span class="stat-label">Pierres précieuses</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num">Or 18k</span>
+            <span class="stat-label">Massif — certifié</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num">4–6 sem.</span>
+            <span class="stat-label">Fabrication sur commande</span>
+        </div>
+    </div>
 
     <!-- ══════════════════════════════════════
          CITATION SIGNATURE
@@ -410,13 +656,427 @@
     </section>
 
     <!-- ══════════════════════════════════════
+         GUIDE LONGUEUR DE CHAÎNE
+    ══════════════════════════════════════ -->
+    <section class="chaine-section">
+        <div class="chaine-inner">
+            <div>
+                <p class="chaine-eyebrow">Guide pratique</p>
+                <h2>Quelle longueur<br><em>de chaîne ?</em></h2>
+                <p>La longueur change tout — l'endroit où la pierre repose, l'effet qu'elle produit. Cliquez pour visualiser chaque style sur la silhouette.</p>
+                <div class="chaine-options">
+                    <div class="chaine-opt active" data-len="40">
+                        <span class="chaine-opt-len">40 cm</span>
+                        <div class="chaine-opt-desc">
+                            <strong>Ras du cou · Choker</strong>
+                            Met en valeur la clavicule. Parfait sur un col rond ou une robe dos-nu.
+                        </div>
+                    </div>
+                    <div class="chaine-opt" data-len="45">
+                        <span class="chaine-opt-len">45 cm</span>
+                        <div class="chaine-opt-desc">
+                            <strong>Longueur classique</strong>
+                            La plus polyvalente — entre la gorge et le buste. S'adapte à toutes les tenues.
+                        </div>
+                    </div>
+                    <div class="chaine-opt" data-len="60">
+                        <span class="chaine-opt-len">60 cm</span>
+                        <div class="chaine-opt-desc">
+                            <strong>Longue · Sautoir</strong>
+                            Tombe sur le buste ou le décolleté. Effet statement, à superposer ou porter seul.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Silhouette SVG interactive -->
+            <div class="chaine-visual">
+                <div class="chaine-svg-wrap">
+                    <!--
+                      Silhouette épurée — illustration de mode minimaliste
+                      ViewBox 200 × 360
+                      Creux du cou : y=118  |  Pierre initiale (40cm) : y=140
+                    -->
+                    <svg id="chaineSvg" viewBox="0 0 200 360" width="200" height="360"
+                         xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <!-- Or chaîne -->
+                        <linearGradient id="gg" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%"   stop-color="#f5e080"/>
+                          <stop offset="50%"  stop-color="#d4a44a"/>
+                          <stop offset="100%" stop-color="#a07020"/>
+                        </linearGradient>
+                        <!-- Pierre saphir -->
+                        <radialGradient id="pg" cx="32%" cy="28%" r="68%">
+                          <stop offset="0%"   stop-color="#c8e4ff"/>
+                          <stop offset="50%"  stop-color="#3a78c8"/>
+                          <stop offset="100%" stop-color="#102050"/>
+                        </radialGradient>
+                        <!-- Halo pierre -->
+                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                          <feGaussianBlur stdDeviation="2" result="b"/>
+                          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                        <!-- Peau -->
+                        <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%"   stop-color="#fde8d0"/>
+                          <stop offset="100%" stop-color="#f0cfa8"/>
+                        </linearGradient>
+                        <!-- Vêtement -->
+                        <linearGradient id="dg" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%"   stop-color="#2a2a2a"/>
+                          <stop offset="100%" stop-color="#111"/>
+                        </linearGradient>
+                      </defs>
+
+                      <!-- ══ FOND NEUTRE ══ -->
+                      <rect width="200" height="360" fill="#fdfaf6" rx="12"/>
+
+                      <!-- ══ BUSTE / VÊTEMENT ══ -->
+                      <!-- Corps : larges épaules, col V centré -->
+                      <path d="M 0,360 L 0,230
+                               C 10,205 30,190 58,184
+                               C 72,181 86,180 92,185
+                               C 96,194 100,205 100,210
+                               C 100,205 104,194 108,185
+                               C 114,180 128,181 142,184
+                               C 170,190 190,205 200,230
+                               L 200,360 Z"
+                            fill="url(#dg)"/>
+                      <!-- Trait col V gauche -->
+                      <line x1="92" y1="185" x2="100" y2="210"
+                            stroke="#444" stroke-width="1" opacity="0.6"/>
+                      <!-- Trait col V droit -->
+                      <line x1="108" y1="185" x2="100" y2="210"
+                            stroke="#444" stroke-width="1" opacity="0.6"/>
+
+                      <!-- ══ ÉPAULES + DÉCOLLETÉ (peau) ══ -->
+                      <path d="M 58,184
+                               C 30,178 8,162 6,146
+                               C 4,132 18,122 40,120
+                               C 62,118 82,120 92,126
+                               C 96,128 99,130 100,132
+                               C 101,130 104,128 108,126
+                               C 118,120 138,118 160,120
+                               C 182,122 196,132 194,146
+                               C 192,162 170,178 142,184
+                               C 128,188 114,194 108,185
+                               C 104,194 100,210 100,210
+                               C 100,210 96,194 92,185
+                               C 86,194 72,188 58,184 Z"
+                            fill="url(#sg)"/>
+                      <!-- Clavicule gauche — légère ombre -->
+                      <path d="M 46,134 C 66,128 84,126 100,127"
+                            fill="none" stroke="#c09060" stroke-width="1.4"
+                            opacity="0.22" stroke-linecap="round"/>
+                      <!-- Clavicule droite -->
+                      <path d="M 154,134 C 134,128 116,126 100,127"
+                            fill="none" stroke="#c09060" stroke-width="1.4"
+                            opacity="0.22" stroke-linecap="round"/>
+
+                      <!-- ══ COU ══ -->
+                      <path d="M 100,66
+                               C 91,66 86,70 85,82
+                               C 84,96 84,110 85,120
+                               C 88,128 93,132 100,132
+                               C 107,132 112,128 115,120
+                               C 116,110 116,96 115,82
+                               C 114,70 109,66 100,66 Z"
+                            fill="url(#sg)"/>
+                      <!-- Légère ombre côtés cou -->
+                      <path d="M 87,70 C 86,92 86,112 87,124"
+                            fill="none" stroke="#c08040" stroke-width="1.8"
+                            opacity="0.09" stroke-linecap="round"/>
+                      <path d="M 113,70 C 114,92 114,112 113,124"
+                            fill="none" stroke="#c08040" stroke-width="1.8"
+                            opacity="0.09" stroke-linecap="round"/>
+
+                      <!-- ══ TÊTE — ovale simple ══ -->
+                      <!-- Chevelure -->
+                      <ellipse cx="100" cy="36" rx="36" ry="42" fill="#2a1a0a"/>
+                      <!-- Mèches latérales tombantes (élégant) -->
+                      <path d="M 64,40 C 60,56 60,76 64,90 C 66,96 70,100 72,100"
+                            fill="none" stroke="#2a1a0a" stroke-width="10"
+                            stroke-linecap="round"/>
+                      <path d="M 136,40 C 140,56 140,76 136,90 C 134,96 130,100 128,100"
+                            fill="none" stroke="#2a1a0a" stroke-width="10"
+                            stroke-linecap="round"/>
+                      <!-- Visage -->
+                      <ellipse cx="100" cy="38" rx="28" ry="34" fill="url(#sg)"/>
+                      <!-- Sourcils — deux traits fins -->
+                      <path d="M 83,22 C 88,18 94,18 97,20"
+                            fill="none" stroke="#3a2008" stroke-width="1.6"
+                            stroke-linecap="round" opacity="0.8"/>
+                      <path d="M 103,20 C 106,18 112,18 117,22"
+                            fill="none" stroke="#3a2008" stroke-width="1.6"
+                            stroke-linecap="round" opacity="0.8"/>
+                      <!-- Yeux — amandes simples fermées (style illustration) -->
+                      <path d="M 82,30 C 88,26 94,26 98,30 C 94,27 88,27 82,30 Z"
+                            fill="#2a1a0a" opacity="0.85"/>
+                      <path d="M 102,30 C 106,26 112,26 118,30 C 112,27 106,27 102,30 Z"
+                            fill="#2a1a0a" opacity="0.85"/>
+                      <!-- Nez — deux petites narines -->
+                      <path d="M 97,44 C 95,48 96,52 100,52 C 104,52 105,48 103,44"
+                            fill="none" stroke="#c09060" stroke-width="1"
+                            opacity="0.3" stroke-linecap="round"/>
+                      <!-- Lèvres — forme simple -->
+                      <path d="M 90,58 C 94,54 106,54 110,58 C 106,62 94,62 90,58 Z"
+                            fill="#c47070" opacity="0.75"/>
+
+                      <!-- ══ CHAÎNE ANIMÉE ══ -->
+                      <!-- Arc gauche : épaule → creux du cou -->
+                      <path id="chaineLeft"
+                            d="M 46,136 C 64,130 84,128 100,128"
+                            fill="none" stroke="url(#gg)" stroke-width="1.8"
+                            stroke-linecap="round"/>
+                      <!-- Arc droit -->
+                      <path id="chaineRight"
+                            d="M 154,136 C 136,130 116,128 100,128"
+                            fill="none" stroke="url(#gg)" stroke-width="1.8"
+                            stroke-linecap="round"/>
+                      <!-- Chute pendentif -->
+                      <line id="chaineDrop" x1="100" y1="128" x2="100" y2="150"
+                            stroke="url(#gg)" stroke-width="1.6" stroke-linecap="round"/>
+
+                      <!-- Pierre (taillée en poire) -->
+                      <g id="chainePierre">
+                        <!-- Bélière -->
+                        <ellipse cx="100" cy="151" rx="3.5" ry="2.5"
+                                 fill="none" stroke="url(#gg)" stroke-width="1.5"/>
+                        <!-- Corps pierre poire -->
+                        <path d="M 100,153 C 94,153 89,158 89,165
+                                 C 89,173 94,180 100,182
+                                 C 106,180 111,173 111,165
+                                 C 111,158 106,153 100,153 Z"
+                              fill="url(#pg)" stroke="#c4902a" stroke-width="1.2"
+                              filter="url(#glow)"/>
+                        <!-- Facettes -->
+                        <path d="M 100,156 C 95,161 93,168 95,174 C 97,178 100,180 100,180"
+                              fill="none" stroke="#90c8ff" stroke-width="0.8" opacity="0.55"/>
+                        <path d="M 100,156 C 105,161 107,168 105,174 C 103,178 100,180 100,180"
+                              fill="none" stroke="#90c8ff" stroke-width="0.8" opacity="0.55"/>
+                        <!-- Reflet -->
+                        <ellipse class="gem-shine" cx="95.5" cy="158" rx="3.5" ry="2"
+                                 fill="white" opacity="0.75" transform="rotate(-35 95.5 158)"/>
+                        <circle class="gem-shine" cx="106" cy="156" r="1.4"
+                                fill="white" opacity="0.7" style="animation-delay:0.9s"/>
+                      </g>
+
+                      <!-- Label longueur -->
+                      <g id="chaineLabelG" transform="translate(114, 165)">
+                        <rect x="-1" y="-8" width="38" height="16" rx="5"
+                              fill="#1a1a1a" opacity="0.78"/>
+                        <text id="chaineLabel" x="3" y="4" font-size="9.5" fill="#f5c870"
+                              font-family="Georgia,serif" font-style="italic" font-weight="bold">40 cm</text>
+                      </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         ANATOMIE D'UN PENDENTIF
+    ══════════════════════════════════════ -->
+    <section class="anatomie-section">
+        <div class="anatomie-inner">
+            <!-- Gauche : liste des parties -->
+            <div>
+                <p class="anatomie-eyebrow">Savoir-faire</p>
+                <h2>Anatomie d'un<br><em>pendentif</em></h2>
+                <p class="anatomie-intro">Chaque élément est pensé par nos orfèvres. Survolez ou cliquez sur une partie pour en comprendre le rôle.</p>
+                <ul class="anatomie-list" id="anatList">
+                    <li class="active" data-part="1">
+                        <span class="anatomie-num">01</span>
+                        <div>
+                            <span class="anatomie-part-name">La bélière</span>
+                            <span class="anatomie-part-desc">L'anneau de suspension — forgé en or massif, il relie la chaîne au pendant et absorbe toutes les tensions sans jamais se déformer.</span>
+                        </div>
+                    </li>
+                    <li data-part="2">
+                        <span class="anatomie-num">02</span>
+                        <div>
+                            <span class="anatomie-part-name">La chaîne</span>
+                            <span class="anatomie-part-desc">Maille forçat ou vénitienne, chaque maillon est serti à la main. La longueur détermine où la pierre reposera sur votre peau.</span>
+                        </div>
+                    </li>
+                    <li data-part="3">
+                        <span class="anatomie-num">03</span>
+                        <div>
+                            <span class="anatomie-part-name">La monture</span>
+                            <span class="anatomie-part-desc">Le corps du pendentif — coulé en cire perdue, limé et poli à la main pendant plusieurs heures. La forme dicte la personnalité.</span>
+                        </div>
+                    </li>
+                    <li data-part="4">
+                        <span class="anatomie-num">04</span>
+                        <div>
+                            <span class="anatomie-part-name">Les griffes</span>
+                            <span class="anatomie-part-desc">Quatre à six griffes fines enserrent la pierre et la maintiennent tout en laissant passer un maximum de lumière pour l'éclat maximal.</span>
+                        </div>
+                    </li>
+                    <li data-part="5">
+                        <span class="anatomie-num">05</span>
+                        <div>
+                            <span class="anatomie-part-name">La pierre</span>
+                            <span class="anatomie-part-desc">Sélectionnée parmi les gemmes certifiées GIA, chaque pierre est choisie pour sa couleur, sa pureté et son histoire avant d'être sertie.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Droite : SVG pendentif annoté -->
+            <div class="anatomie-visual">
+                <svg id="anatSvg" viewBox="0 0 260 420" width="260" height="420"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#f5e080"/>
+                      <stop offset="50%" stop-color="#d4a44a"/>
+                      <stop offset="100%" stop-color="#a07020"/>
+                    </linearGradient>
+                    <radialGradient id="apg" cx="30%" cy="25%" r="70%">
+                      <stop offset="0%" stop-color="#c8e4ff"/>
+                      <stop offset="45%" stop-color="#3a78c8"/>
+                      <stop offset="100%" stop-color="#102050"/>
+                    </radialGradient>
+                    <filter id="aglow" x="-60%" y="-60%" width="220%" height="220%">
+                      <feGaussianBlur stdDeviation="3.5" result="b"/>
+                      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <filter id="dotglow" x="-100%" y="-100%" width="300%" height="300%">
+                      <feGaussianBlur stdDeviation="4" result="b"/>
+                      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- fond -->
+                  <rect width="260" height="420" fill="#111" rx="16"/>
+
+                  <!-- ── Chaîne gauche ── -->
+                  <path id="anat-chain"
+                        d="M 60,28 C 80,28 110,28 130,28"
+                        fill="none" stroke="url(#ag)" stroke-width="2.2"
+                        stroke-linecap="round"/>
+                  <!-- ── Chaîne droite ── -->
+                  <path d="M 200,28 C 180,28 150,28 130,28"
+                        fill="none" stroke="url(#ag)" stroke-width="2.2"
+                        stroke-linecap="round"/>
+                  <!-- Maillons décoratifs gauche -->
+                  <ellipse cx="75" cy="28" rx="6" ry="3.5" fill="none" stroke="url(#ag)" stroke-width="1.6"/>
+                  <ellipse cx="95" cy="28" rx="6" ry="3.5" fill="none" stroke="url(#ag)" stroke-width="1.6"/>
+                  <ellipse cx="115" cy="28" rx="6" ry="3.5" fill="none" stroke="url(#ag)" stroke-width="1.6"/>
+                  <!-- Maillons droite -->
+                  <ellipse cx="185" cy="28" rx="6" ry="3.5" fill="none" stroke="url(#ag)" stroke-width="1.6"/>
+                  <ellipse cx="165" cy="28" rx="6" ry="3.5" fill="none" stroke="url(#ag)" stroke-width="1.6"/>
+                  <ellipse cx="145" cy="28" rx="6" ry="3.5" fill="none" stroke="url(#ag)" stroke-width="1.6"/>
+
+                  <!-- ── Bélière ── -->
+                  <ellipse id="anat-beliere" cx="130" cy="38" rx="8" ry="10"
+                           fill="none" stroke="url(#ag)" stroke-width="3"/>
+
+                  <!-- ── Chute pendentif ── -->
+                  <line x1="130" y1="48" x2="130" y2="110"
+                        stroke="url(#ag)" stroke-width="2" stroke-linecap="round"/>
+
+                  <!-- ── Monture (forme poire élargie) ── -->
+                  <path id="anat-monture"
+                        d="M 130,112
+                           C 114,112 100,122 98,138
+                           C 96,156 102,174 112,188
+                           C 118,196 124,202 130,206
+                           C 136,202 142,196 148,188
+                           C 158,174 164,156 162,138
+                           C 160,122 146,112 130,112 Z"
+                        fill="#1a1a1a" stroke="url(#ag)" stroke-width="2.5"/>
+
+                  <!-- ── Griffes (6 autour de la pierre) ── -->
+                  <!-- Haut -->
+                  <path d="M 128,114 C 126,106 128,100 130,98 C 132,100 134,106 132,114"
+                        fill="url(#ag)" stroke="url(#ag)" stroke-width="0.5"/>
+                  <!-- Bas gauche -->
+                  <path d="M 102,186 C 97,192 94,198 96,202 C 100,200 104,196 106,190"
+                        fill="url(#ag)" stroke="url(#ag)" stroke-width="0.5"/>
+                  <!-- Bas droit -->
+                  <path d="M 158,186 C 163,192 166,198 164,202 C 160,200 156,196 154,190"
+                        fill="url(#ag)" stroke="url(#ag)" stroke-width="0.5"/>
+                  <!-- Milieu gauche -->
+                  <path d="M 97,150 C 90,148 84,150 83,154 C 86,157 92,157 98,155"
+                        fill="url(#ag)" stroke="url(#ag)" stroke-width="0.5"/>
+                  <!-- Milieu droit -->
+                  <path d="M 163,150 C 170,148 176,150 177,154 C 174,157 168,157 162,155"
+                        fill="url(#ag)" stroke="url(#ag)" stroke-width="0.5"/>
+
+                  <!-- ── Pierre (poire) ── -->
+                  <path id="anat-pierre"
+                        d="M 130,118
+                           C 116,118 106,128 104,143
+                           C 102,158 108,173 118,184
+                           C 122,189 126,193 130,195
+                           C 134,193 138,189 142,184
+                           C 152,173 158,158 156,143
+                           C 154,128 144,118 130,118 Z"
+                        fill="url(#apg)" stroke="#5090d8" stroke-width="1.2"
+                        filter="url(#aglow)"/>
+                  <!-- Facettes -->
+                  <path d="M 130,122 C 122,132 118,148 120,164 C 123,174 127,180 130,182"
+                        fill="none" stroke="#90c8ff" stroke-width="0.9" opacity="0.5"/>
+                  <path d="M 130,122 C 138,132 142,148 140,164 C 137,174 133,180 130,182"
+                        fill="none" stroke="#90c8ff" stroke-width="0.9" opacity="0.5"/>
+                  <!-- Reflets -->
+                  <ellipse cx="120" cy="128" rx="5" ry="3"
+                           fill="white" opacity="0.6" transform="rotate(-40 120 128)"/>
+                  <circle cx="138" cy="125" r="2"
+                          fill="white" opacity="0.55"/>
+
+                  <!-- ════ HOTSPOTS ════ -->
+                  <!-- 1 - Bélière -->
+                  <g class="anat-dot active" id="dot1" data-part="1" transform="translate(130,38)">
+                    <circle class="outer" r="14" fill="rgba(212,165,116,0.18)" stroke="#d4a574" stroke-width="1"/>
+                    <circle r="6" fill="#d4a574"/>
+                    <text x="18" y="4" font-size="10" fill="#d4a574" font-family="Georgia,serif"
+                          font-weight="bold" font-style="italic">Bélière</text>
+                  </g>
+                  <!-- 2 - Chaîne -->
+                  <g class="anat-dot" id="dot2" data-part="2" transform="translate(90,28)">
+                    <circle class="outer" r="14" fill="rgba(212,165,116,0.18)" stroke="#d4a574" stroke-width="1"/>
+                    <circle r="6" fill="#d4a574"/>
+                    <text x="-44" y="4" font-size="10" fill="#d4a574" font-family="Georgia,serif"
+                          font-weight="bold" font-style="italic">Chaîne</text>
+                  </g>
+                  <!-- 3 - Monture -->
+                  <g class="anat-dot" id="dot3" data-part="3" transform="translate(168,155)">
+                    <circle class="outer" r="14" fill="rgba(212,165,116,0.18)" stroke="#d4a574" stroke-width="1"/>
+                    <circle r="6" fill="#d4a574"/>
+                    <text x="14" y="4" font-size="10" fill="#d4a574" font-family="Georgia,serif"
+                          font-weight="bold" font-style="italic">Monture</text>
+                  </g>
+                  <!-- 4 - Griffes -->
+                  <g class="anat-dot" id="dot4" data-part="4" transform="translate(83,155)">
+                    <circle class="outer" r="14" fill="rgba(212,165,116,0.18)" stroke="#d4a574" stroke-width="1"/>
+                    <circle r="6" fill="#d4a574"/>
+                    <text x="-50" y="4" font-size="10" fill="#d4a574" font-family="Georgia,serif"
+                          font-weight="bold" font-style="italic">Griffes</text>
+                  </g>
+                  <!-- 5 - Pierre -->
+                  <g class="anat-dot" id="dot5" data-part="5" transform="translate(130,157)">
+                    <circle class="outer" r="14" fill="rgba(212,165,116,0.18)" stroke="#d4a574" stroke-width="1"/>
+                    <circle r="6" fill="#d4a574"/>
+                    <text x="14" y="4" font-size="10" fill="#d4a574" font-family="Georgia,serif"
+                          font-weight="bold" font-style="italic">Pierre</text>
+                  </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
          CATALOGUE
     ══════════════════════════════════════ -->
     <section class="catalogue-section" id="catalogue">
         <div class="catalogue-inner">
             <div class="catalogue-header">
                 <h2>Tous les pendentifs</h2>
-                <p class="catalogue-count" id="catalogCount">12 modèles</p>
+                <p class="catalogue-count" id="catalogCount">36 modèles</p>
             </div>
 
             <div class="filters-bar">
@@ -456,7 +1116,7 @@
                 <!-- 1 -->
                 <article class="product-card" data-stone="diamant" data-metal="or-blanc" data-price="1480">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Pendentif Étoile Filante">
+                        <img src="" alt="Pendentif Étoile Filante">
                         <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -480,8 +1140,8 @@
                 <!-- 2 -->
                 <article class="product-card" data-stone="saphir" data-metal="or-jaune" data-price="1990">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendentif Abysses">
-                        <div class="product-badges"><span class="badge badge-bestseller">Coup de cœur</span></div>
+                        <img src="" alt="Pendentif Abysses">
+                        <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
                             <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
@@ -504,7 +1164,7 @@
                 <!-- 3 -->
                 <article class="product-card" data-stone="opale" data-metal="or-rose" data-price="1250">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Pendentif Brume Rosée">
+                        <img src="" alt="Pendentif Brume Rosée">
                         <div class="product-badges"><span class="badge badge-exclusive">Édition limitée</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -528,7 +1188,7 @@
                 <!-- 4 -->
                 <article class="product-card" data-stone="emeraude" data-metal="or-jaune" data-price="2640">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Pendentif Forêt Vierge">
+                        <img src="" alt="Pendentif Forêt Vierge">
                         <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -552,7 +1212,7 @@
                 <!-- 5 -->
                 <article class="product-card" data-stone="diamant" data-metal="platine" data-price="4800">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Pendentif Pleine Lune">
+                        <img src="" alt="Pendentif Pleine Lune">
                         <div class="product-badges"><span class="badge badge-exclusive">Pièce unique</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -576,7 +1236,7 @@
                 <!-- 6 -->
                 <article class="product-card" data-stone="rubis" data-metal="or-blanc" data-price="2100">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Pendentif Flamme Douce">
+                        <img src="" alt="Pendentif Flamme Douce">
                         <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -600,8 +1260,8 @@
                 <!-- 7 -->
                 <article class="product-card" data-stone="saphir" data-metal="platine" data-price="5400">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendentif Minuit">
-                        <div class="product-badges"><span class="badge badge-bestseller">Best-seller</span></div>
+                        <img src="" alt="Pendentif Minuit">
+                        <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
                             <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
@@ -624,7 +1284,7 @@
                 <!-- 8 -->
                 <article class="product-card" data-stone="opale" data-metal="or-jaune" data-price="890">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-little-everbloom-saphir-bleu-gris.png" alt="Pendentif Première Fois">
+                        <img src="" alt="Pendentif Première Fois">
                         <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -648,7 +1308,7 @@
                 <!-- 9 -->
                 <article class="product-card" data-stone="diamant" data-metal="or-rose" data-price="1100">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-everbloom-toi-et-moi-saphir.png" alt="Pendentif Poudre d'Or">
+                        <img src="" alt="Pendentif Poudre d'Or">
                         <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -672,7 +1332,7 @@
                 <!-- 10 -->
                 <article class="product-card" data-stone="emeraude" data-metal="or-blanc" data-price="3200">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Pendentif Jardin Secret">
+                        <img src="" alt="Pendentif Jardin Secret">
                         <div class="product-badges"><span class="badge badge-exclusive">Exclusif</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -696,8 +1356,8 @@
                 <!-- 11 -->
                 <article class="product-card" data-stone="rubis" data-metal="or-rose" data-price="1760">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Pendentif Désir Rouge">
-                        <div class="product-badges"><span class="badge badge-bestseller">Coup de cœur</span></div>
+                        <img src="" alt="Pendentif Désir Rouge">
+                        <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
                             <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
@@ -720,7 +1380,7 @@
                 <!-- 12 -->
                 <article class="product-card" data-stone="saphir" data-metal="or-blanc" data-price="2350">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendentif Horizon">
+                        <img src="" alt="Pendentif Horizon">
                         <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -741,64 +1401,584 @@
                     </div>
                 </article>
 
+                <!-- 13 -->
+                <article class="product-card" data-stone="diamant" data-metal="or-jaune" data-price="1680">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Solstice">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Ginko Signature</p>
+                        <h3 class="product-name">Solstice</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Diamant 0.30 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 680 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 14 -->
+                <article class="product-card" data-stone="saphir" data-metal="or-rose" data-price="2180">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Lagon">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Profondeur</p>
+                        <h3 class="product-name">Lagon</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Saphir bleu clair 0.48 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 180 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 15 -->
+                <article class="product-card" data-stone="opale" data-metal="or-blanc" data-price="1380">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Bulle de Cristal">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Bulle de Cristal</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Opale Ethiopian</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 380 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 16 -->
+                <article class="product-card" data-stone="emeraude" data-metal="platine" data-price="5800">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Équinoxe">
+                        <div class="product-badges"><span class="badge badge-exclusive">Pièce unique</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Équinoxe</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#c8cdd6"></span>
+                            <span class="product-detail">Platine · Émeraude Colombie 1.20 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">5 800 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 17 -->
+                <article class="product-card" data-stone="rubis" data-metal="or-jaune" data-price="1920">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Brasier">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Flamme</p>
+                        <h3 class="product-name">Brasier</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Rubis Birmanie 0.36 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 920 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 18 -->
+                <article class="product-card" data-stone="diamant" data-metal="or-blanc" data-price="2720">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Cascade">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Nuit</p>
+                        <h3 class="product-name">Cascade</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Diamants 0.55 ct total</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 720 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 19 -->
+                <article class="product-card" data-stone="saphir" data-metal="or-jaune" data-price="3050">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Vague Bleue">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Profondeur</p>
+                        <h3 class="product-name">Vague Bleue</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Saphir cornflower 0.65 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 050 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 20 -->
+                <article class="product-card" data-stone="opale" data-metal="or-rose" data-price="970">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Flocon Rose">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Flocon Rose</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Opale rose Australie</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">970 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 21 -->
+                <article class="product-card" data-stone="emeraude" data-metal="or-rose" data-price="2980">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Mousse d'Été">
+                        <div class="product-badges"><span class="badge badge-exclusive">Exclusif</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Forêt</p>
+                        <h3 class="product-name">Mousse d'Été</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Émeraude 0.60 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 980 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 22 -->
+                <article class="product-card" data-stone="diamant" data-metal="platine" data-price="6400">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Constellation">
+                        <div class="product-badges"><span class="badge badge-exclusive">Pièce unique</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Constellation</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#c8cdd6"></span>
+                            <span class="product-detail">Platine · Diamants 1.40 ct total</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">6 400 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 23 -->
+                <article class="product-card" data-stone="rubis" data-metal="platine" data-price="4200">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Scarlett">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Scarlett</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#c8cdd6"></span>
+                            <span class="product-detail">Platine · Rubis Mogok 0.80 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">4 200 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 24 -->
+                <article class="product-card" data-stone="saphir" data-metal="or-blanc" data-price="1840">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Crépuscule">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Nuit</p>
+                        <h3 class="product-name">Crépuscule</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Saphir bicolore 0.42 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 840 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 25 -->
+                <article class="product-card" data-stone="diamant" data-metal="or-rose" data-price="1320">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Rosée du Matin">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Rosée du Matin</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Diamant 0.25 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 320 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 26 -->
+                <article class="product-card" data-stone="emeraude" data-metal="or-jaune" data-price="3600">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Canopée">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Forêt</p>
+                        <h3 class="product-name">Canopée</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Émeraude 0.85 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 600 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 27 -->
+                <article class="product-card" data-stone="opale" data-metal="platine" data-price="2450">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Spectre">
+                        <div class="product-badges"><span class="badge badge-exclusive">Édition limitée</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Spectre</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#c8cdd6"></span>
+                            <span class="product-detail">Platine · Opale noire Lightning Ridge</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 450 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 28 -->
+                <article class="product-card" data-stone="rubis" data-metal="or-blanc" data-price="2800">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Velours Rouge">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Flamme</p>
+                        <h3 class="product-name">Velours Rouge</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Rubis 0.58 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 800 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 29 -->
+                <article class="product-card" data-stone="diamant" data-metal="or-jaune" data-price="950">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Luciole">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Ginko Signature</p>
+                        <h3 class="product-name">Luciole</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Diamant 0.12 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">950 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 30 -->
+                <article class="product-card" data-stone="saphir" data-metal="or-rose" data-price="2650">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Coucher de Soleil">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Coucher de Soleil</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8a87a"></span>
+                            <span class="product-detail">Or rose 18k · Saphir padparadscha 0.52 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 650 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 31 -->
+                <article class="product-card" data-stone="diamant" data-metal="or-blanc" data-price="3900">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Lune Rousse">
+                        <div class="product-badges"><span class="badge badge-exclusive">Exclusif</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Lune Rousse</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Diamant fancy jaune 0.70 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">3 900 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 32 -->
+                <article class="product-card" data-stone="emeraude" data-metal="or-blanc" data-price="2280">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Lichen">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Forêt</p>
+                        <h3 class="product-name">Lichen</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Émeraude 0.40 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 280 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 33 -->
+                <article class="product-card" data-stone="opale" data-metal="or-jaune" data-price="1140">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Aurore Boréale">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Aurore</p>
+                        <h3 class="product-name">Aurore Boréale</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Opale Boulder</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">1 140 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 34 -->
+                <article class="product-card" data-stone="rubis" data-metal="or-jaune" data-price="2460">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Braise">
+                        <div class="product-badges"></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Flamme</p>
+                        <h3 class="product-name">Braise</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#e8c97a"></span>
+                            <span class="product-detail">Or jaune 18k · Rubis 0.50 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">2 460 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 35 -->
+                <article class="product-card" data-stone="diamant" data-metal="or-blanc" data-price="820">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Grain de Lumière">
+                        <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Collection Ginko Signature</p>
+                        <h3 class="product-name">Grain de Lumière</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#d8d8d8"></span>
+                            <span class="product-detail">Or blanc 18k · Diamant 0.10 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">820 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 36 -->
+                <article class="product-card" data-stone="saphir" data-metal="platine" data-price="7200">
+                    <div class="product-img-wrap">
+                        <img src="" alt="Pendentif Œil du Ciel">
+                        <div class="product-badges"><span class="badge badge-exclusive">Pièce unique</span></div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn">♡</button>
+                            <a href="index.html#configurateur" class="action-btn" title="Personnaliser">✦</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-collection">Haute Joaillerie</p>
+                        <h3 class="product-name">Œil du Ciel</h3>
+                        <div class="product-meta">
+                            <span class="metal-dot" style="background:#c8cdd6"></span>
+                            <span class="product-detail">Platine · Saphir Kashmir 1.80 ct</span>
+                        </div>
+                        <div class="product-price-row">
+                            <span class="product-price">7 200 €</span>
+                            <a href="#" class="product-cta">Voir</a>
+                        </div>
+                    </div>
+                </article>
+
             </div>
             <p class="no-results" id="noResults" style="display:none">Aucun modèle ne correspond. <button class="reset-filters" id="resetFilters">Réinitialiser</button></p>
-        </div>
-    </section>
-
-    <!-- ══════════════════════════════════════
-         GUIDE LONGUEUR DE CHAÎNE
-    ══════════════════════════════════════ -->
-    <section class="chaine-section">
-        <div class="chaine-inner">
-            <div>
-                <p class="chaine-eyebrow">Guide pratique</p>
-                <h2>Quelle longueur<br><em>de chaîne ?</em></h2>
-                <p>La longueur change tout — l'endroit où la pierre repose, l'effet qu'elle produit. Cliquez pour visualiser chaque style.</p>
-                <div class="chaine-options">
-                    <div class="chaine-opt active" data-len="40" data-y="72">
-                        <span class="chaine-opt-len">40 cm</span>
-                        <div class="chaine-opt-desc">
-                            <strong>Ras du cou · Choker</strong>
-                            Met en valeur la clavicule. Parfait sur un col rond ou une robe dos-nu.
-                        </div>
-                    </div>
-                    <div class="chaine-opt" data-len="45" data-y="100">
-                        <span class="chaine-opt-len">45 cm</span>
-                        <div class="chaine-opt-desc">
-                            <strong>Longueur classique</strong>
-                            La plus polyvalente — entre la gorge et le buste. S'adapte à toutes les tenues.
-                        </div>
-                    </div>
-                    <div class="chaine-opt" data-len="60" data-y="140">
-                        <span class="chaine-opt-len">60 cm</span>
-                        <div class="chaine-opt-desc">
-                            <strong>Longue · Sautoir</strong>
-                            Tombe sur le buste ou le décolleté. Effet statement, à superposer ou porter seul.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Silhouette SVG interactive -->
-            <div class="chaine-visual">
-                <div class="chaine-svg-wrap">
-                    <svg id="chaineSvg" viewBox="0 0 220 320" width="220" height="320" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Silhouette cou / épaules -->
-                        <path d="M70 60 Q110 20 150 60 L165 120 Q150 130 110 135 Q70 130 55 120 Z" fill="#f5e8d8" stroke="#e0c8a8" stroke-width="1"/>
-                        <!-- Buste schématique -->
-                        <path d="M55 120 Q40 160 42 220 L178 220 Q180 160 165 120" fill="#f5e8d8" stroke="#e0c8a8" stroke-width="1"/>
-                        <!-- Chaîne dynamique -->
-                        <line id="chaineLeft"  x1="82"  y1="82" x2="110" y2="72" stroke="#d4a574" stroke-width="1.5"/>
-                        <line id="chaineRight" x1="138" y1="82" x2="110" y2="72" stroke="#d4a574" stroke-width="1.5"/>
-                        <line id="chaineDrop"  x1="110" y1="72" x2="110" y2="100" stroke="#d4a574" stroke-width="1.5"/>
-                        <!-- Pierre -->
-                        <circle id="chainePierre" cx="110" cy="100" r="7" fill="#5a8fd4" stroke="#d4a574" stroke-width="1.5"/>
-                        <ellipse cx="107" cy="97" rx="2.5" ry="1.5" fill="white" opacity="0.4" transform="rotate(-30 107 97)"/>
-                        <!-- Labels longueur -->
-                        <text id="chaineLabel" x="125" y="105" font-size="9" fill="#d4a574" font-family="Georgia">40 cm</text>
-                    </svg>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -947,6 +2127,10 @@
         </div>
     </footer>
 
+    <!-- ── BACK TO TOP ── -->
+    <a href="#" id="backTop" aria-label="Retour en haut">↑</a>
+
+
     <script>
     // ─── FILTRES + TRI ───────────────────────────────────
     var allCards = Array.from(document.querySelectorAll('.product-card'));
@@ -998,21 +2182,50 @@
     });
 
     // ─── GUIDE LONGUEUR CHAÎNE ───────────────────────────
+    // viewBox 200×360 — creux du cou y=128, pierre initiale y=150 (40cm)
+    var NECK_Y = 128;
+    var STONE_INIT_Y = 150; // bas de la chute initiale (40cm)
+    var chaineYMap = {
+        '40': 150,
+        '45': 182,
+        '60': 226
+    };
+    var chaineLabelOffsets = {
+        '40': 165,
+        '45': 197,
+        '60': 241
+    };
+
     var chaineDropEl  = document.getElementById('chaineDrop');
-    var chaineLabel   = document.getElementById('chaineLabel');
-    var chainePierre  = document.getElementById('chainePierre');
-    var chaineYMap    = { '40': 100, '45': 126, '60': 162 };
+    var chainePierreG = document.getElementById('chainePierre');
+    var chaineLabelG  = document.getElementById('chaineLabelG');
+    var chaineLabelTxt = document.getElementById('chaineLabel');
+
+    function animChaine(targetY, labelY, labelTxt) {
+        var startY = parseFloat(chaineDropEl.getAttribute('y2') || STONE_INIT_Y);
+        if (startY === targetY) return;
+        var startT = null, dur = 480;
+        function step(ts) {
+            if (!startT) startT = ts;
+            var p = Math.min((ts - startT) / dur, 1);
+            var e = p < 0.5 ? 4*p*p*p : 1 - Math.pow(-2*p+2,3)/2;
+            var y = startY + (targetY - startY) * e;
+            chaineDropEl.setAttribute('y2', y);
+            chainePierreG.setAttribute('transform', 'translate(0,' + (y - STONE_INIT_Y) + ')');
+            chaineLabelG.setAttribute('transform', 'translate(114,' + (labelY - (targetY - y) * (labelY - 165) / (targetY - startY + 0.001)) + ')');
+            if (chaineLabelTxt) chaineLabelTxt.textContent = labelTxt;
+            if (p < 1) requestAnimationFrame(step);
+            else chaineDropEl.setAttribute('y2', targetY);
+        }
+        requestAnimationFrame(step);
+    }
 
     document.querySelectorAll('.chaine-opt').forEach(function(opt) {
         opt.addEventListener('click', function() {
             document.querySelectorAll('.chaine-opt').forEach(function(o){ o.classList.remove('active'); });
             opt.classList.add('active');
             var len = opt.dataset.len;
-            var y   = chaineYMap[len];
-            chaineDropEl.setAttribute('y2', y);
-            chainePierre.setAttribute('cy', y);
-            chaineLabel.setAttribute('y', y + 5);
-            chaineLabel.textContent = len + ' cm';
+            animChaine(chaineYMap[len], chaineLabelOffsets[len], len + ' cm');
         });
     });
 
@@ -1025,6 +2238,55 @@
             if (!isOpen) item.classList.add('open');
         });
     });
+
+    // ─── ANATOMIE PENDENTIF ──────────────────────────────
+    var anatItems = document.querySelectorAll('#anatList li');
+    var anatDots  = document.querySelectorAll('.anat-dot');
+
+    function activateAnat(part) {
+        anatItems.forEach(function(li) {
+            li.classList.toggle('active', li.dataset.part === part);
+        });
+        anatDots.forEach(function(dot) {
+            dot.classList.toggle('active', dot.dataset.part === part);
+        });
+    }
+
+    anatItems.forEach(function(li) {
+        li.addEventListener('click', function() { activateAnat(li.dataset.part); });
+    });
+    anatDots.forEach(function(dot) {
+        dot.addEventListener('click', function() { activateAnat(dot.dataset.part); });
+    });
+
+    // ─── NAV MOBILE ──────────────────────────────────────
+    var burgerBtn = document.getElementById('burgerBtn');
+    var navLinks  = document.getElementById('navLinks');
+    if (burgerBtn && navLinks) {
+        burgerBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            burgerBtn.classList.toggle('open');
+        });
+    }
+    var joaillerieToggle = document.getElementById('joaillerieToggle');
+    var joaillerieSubmenu = document.getElementById('joaillerieSubmenu');
+    if (joaillerieToggle && joaillerieSubmenu) {
+        joaillerieToggle.addEventListener('click', function() {
+            joaillerieSubmenu.classList.toggle('open');
+        });
+    }
+
+    // ─── BACK TO TOP ─────────────────────────────────────
+    var backTop = document.getElementById('backTop');
+    if (backTop) {
+        window.addEventListener('scroll', function() {
+            backTop.classList.toggle('visible', window.scrollY > 400);
+        });
+        backTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
     </script>
 
 </body>
