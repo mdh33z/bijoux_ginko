@@ -8,154 +8,499 @@
     <title>Boucles d'oreilles — Ginko Joaillerie</title>
     <meta name="description" content="Boucles d'oreilles Ginko en or 18 carats et pierres précieuses certifiées. Puces, créoles, pendantes — créées sur-mesure dans nos ateliers parisiens.">
     <style>
+
+    /* ══════════════════════════════════════════════
+       PALETTE EXCLUSIVE — rose poudré / argent / platine
+    ══════════════════════════════════════════════ */
+    :root {
+        --bo-rose:    #f8f0f0;
+        --bo-rose2:   #f0e4e4;
+        --bo-argent:  #d0d4dc;
+        --bo-platine: #a8aab8;
+        --bo-noir:    #1a1a1a;
+        --bo-or:      #d4a574;
+    }
+
+    /* ══════════════════════════════════════════════
+       HERO — split asymétrique (60/40) fond rose
+    ══════════════════════════════════════════════ */
     .bo-hero {
-        position: relative;
-        height: 100vh;
-        min-height: 600px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        background: var(--bo-rose);
         overflow: hidden;
+    }
+    /* Colonne texte */
+    .bo-hero-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 120px 72px 80px 72px;
+        position: relative;
+        z-index: 2;
+    }
+    .bo-hero-back {
+        display: inline-block;
+        color: #aaa;
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        text-decoration: none;
+        text-transform: uppercase;
+        margin-bottom: 52px;
+        transition: color .2s;
+    }
+    .bo-hero-back:hover { color: var(--bo-or); }
+    .bo-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: var(--bo-or);
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    .bo-hero-title {
+        font-size: clamp(52px, 6vw, 88px);
+        font-weight: 200;
+        letter-spacing: 0.02em;
+        line-height: 1.0;
+        color: var(--bo-noir);
+        margin: 0 0 8px;
+    }
+    .bo-hero-title em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--bo-platine);
+        display: block;
+    }
+    .bo-hero-rule {
+        width: 48px; height: 1.5px;
+        background: var(--bo-or);
+        margin: 28px 0;
+    }
+    .bo-hero-sub {
+        font-size: 15px;
+        color: #777;
+        line-height: 1.85;
+        max-width: 400px;
+        margin-bottom: 44px;
+    }
+    .bo-hero-ctas {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+    .bo-hero-ctas .hero-btn-primary {
+        background: var(--bo-noir);
+        color: #fff;
+    }
+    .bo-hero-ctas .hero-btn-secondary {
+        border-color: var(--bo-noir);
+        color: var(--bo-noir);
+    }
+    /* Décoration — grand cercle abstrait */
+    .bo-hero-deco {
+        position: absolute;
+        bottom: -120px;
+        left: -80px;
+        width: 380px; height: 380px;
+        border-radius: 50%;
+        border: 1px solid rgba(212,165,116,0.15);
+        pointer-events: none;
+    }
+    .bo-hero-deco2 {
+        position: absolute;
+        bottom: -60px;
+        left: -20px;
+        width: 240px; height: 240px;
+        border-radius: 50%;
+        border: 1px solid rgba(168,170,184,0.2);
+        pointer-events: none;
+    }
+
+    /* Colonne image */
+    .bo-hero-img {
+        position: relative;
+        overflow: hidden;
+    }
+    .bo-hero-img img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+        display: block;
+        filter: brightness(0.88) saturate(0.9);
+        transition: transform 10s ease;
+    }
+    .bo-hero:hover .bo-hero-img img { transform: scale(1.04); }
+    /* Bandeau vertical droite */
+    .bo-hero-img-badge {
+        position: absolute;
+        right: 0; top: 0; bottom: 0;
+        width: 52px;
+        background: var(--bo-noir);
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .bo-hero-bg { position: absolute; inset: 0; }
-    .bo-hero-bg img {
-        width: 100%; height: 100%;
-        object-fit: cover;
-        object-position: center 30%;
-        display: block;
-        filter: brightness(0.52);
-        transform: scale(1.04);
-        transition: transform 10s ease;
-    }
-    .bo-hero:hover .bo-hero-bg img { transform: scale(1); }
-    .bo-hero-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        color: #fff;
-        padding: 0 24px;
-        max-width: 780px;
-    }
-    .bo-hero-content .back-hero {
-        display: inline-block;
-        color: rgba(255,255,255,0.5);
-        font-size: 11px;
-        letter-spacing: 0.25em;
-        text-decoration: none;
-        margin-bottom: 40px;
-        text-transform: uppercase;
-        transition: color .2s;
-    }
-    .bo-hero-content .back-hero:hover { color: #d4a574; }
-    .bo-eyebrow {
-        font-size: 11px; letter-spacing: 0.5em;
-        text-transform: uppercase; color: #d4a574;
-        margin-bottom: 20px; font-weight: 600;
-    }
-    .bo-hero-title {
-        font-size: clamp(48px, 9vw, 96px);
-        font-weight: 200;
-        letter-spacing: 0.06em;
-        line-height: 1;
-        margin: 0 0 12px;
-    }
-    .bo-hero-title em { font-style: italic; font-weight: 400; color: #d4a574; }
-    .bo-hero-sub {
-        font-size: 16px;
-        color: rgba(255,255,255,0.7);
-        line-height: 1.8;
-        margin: 0 auto 40px;
-        max-width: 520px;
-    }
-    .bo-hero-scroll {
-        position: absolute;
-        bottom: 36px; left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
-        color: rgba(255,255,255,0.4);
+    .bo-hero-img-badge span {
+        writing-mode: vertical-rl;
+        color: var(--bo-or);
         font-size: 10px;
-        letter-spacing: 3px;
+        letter-spacing: 0.32em;
         text-transform: uppercase;
-    }
-    .bo-hero-scroll::after {
-        content: '';
-        display: block;
-        width: 1px; height: 40px;
-        background: rgba(255,255,255,0.3);
-        margin: 8px auto 0;
-        animation: growLine 1.6s ease-in-out infinite;
-    }
-    @keyframes growLine {
-        0%,100% { transform: scaleY(0); transform-origin: top; opacity:0; }
-        50%      { transform: scaleY(1); transform-origin: top; opacity:1; }
+        font-weight: 600;
     }
 
-    /* SIGNATURE */
-    .bo-signature {
-        background: #1a1a1a;
+    @media (max-width: 860px) {
+        .bo-hero { grid-template-columns: 1fr; min-height: auto; }
+        .bo-hero-img { height: 55vw; min-height: 280px; }
+        .bo-hero-text { padding: 56px 28px 48px; }
+        .bo-hero-deco, .bo-hero-deco2 { display: none; }
+    }
+
+    /* ══════════════════════════════════════════════
+       BANDE STATS — fond rose plus soutenu
+    ══════════════════════════════════════════════ */
+    .bo-stats {
+        background: var(--bo-rose2);
+        border-top: 1px solid #e8d8d8;
+        border-bottom: 1px solid #e8d8d8;
         padding: 28px 40px;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 32px;
+        gap: 0;
     }
-    .bo-signature-line { flex:1; height:1px; background:rgba(212,165,116,0.25); max-width:200px; }
-    .bo-signature p { color:rgba(255,255,255,0.6); font-size:13px; font-style:italic; letter-spacing:.08em; text-align:center; }
-    .bo-signature strong { color:#d4a574; font-style:normal; font-weight:600; }
+    .bo-stat {
+        flex: 1;
+        text-align: center;
+        padding: 0 20px;
+    }
+    .bo-stat-num {
+        display: block;
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--bo-noir);
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+    }
+    .bo-stat-label {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #999;
+        margin-top: 4px;
+    }
+    .bo-stat-sep {
+        width: 1px;
+        height: 36px;
+        background: #ddd;
+        flex-shrink: 0;
+    }
+    @media (max-width: 680px) {
+        .bo-stats { flex-wrap: wrap; gap: 20px; }
+        .bo-stat-sep { display: none; }
+    }
 
-    /* STORY */
+    /* ══════════════════════════════════════════════
+       STORY — texte à gauche, image à droite (inversé vs pendentifs)
+    ══════════════════════════════════════════════ */
     .bo-story {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        min-height: 580px;
+        min-height: 540px;
     }
-    .bo-story-img { overflow: hidden; }
-    .bo-story-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .8s ease; }
-    .bo-story-img:hover img { transform: scale(1.04); }
     .bo-story-text {
-        background: #fdfaf6;
+        background: #fff;
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 72px 68px;
+        order: 1;
     }
-    .bo-story-num { font-size:80px; font-weight:200; color:#f0e8dc; line-height:1; margin-bottom:8px; letter-spacing:-0.03em; }
-    .bo-story-text h2 { font-size:clamp(28px,3.5vw,42px); color:#1a1a1a; line-height:1.15; margin-bottom:20px; letter-spacing:-0.02em; }
-    .bo-story-text h2 em { font-style:italic; color:#d4a574; }
-    .bo-story-text p { font-size:15px; color:#666; line-height:1.85; margin-bottom:14px; max-width:420px; }
+    .bo-story-img {
+        overflow: hidden;
+        order: 2;
+    }
+    .bo-story-img img {
+        width: 100%; height: 100%;
+        object-fit: cover; display: block;
+        filter: saturate(0.85);
+        transition: transform .8s ease;
+    }
+    .bo-story-img:hover img { transform: scale(1.04); }
+    .bo-story-num {
+        font-size: 80px; font-weight: 200;
+        color: #f0e4e4; line-height: 1;
+        margin-bottom: 8px; letter-spacing: -0.03em;
+    }
+    .bo-story-text h2 {
+        font-size: clamp(28px, 3.5vw, 42px);
+        color: var(--bo-noir); line-height: 1.15;
+        margin-bottom: 20px; letter-spacing: -0.02em;
+    }
+    .bo-story-text h2 em { font-style: italic; color: var(--bo-platine); }
+    .bo-story-text p {
+        font-size: 15px; color: #666;
+        line-height: 1.85; margin-bottom: 14px; max-width: 420px;
+    }
     .bo-story-link {
-        display:inline-block; margin-top:12px; color:#1a1a1a;
-        font-size:12px; letter-spacing:.12em; text-transform:uppercase;
-        text-decoration:none; border-bottom:1.5px solid #1a1a1a; padding-bottom:2px;
-        transition:color .2s, border-color .2s;
+        display: inline-block; margin-top: 12px; color: var(--bo-noir);
+        font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+        text-decoration: none; border-bottom: 1.5px solid var(--bo-noir);
+        padding-bottom: 2px; transition: color .2s, border-color .2s;
     }
-    .bo-story-link:hover { color:#d4a574; border-color:#d4a574; }
-    @media(max-width:800px) {
-        .bo-story { grid-template-columns:1fr; }
-        .bo-story-text { padding:48px 28px; }
+    .bo-story-link:hover { color: var(--bo-or); border-color: var(--bo-or); }
+    @media (max-width: 800px) {
+        .bo-story { grid-template-columns: 1fr; }
+        .bo-story-text { padding: 48px 28px; order: 2; }
+        .bo-story-img { order: 1; min-height: 280px; }
     }
 
-    /* MOODBOARD */
-    .bo-mood { padding:90px 40px; background:#1a1a1a; }
-    .bo-mood-inner { max-width:1100px; margin:0 auto; }
-    .bo-mood-header { text-align:center; margin-bottom:56px; }
-    .bo-mood-eyebrow { font-size:11px; letter-spacing:.4em; text-transform:uppercase; color:#d4a574; margin-bottom:12px; font-weight:600; }
-    .bo-mood-header h2 { font-size:clamp(28px,4vw,44px); color:#fff; font-weight:200; letter-spacing:.04em; line-height:1.15; }
-    .bo-mood-header h2 em { font-style:italic; color:#d4a574; font-weight:400; }
-    .bo-mood-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .bo-mood-card { position:relative; border-radius:16px; overflow:hidden; aspect-ratio:3/4; cursor:pointer; }
-    .bo-mood-card img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.7); transition:filter .4s ease,transform .6s ease; }
-    .bo-mood-card:hover img { filter:brightness(.5); transform:scale(1.05); }
-    .bo-mood-label { position:absolute; bottom:0; left:0; right:0; padding:28px 24px; background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 100%); }
-    .bo-mood-tag { font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:#d4a574; font-weight:600; margin-bottom:6px; }
-    .bo-mood-label h3 { font-size:20px; font-weight:300; color:#fff; letter-spacing:.03em; line-height:1.2; }
-    .bo-mood-label p { font-size:12px; color:rgba(255,255,255,.65); line-height:1.5; margin-top:6px; }
-    @media(max-width:700px){ .bo-mood-grid { grid-template-columns:1fr; } }
+    /* ══════════════════════════════════════════════
+       GUIDE MORPHOLOGIE OREILLE — section exclusive
+    ══════════════════════════════════════════════ */
+    .bo-guide {
+        padding: 90px 40px;
+        background: var(--bo-rose);
+        border-top: 1px solid #ead8d8;
+    }
+    .bo-guide-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+    .bo-guide-eyebrow {
+        font-size: 11px; letter-spacing: 0.35em;
+        text-transform: uppercase; color: var(--bo-or);
+        margin-bottom: 12px; font-weight: 600;
+    }
+    .bo-guide-inner h2 {
+        font-size: clamp(26px, 3.5vw, 38px);
+        color: var(--bo-noir); line-height: 1.15;
+        margin-bottom: 20px; letter-spacing: -0.02em;
+    }
+    .bo-guide-inner h2 em { font-style: italic; color: var(--bo-platine); }
+    .bo-guide-intro {
+        font-size: 15px; color: #666; line-height: 1.8; margin-bottom: 28px;
+    }
+    .bo-guide-zones {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .bo-zone {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 14px 18px;
+        border: 1.5px solid #e8d8d8;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #fff;
+        transition: border-color .2s, background .2s;
+    }
+    .bo-zone:hover, .bo-zone.active {
+        border-color: var(--bo-platine);
+        background: var(--bo-rose2);
+    }
+    .bo-zone-dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: var(--bo-argent);
+        transition: background .2s;
+    }
+    .bo-zone.active .bo-zone-dot { background: var(--bo-or); }
+    .bo-zone-text strong {
+        display: block; font-size: 14px;
+        color: var(--bo-noir); margin-bottom: 2px;
+    }
+    .bo-zone-text span { font-size: 12px; color: #888; }
+    /* SVG oreille */
+    .bo-guide-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border-radius: 20px;
+        border: 1px solid #e8d8d8;
+        padding: 36px 28px;
+        position: relative;
+    }
+    .bo-ear-svg { display: block; }
+    /* Points cliquables sur le SVG */
+    .bo-ear-point {
+        cursor: pointer;
+        transition: r .2s;
+    }
+    .bo-ear-point:hover circle { r: 9; }
+    .bo-ear-tooltip {
+        position: absolute;
+        bottom: 16px; left: 50%;
+        transform: translateX(-50%);
+        font-size: 12px; color: #888;
+        letter-spacing: 0.06em;
+        text-align: center;
+        pointer-events: none;
+    }
+    @media (max-width: 800px) {
+        .bo-guide-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       CATALOGUE — fond rose très léger
+    ══════════════════════════════════════════════ */
+    .catalogue-section {
+        background: var(--bo-rose) !important;
+    }
+
+    /* ══════════════════════════════════════════════
+       MOODBOARD — 3 colonnes asymétriques
+    ══════════════════════════════════════════════ */
+    .bo-mood {
+        padding: 90px 40px;
+        background: var(--bo-noir);
+    }
+    .bo-mood-inner { max-width: 1100px; margin: 0 auto; }
+    .bo-mood-header { text-align: center; margin-bottom: 56px; }
+    .bo-mood-eyebrow {
+        font-size: 11px; letter-spacing: .4em; text-transform: uppercase;
+        color: var(--bo-or); margin-bottom: 12px; font-weight: 600;
+    }
+    .bo-mood-header h2 {
+        font-size: clamp(28px, 4vw, 44px); color: #fff;
+        font-weight: 200; letter-spacing: .04em; line-height: 1.15;
+    }
+    .bo-mood-header h2 em { font-style: italic; color: var(--bo-argent); font-weight: 400; }
+    /* Grille asymétrique 1fr 1.5fr 1fr */
+    .bo-mood-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 1fr;
+        gap: 16px;
+        align-items: end;
+    }
+    .bo-mood-card {
+        position: relative; border-radius: 16px;
+        overflow: hidden; cursor: pointer;
+    }
+    /* Carte centrale plus haute */
+    .bo-mood-card:nth-child(1) { aspect-ratio: 3/4; }
+    .bo-mood-card:nth-child(2) { aspect-ratio: 2/3; }
+    .bo-mood-card:nth-child(3) { aspect-ratio: 3/4; }
+    .bo-mood-card img {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+        filter: brightness(.65) saturate(0.8);
+        transition: filter .4s, transform .6s;
+    }
+    .bo-mood-card:hover img { filter: brightness(.45) saturate(1); transform: scale(1.05); }
+    .bo-mood-label {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        padding: 28px 22px;
+        background: linear-gradient(to top, rgba(0,0,0,.82) 0%, transparent 100%);
+    }
+    .bo-mood-tag {
+        font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+        color: var(--bo-argent); font-weight: 600; margin-bottom: 6px;
+    }
+    .bo-mood-label h3 {
+        font-size: 19px; font-weight: 300; color: #fff;
+        letter-spacing: .03em; line-height: 1.2;
+    }
+    .bo-mood-label p {
+        font-size: 12px; color: rgba(255,255,255,.6);
+        line-height: 1.5; margin-top: 6px;
+    }
+    @media (max-width: 700px) {
+        .bo-mood-grid { grid-template-columns: 1fr; }
+        .bo-mood-card:nth-child(2) { aspect-ratio: 3/4; }
+    }
+
+    /* ══════════════════════════════════════════════
+       CTA BANNER — dégradé rose vers noir
+    ══════════════════════════════════════════════ */
+    .bo-cta {
+        background: linear-gradient(135deg, var(--bo-rose2) 0%, var(--bo-noir) 60%);
+        padding: 80px 40px;
+    }
+    .bo-cta-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 60px;
+        align-items: center;
+    }
+    .bo-cta-eyebrow {
+        font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+        color: var(--bo-or); margin-bottom: 12px; font-weight: 600;
+    }
+    .bo-cta-inner h2 {
+        font-size: clamp(28px, 3.5vw, 42px);
+        color: #fff; line-height: 1.15; margin-bottom: 16px;
+        letter-spacing: -0.02em;
+    }
+    .bo-cta-inner h2 em { font-style: italic; color: var(--bo-argent); }
+    .bo-cta-inner > div > p {
+        font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.7; max-width: 500px;
+    }
+    .bo-cta-actions {
+        display: flex; flex-direction: column; gap: 12px; flex-shrink: 0;
+    }
+    .bo-cta-btn-main {
+        display: inline-block; padding: 16px 32px;
+        background: #fff; color: var(--bo-noir);
+        font-size: 12px; letter-spacing: .15em; text-transform: uppercase;
+        text-decoration: none; font-weight: 700;
+        border-radius: 4px; white-space: nowrap;
+        transition: background .2s, color .2s;
+    }
+    .bo-cta-btn-main:hover { background: var(--bo-or); color: #fff; }
+    .bo-cta-btn-rdv {
+        display: inline-block; padding: 14px 32px;
+        border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.8);
+        font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+        text-decoration: none; border-radius: 4px; white-space: nowrap;
+        transition: border-color .2s, color .2s;
+    }
+    .bo-cta-btn-rdv:hover { border-color: #fff; color: #fff; }
+    @media (max-width: 800px) {
+        .bo-cta-inner { grid-template-columns: 1fr; gap: 36px; }
+        .bo-cta-actions { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    /* ══════════════════════════════════════════════
+       WHY SECTION — tuiles platine
+    ══════════════════════════════════════════════ */
+    .why-section { padding: 80px 40px; background: #fff; border-top: 1px solid #f0e8e8; }
+    .why-inner { max-width: 1100px; margin: 0 auto; }
+    .why-header { text-align: center; margin-bottom: 52px; }
+    .why-eyebrow { font-size:11px; letter-spacing:.35em; text-transform:uppercase; color:var(--bo-or); margin-bottom:12px; font-weight:600; }
+    .why-header h2 { font-size:clamp(26px,3.5vw,38px); color:var(--bo-noir); line-height:1.15; letter-spacing:-0.02em; }
+    .why-header h2 em { font-style:italic; color:var(--bo-platine); }
+    .why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .why-card {
+        padding: 28px 22px; border-radius: 12px;
+        background: var(--bo-rose); border: 1px solid #e8d8d8;
+        text-align: center; transition: transform .2s, box-shadow .2s;
+    }
+    .why-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(168,170,184,.18); }
+    .why-icon { width:48px; height:48px; margin: 0 auto 16px; }
+    .why-icon svg { width:100%; height:100%; }
+    .why-card h3 { font-size:14px; color:var(--bo-noir); margin-bottom:8px; letter-spacing:.02em; }
+    .why-card p { font-size:13px; color:#888; line-height:1.6; }
+    @media(max-width:780px){ .why-grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:480px){ .why-grid{grid-template-columns:1fr;} }
+
     </style>
 </head>
 <body>
 
-    <!-- ══ TICKER PROMO ══ -->
+    <!-- ══ TICKER ══ -->
     <div class="promo-ticker">
         <div class="ticker-track">
             <span>✦ Livraison offerte dès 500 € &nbsp;·&nbsp; Retours gratuits 30 jours</span>
@@ -202,7 +547,7 @@
                             <h4>Bijoux Femme</h4>
                             <a href="bague.html">Bagues</a>
                             <a href="pendentifs.html">Pendentifs</a>
-                            <a href="boucles-doreilles.html">Boucles d'oreilles</a>
+                            <a href="boucles-doreilles.html" class="nav-active">Boucles d'oreilles</a>
                             <a href="bracelets.html">Bracelets</a>
                         </div>
                         <div class="mega-column">
@@ -219,7 +564,7 @@
                 <div class="mobile-submenu" id="joaillerieSubmenu">
                     <a href="bague.html">Bagues</a>
                     <a href="pendentifs.html">Pendentifs</a>
-                    <a href="boucles-doreilles.html">Boucles d'oreilles</a>
+                    <a href="boucles-doreilles.html" class="nav-active">Boucles d'oreilles</a>
                     <a href="bracelets.html">Bracelets</a>
                     <a href="#">Nouveautés</a>
                     <a href="#">Idées cadeaux</a>
@@ -235,58 +580,230 @@
     </div>
 
     <!-- ══════════════════════════════════════
-         HERO
+         HERO — split asymétrique
     ══════════════════════════════════════ -->
     <section class="bo-hero">
-        <div class="bo-hero-bg">
-            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Boucles d'oreilles Ginko">
-        </div>
-        <div class="bo-hero-content">
-            <a class="back-hero" href="index.html">← Retour à l'accueil</a>
+        <div class="bo-hero-text">
+            <a class="bo-hero-back" href="index.html">← Retour à l'accueil</a>
             <p class="bo-eyebrow">Joaillerie de caractère</p>
-            <h1 class="bo-hero-title">Boucles<br><em>d'oreilles</em></h1>
-            <p class="bo-hero-sub">Puces discrètes ou pendantes spectaculaires — chaque paire Ginko est une déclaration. Portées au plus près du visage, elles capturent la lumière comme nulle autre.</p>
-            <div class="hero-ctas">
+            <h1 class="bo-hero-title">
+                Boucles<br>
+                <em>d'oreilles</em>
+            </h1>
+            <div class="bo-hero-rule"></div>
+            <p class="bo-hero-sub">Puces discrètes ou pendantes spectaculaires — chaque paire Ginko est taillée pour capter la lumière au plus près du visage. Le bijou qu'on remarque en premier.</p>
+            <div class="bo-hero-ctas">
                 <a href="#catalogue" class="hero-btn-primary">Voir la collection</a>
                 <a href="index.html#configurateur" class="hero-btn-secondary">Créer les miennes →</a>
             </div>
+            <div class="bo-hero-deco"></div>
+            <div class="bo-hero-deco2"></div>
         </div>
-        <div class="bo-hero-scroll">Défiler</div>
+        <div class="bo-hero-img">
+            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Boucles d'oreilles Ginko">
+            <div class="bo-hero-img-badge">
+                <span>Joaillerie Ginko</span>
+            </div>
+        </div>
     </section>
 
     <!-- ══ STATS ══ -->
-    <div class="stats-bar">
-        <div class="stat-item"><span class="stat-num">+8 000</span><span class="stat-label">paires créées</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-num">4–6 sem.</span><span class="stat-label">de fabrication</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-num">18 carats</span><span class="stat-label">d'or massif</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">sur-mesure</span></div>
-    </div>
-
-    <!-- ══ CITATION ══ -->
-    <div class="bo-signature">
-        <div class="bo-signature-line"></div>
-        <p>"Les boucles d'oreilles sont le premier bijou qu'on <strong>remarque</strong>."</p>
-        <div class="bo-signature-line"></div>
-    </div>
-
-    <!-- ══ STORY ══ -->
-    <section class="bo-story">
-        <div class="bo-story-img">
-            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Boucles portées">
+    <div class="bo-stats">
+        <div class="bo-stat">
+            <span class="bo-stat-num">100%</span>
+            <span class="bo-stat-label">Paires créées</span>
         </div>
+        <div class="bo-stat-sep"></div>
+        <div class="bo-stat">
+            <span class="bo-stat-num">4–6 sem.</span>
+            <span class="bo-stat-label">Fabrication artisanale</span>
+        </div>
+        <div class="bo-stat-sep"></div>
+        <div class="bo-stat">
+            <span class="bo-stat-num">18 carats</span>
+            <span class="bo-stat-label">Or massif exclusivement</span>
+        </div>
+        <div class="bo-stat-sep"></div>
+        <div class="bo-stat">
+            <span class="bo-stat-num">100%</span>
+            <span class="bo-stat-label">Sur-mesure</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         STORY — texte gauche / image droite
+    ══════════════════════════════════════ -->
+    <section class="bo-story">
         <div class="bo-story-text">
             <div class="bo-story-num">01</div>
             <h2>Au plus près<br><em>du visage</em></h2>
             <p>Aucun bijou n'est plus intime que les boucles d'oreilles. Elles encadrent le regard, captent chaque éclat de lumière, révèlent la courbe de la nuque à chaque mouvement de tête.</p>
-            <p>Chez Ginko, chaque paire est pensée pour cet instant où la lumière accroche la pierre : une fraction de seconde qui marque les esprits.</p>
+            <p>Chez Ginko, chaque paire est pensée pour cet instant précis où la lumière accroche la pierre — une fraction de seconde qui marque les esprits.</p>
             <a href="#catalogue" class="bo-story-link">Voir toutes les boucles</a>
+        </div>
+        <div class="bo-story-img">
+            <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Boucles portées">
         </div>
     </section>
 
-    <!-- ══ CATALOGUE ══ -->
+    <!-- ══════════════════════════════════════
+         GUIDE MORPHOLOGIE OREILLE
+    ══════════════════════════════════════ -->
+    <section class="bo-guide">
+        <div class="bo-guide-inner">
+
+            <!-- Texte + zones cliquables -->
+            <div>
+                <p class="bo-guide-eyebrow">Guide exclusif</p>
+                <h2>Quelle boucle pour<br><em>quelle oreille ?</em></h2>
+                <p class="bo-guide-intro">La forme de votre oreille détermine le style qui vous flattera le plus. Cliquez sur une zone pour découvrir le bijou adapté.</p>
+                <div class="bo-guide-zones">
+                    <div class="bo-zone active" data-zone="lobe">
+                        <div class="bo-zone-dot"></div>
+                        <div class="bo-zone-text">
+                            <strong>Lobe — La zone classique</strong>
+                            <span>Puces, dormeuses, pendantes. Toutes les formes s'y posent avec grâce.</span>
+                        </div>
+                    </div>
+                    <div class="bo-zone" data-zone="helix">
+                        <div class="bo-zone-dot"></div>
+                        <div class="bo-zone-text">
+                            <strong>Hélix — Le cartilage supérieur</strong>
+                            <span>Petites créoles fines ou puces minimalistes pour un effet empilé raffiné.</span>
+                        </div>
+                    </div>
+                    <div class="bo-zone" data-zone="antihelix">
+                        <div class="bo-zone-dot"></div>
+                        <div class="bo-zone-text">
+                            <strong>Anti-hélix — L'arc intérieur</strong>
+                            <span>Petites puces plates. Discrétion absolue, détail qui se découvre au fil des gestes.</span>
+                        </div>
+                    </div>
+                    <div class="bo-zone" data-zone="tragus">
+                        <div class="bo-zone-dot"></div>
+                        <div class="bo-zone-text">
+                            <strong>Tragus — Le petit promontoire</strong>
+                            <span>Puces ultra-fines. Un bijou confidentiel, presque secret.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SVG oreille -->
+            <div class="bo-guide-visual">
+                <svg class="bo-ear-svg" viewBox="0 0 260 320" width="260" height="320"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="earSkin" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%"   stop-color="#fde8d0"/>
+                      <stop offset="100%" stop-color="#f0cfa8"/>
+                    </linearGradient>
+                    <filter id="earGlow" x="-40%" y="-40%" width="180%" height="180%">
+                      <feGaussianBlur stdDeviation="3" result="b"/>
+                      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- Fond -->
+                  <rect width="260" height="320" fill="#f8f0f0" rx="14"/>
+
+                  <!-- Oreille — forme externe -->
+                  <path d="M 130,30
+                           C 90,30 58,58 52,100
+                           C 46,138 52,172 64,196
+                           C 74,216 86,228 92,248
+                           C 96,262 96,280 100,290
+                           C 104,298 112,302 120,298
+                           C 128,294 132,284 130,272
+                           C 128,260 122,248 122,236
+                           C 122,224 130,216 138,214
+                           C 154,210 168,198 174,178
+                           C 182,154 180,120 170,96
+                           C 158,68 148,30 130,30 Z"
+                       fill="url(#earSkin)" stroke="#e0c090" stroke-width="1"/>
+
+                  <!-- Anti-hélix -->
+                  <path d="M 110,80
+                           C 100,94 96,114 98,134
+                           C 100,152 108,166 114,178
+                           C 120,190 122,202 118,212"
+                       fill="none" stroke="#c8905a" stroke-width="8"
+                       stroke-linecap="round" opacity="0.18"/>
+
+                  <!-- Hélix intérieur -->
+                  <path d="M 128,50
+                           C 110,56 96,76 90,100
+                           C 84,122 86,146 94,166
+                           C 100,180 108,192 110,206"
+                       fill="none" stroke="#c8905a" stroke-width="10"
+                       stroke-linecap="round" opacity="0.12"/>
+
+                  <!-- Tragus -->
+                  <ellipse cx="102" cy="200" rx="12" ry="8"
+                       fill="#e8c090" opacity="0.35"/>
+
+                  <!-- Conque (creux) -->
+                  <path d="M 118,130
+                           C 108,138 106,154 110,168
+                           C 112,176 118,182 122,186"
+                       fill="none" stroke="#b07840" stroke-width="3"
+                       stroke-linecap="round" opacity="0.14"/>
+
+                  <!-- Lobe -->
+                  <path d="M 100,260
+                           C 96,270 98,284 106,292
+                           C 114,298 124,296 128,286
+                           C 132,276 128,262 122,254"
+                       fill="#f5d8b8" stroke="#ddb880" stroke-width="0.8"/>
+
+                  <!-- ══ POINTS INTERACTIFS ══ -->
+
+                  <!-- Lobe (zone active par défaut) -->
+                  <g class="bo-ear-point" data-zone="lobe" id="pointLobe">
+                    <circle cx="114" cy="274" r="7" fill="#d4a574" opacity="0.9" filter="url(#earGlow)"/>
+                    <circle cx="114" cy="274" r="4" fill="#fff"/>
+                    <circle cx="114" cy="274" r="1.5" fill="#d4a574"/>
+                    <!-- Ligne étiquette -->
+                    <line x1="122" y1="274" x2="190" y2="274" stroke="#d4a574" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+                    <text x="195" y="278" font-size="10" fill="#a87020" font-family="Georgia,serif" font-style="italic">Lobe</text>
+                  </g>
+
+                  <!-- Hélix -->
+                  <g class="bo-ear-point" data-zone="helix" id="pointHelix">
+                    <circle cx="100" cy="80" r="7" fill="#a8aab8" opacity="0.7"/>
+                    <circle cx="100" cy="80" r="4" fill="#fff"/>
+                    <circle cx="100" cy="80" r="1.5" fill="#a8aab8"/>
+                    <line x1="107" y1="80" x2="185" y2="80" stroke="#a8aab8" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+                    <text x="190" y="84" font-size="10" fill="#888" font-family="Georgia,serif" font-style="italic">Hélix</text>
+                  </g>
+
+                  <!-- Anti-hélix -->
+                  <g class="bo-ear-point" data-zone="antihelix" id="pointAntihelix">
+                    <circle cx="116" cy="160" r="7" fill="#a8aab8" opacity="0.7"/>
+                    <circle cx="116" cy="160" r="4" fill="#fff"/>
+                    <circle cx="116" cy="160" r="1.5" fill="#a8aab8"/>
+                    <line x1="123" y1="160" x2="185" y2="160" stroke="#a8aab8" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+                    <text x="190" y="164" font-size="10" fill="#888" font-family="Georgia,serif" font-style="italic">Anti-hélix</text>
+                  </g>
+
+                  <!-- Tragus -->
+                  <g class="bo-ear-point" data-zone="tragus" id="pointTragus">
+                    <circle cx="102" cy="200" r="7" fill="#a8aab8" opacity="0.7"/>
+                    <circle cx="102" cy="200" r="4" fill="#fff"/>
+                    <circle cx="102" cy="200" r="1.5" fill="#a8aab8"/>
+                    <line x1="109" y1="200" x2="185" y2="200" stroke="#a8aab8" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+                    <text x="190" y="204" font-size="10" fill="#888" font-family="Georgia,serif" font-style="italic">Tragus</text>
+                  </g>
+                </svg>
+                <p class="bo-ear-tooltip">Cliquez sur un point pour en savoir plus</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CATALOGUE
+    ══════════════════════════════════════ -->
     <section class="catalogue-section" id="catalogue">
         <div class="catalogue-inner">
             <div class="catalogue-header">
@@ -340,7 +857,7 @@
                 <!-- 1 -->
                 <article class="product-card" data-type="puce" data-stone="diamant" data-metal="or-blanc" data-price="980">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Puces Étoile Diamant">
+                        <img src="" alt="Puces Étoile Diamant — or blanc 18k, diamant 0.15 ct">
                         <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -364,8 +881,8 @@
                 <!-- 2 -->
                 <article class="product-card" data-type="pendante" data-stone="saphir" data-metal="or-jaune" data-price="2200">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendantes Abysses Saphir">
-                        <div class="product-badges"><span class="badge badge-bestseller">Coup de cœur</span></div>
+                        <img src="" alt="Pendantes Abysses — or jaune 18k, saphir bleu 0.35 ct × 2">
+                        <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
                             <a href="produit.html?id=bo-02" class="action-btn">✦</a>
@@ -388,7 +905,7 @@
                 <!-- 3 -->
                 <article class="product-card" data-type="creole" data-stone="diamant" data-metal="or-rose" data-price="1640">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Créoles Diamant Pavé">
+                        <img src="" alt="Créoles Diamant Pavé — or rose 18k, pavage diamant 0.20 ct">
                         <div class="product-badges"><span class="badge badge-exclusive">Édition limitée</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -412,7 +929,7 @@
                 <!-- 4 -->
                 <article class="product-card" data-type="pendante" data-stone="emeraude" data-metal="or-jaune" data-price="3100">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Pendantes Forêt Émeraude">
+                        <img src="" alt="Pendantes Forêt Vierge — or jaune 18k, émeraude 0.50 ct × 2">
                         <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -436,7 +953,7 @@
                 <!-- 5 -->
                 <article class="product-card" data-type="puce" data-stone="diamant" data-metal="platine" data-price="5400">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Puces Pleine Lune">
+                        <img src="" alt="Puces Pleine Lune — platine, diamant 0.80 ct × 2">
                         <div class="product-badges"><span class="badge badge-exclusive">Haute Joaillerie</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -460,7 +977,7 @@
                 <!-- 6 -->
                 <article class="product-card" data-type="pendante" data-stone="rubis" data-metal="or-blanc" data-price="2480">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Pendantes Flamme Douce Rubis">
+                        <img src="" alt="Pendantes Flamme Douce — or blanc 18k, rubis 0.30 ct × 2">
                         <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -484,8 +1001,8 @@
                 <!-- 7 -->
                 <article class="product-card" data-type="creole" data-stone="saphir" data-metal="or-blanc" data-price="3600">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Créoles Minuit Saphir">
-                        <div class="product-badges"><span class="badge badge-bestseller">Best-seller</span></div>
+                        <img src="" alt="Créoles Minuit Saphir — or blanc 18k, saphir royal × 2">
+                        <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
                             <a href="produit.html?id=bo-07" class="action-btn">✦</a>
@@ -508,7 +1025,7 @@
                 <!-- 8 -->
                 <article class="product-card" data-type="puce" data-stone="opale" data-metal="or-jaune" data-price="760">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-little-everbloom-saphir-bleu-gris.png" alt="Puces Opale Aurore">
+                        <img src="" alt="Puces Opale Aurore — or jaune 18k, opale rose × 2">
                         <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -532,7 +1049,7 @@
                 <!-- 9 -->
                 <article class="product-card" data-type="pendante" data-stone="diamant" data-metal="or-rose" data-price="1380">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-everbloom-toi-et-moi-saphir.png" alt="Pendantes Poudre d'Or">
+                        <img src="" alt="Pendantes Poudre d'Or — or rose 18k, diamant 0.12 ct × 2">
                         <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -556,7 +1073,7 @@
                 <!-- 10 -->
                 <article class="product-card" data-type="creole" data-stone="emeraude" data-metal="or-blanc" data-price="4200">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Créoles Jardin Secret">
+                        <img src="" alt="Créoles Jardin Secret — or blanc 18k, émeraude 0.60 ct × 2">
                         <div class="product-badges"><span class="badge badge-exclusive">Exclusif</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -580,8 +1097,8 @@
                 <!-- 11 -->
                 <article class="product-card" data-type="puce" data-stone="rubis" data-metal="or-rose" data-price="1920">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Puces Désir Rouge">
-                        <div class="product-badges"><span class="badge badge-bestseller">Coup de cœur</span></div>
+                        <img src="" alt="Puces Désir Rouge — or rose 18k, rubis 0.28 ct × 2">
+                        <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
                             <a href="produit.html?id=bo-11" class="action-btn">✦</a>
@@ -604,7 +1121,7 @@
                 <!-- 12 -->
                 <article class="product-card" data-type="pendante" data-stone="saphir" data-metal="platine" data-price="6200">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Pendantes Horizon">
+                        <img src="" alt="Pendantes Horizon — platine, saphir royal 1 ct × 2">
                         <div class="product-badges"><span class="badge badge-exclusive">Pièce unique</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -628,7 +1145,7 @@
                 <!-- 13 -->
                 <article class="product-card" data-type="creole" data-stone="diamant" data-metal="or-jaune" data-price="2100">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Créoles Lumière Dorée">
+                        <img src="" alt="Créoles Lumière Dorée — or jaune 18k, pavage diamant intérieur">
                         <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -652,7 +1169,7 @@
                 <!-- 14 -->
                 <article class="product-card" data-type="puce" data-stone="opale" data-metal="or-rose" data-price="890">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/homepage/new-arrivals/packshot-bbeb-diamant.png" alt="Puces Opale Rose">
+                        <img src="" alt="Puces Opale Tendre — or rose 18k, opale blanche × 2">
                         <div class="product-badges"><span class="badge badge-new">Nouveau</span></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -676,8 +1193,8 @@
                 <!-- 15 -->
                 <article class="product-card" data-type="pendante" data-stone="diamant" data-metal="or-blanc" data-price="3400">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/diamond/header-diamant-m.jpg" alt="Pendantes Cascade Diamant">
-                        <div class="product-badges"><span class="badge badge-bestseller">Best-seller</span></div>
+                        <img src="" alt="Pendantes Cascade — or blanc 18k, diamant 0.55 ct total">
+                        <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
                             <a href="produit.html?id=bo-15" class="action-btn">✦</a>
@@ -700,7 +1217,7 @@
                 <!-- 16 -->
                 <article class="product-card" data-type="creole" data-stone="rubis" data-metal="or-jaune" data-price="2750">
                     <div class="product-img-wrap">
-                        <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Créoles Rubis Passion">
+                        <img src="" alt="Créoles Passion — or jaune 18k, rubis 0.40 ct × 2">
                         <div class="product-badges"></div>
                         <div class="product-actions">
                             <button class="action-btn wishlist-btn">♡</button>
@@ -726,12 +1243,14 @@
         </div>
     </section>
 
-    <!-- ══ MOODBOARD ══ -->
+    <!-- ══════════════════════════════════════
+         MOODBOARD — 3 colonnes asymétriques
+    ══════════════════════════════════════ -->
     <section class="bo-mood">
         <div class="bo-mood-inner">
             <div class="bo-mood-header">
                 <p class="bo-mood-eyebrow">Les univers Ginko</p>
-                <h2>Trois collections,<br><em>une seule âme</em></h2>
+                <h2>Trois regards,<br><em>une seule lumière</em></h2>
             </div>
             <div class="bo-mood-grid">
                 <div class="bo-mood-card">
@@ -743,41 +1262,45 @@
                     </div>
                 </div>
                 <div class="bo-mood-card">
+                    <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/pink/header-rose-m.jpg" alt="Collection Aurore">
+                    <div class="bo-mood-label">
+                        <div class="bo-mood-tag">Collection</div>
+                        <h3>Aurore</h3>
+                        <p>Opales et or rose. La douceur à l'état pur.</p>
+                    </div>
+                </div>
+                <div class="bo-mood-card">
                     <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/blue/header-pierre-bleu-m.jpg" alt="Collection Profondeur">
                     <div class="bo-mood-label">
                         <div class="bo-mood-tag">Collection</div>
                         <h3>Profondeur</h3>
-                        <p>Saphirs et or jaune. Le mystère des grands fonds.</p>
-                    </div>
-                </div>
-                <div class="bo-mood-card">
-                    <img src="https://cdn.gemmyo.com/build/gemmyo-theme/images/pierres_precieuses/gallery/green/header-vert-m.jpg" alt="Collection Forêt">
-                    <div class="bo-mood-label">
-                        <div class="bo-mood-tag">Collection</div>
-                        <h3>Forêt</h3>
-                        <p>Émeraudes et or. La vie à l'état pur.</p>
+                        <p>Saphirs et platine. Le mystère des grands fonds.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ══ CTA SUR-MESURE ══ -->
-    <div class="cta-banner">
-        <div class="cta-banner-inner">
-            <div class="cta-banner-text">
-                <p class="cta-eyebrow">Sur-mesure</p>
+    <!-- ══════════════════════════════════════
+         CTA — dégradé rose vers noir
+    ══════════════════════════════════════ -->
+    <div class="bo-cta">
+        <div class="bo-cta-inner">
+            <div>
+                <p class="bo-cta-eyebrow">Sur-mesure</p>
                 <h2>La paire de vos<br><em>rêves n'existe pas encore.</em></h2>
                 <p>Forme, longueur, pierre, métal, type de fermoir — nos artisans créent vos boucles d'oreilles de A à Z, rien que pour vous.</p>
             </div>
-            <div class="cta-banner-actions">
-                <a href="index.html#configurateur" class="cta-big-btn">Configurer les miennes</a>
-                <a href="#" class="cta-rdv-btn">Prendre RDV</a>
+            <div class="bo-cta-actions">
+                <a href="index.html#configurateur" class="bo-cta-btn-main">Configurer les miennes</a>
+                <a href="#" class="bo-cta-btn-rdv">Prendre RDV</a>
             </div>
         </div>
     </div>
 
-    <!-- ══ SECTION POURQUOI GINKO ══ -->
+    <!-- ══════════════════════════════════════
+         POURQUOI GINKO
+    ══════════════════════════════════════ -->
     <section class="why-section">
         <div class="why-inner">
             <div class="why-header">
@@ -786,30 +1309,32 @@
             </div>
             <div class="why-grid">
                 <div class="why-card">
-                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#d4a574" stroke-width="1.5"/><path d="M24 14 C18 14 14 18 14 24 C14 30 18 34 24 34" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/><path d="M24 14 C30 14 34 18 34 24 C34 30 30 34 24 34" stroke="#e8c97a" stroke-width="1.5" stroke-linecap="round"/><circle cx="24" cy="24" r="3" fill="#d4a574"/></svg></div>
+                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#d4a574" stroke-width="1.5"/><path d="M24 14 C18 14 14 18 14 24 C14 30 18 34 24 34" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/><path d="M24 14 C30 14 34 18 34 24 C34 30 30 34 24 34" stroke="#a8aab8" stroke-width="1.5" stroke-linecap="round"/><circle cx="24" cy="24" r="3" fill="#d4a574"/></svg></div>
                     <h3>Pierres certifiées</h3>
-                    <p>Chaque pierre est certifiée GIA. Vous recevez un certificat d'authenticité avec votre bijou.</p>
+                    <p>Chaque pierre est certifiée GIA. Vous recevez un certificat d'authenticité avec votre paire.</p>
                 </div>
                 <div class="why-card">
-                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 8 L26 16 H34 L27.5 21 L30 29 L24 24.5 L18 29 L20.5 21 L14 16 H22 Z" stroke="#d4a574" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 34 Q24 40 32 34" stroke="#e8c97a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 8 L26 16 H34 L27.5 21 L30 29 L24 24.5 L18 29 L20.5 21 L14 16 H22 Z" stroke="#d4a574" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 34 Q24 40 32 34" stroke="#a8aab8" stroke-width="1.5" stroke-linecap="round"/></svg></div>
                     <h3>Or 18 carats massif</h3>
-                    <p>Jamais plaqué, jamais doublé. Chaque alliage est formulé pour une durabilité maximale.</p>
+                    <p>Tiges et montures jamais plaquées. Formules sans nickel, adaptées aux peaux les plus sensibles.</p>
                 </div>
                 <div class="why-card">
-                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><rect x="10" y="14" width="28" height="22" rx="4" stroke="#d4a574" stroke-width="1.5"/><path d="M18 14 V11 Q24 8 30 11 V14" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/><path d="M18 25 L22 29 L30 21" stroke="#e8c97a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                    <h3>Satisfait ou remboursé</h3>
-                    <p>30 jours pour changer d'avis, retours gratuits, échanges sans frais.</p>
+                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><rect x="10" y="14" width="28" height="22" rx="4" stroke="#d4a574" stroke-width="1.5"/><path d="M18 14 V11 Q24 8 30 11 V14" stroke="#d4a574" stroke-width="1.5" stroke-linecap="round"/><path d="M18 25 L22 29 L30 21" stroke="#a8aab8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Retour 30 jours</h3>
+                    <p>30 jours pour changer d'avis, retours gratuits, échanges sans frais. Votre satisfaction garantie.</p>
                 </div>
                 <div class="why-card">
-                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="8" stroke="#d4a574" stroke-width="1.5"/><path d="M12 38 C12 32 17.4 28 24 28 C30.6 28 36 32 36 38" stroke="#e8c97a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                    <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="8" stroke="#d4a574" stroke-width="1.5"/><path d="M12 38 C12 32 17.4 28 24 28 C30.6 28 36 32 36 38" stroke="#a8aab8" stroke-width="1.5" stroke-linecap="round"/></svg></div>
                     <h3>Créé pour vous</h3>
-                    <p>Chaque paire est fabriquée sur commande. Une pièce unique qui vous ressemble.</p>
+                    <p>Chaque paire est fabriquée sur commande. Une pièce unique qui vous ressemble parfaitement.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ══ FAQ ══ -->
+    <!-- ══════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════ -->
     <section class="faq-section">
         <div class="faq-inner">
             <div class="faq-header">
@@ -818,24 +1343,24 @@
             </div>
             <div class="faq-list">
                 <div class="faq-item">
-                    <button class="faq-question">Les boucles d'oreilles sont-elles adaptées aux oreilles percées ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Toutes nos boucles d'oreilles sont conçues pour oreilles percées standard (trou de 0.8 à 1.2 mm). Puces avec fermoir papillon sécurisé, créoles avec fermoir à charnière dorée, pendantes avec crochet de haute qualité. Sur demande, nous pouvons adapter le système de fermeture.</p></div>
+                    <button class="faq-question">Les boucles sont-elles adaptées aux oreilles percées ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Toutes nos boucles sont conçues pour oreilles percées standard (0.8 à 1.2 mm). Puces avec fermoir papillon sécurisé, créoles avec charnière dorée, pendantes avec crochet haute qualité. Sur demande, nous adaptons le système de fermeture.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">Puis-je commander une seule boucle ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Oui, pour les modèles symétriques, il est possible de commander une seule pièce (en cas de perte par exemple). Le prix est la moitié du prix de la paire, avec un supplément de fabrication de 80 €.</p></div>
+                    <div class="faq-answer"><p>Oui, pour les modèles symétriques, il est possible de commander une seule pièce (en cas de perte). Le prix est la moitié du prix de la paire, avec un supplément de fabrication de 80 €.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">Combien de temps pour recevoir ma paire ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Chaque paire est fabriquée sur commande dans nos ateliers parisiens. Comptez 4 à 6 semaines. Vous pouvez suivre l'avancement de la fabrication depuis votre espace client.</p></div>
+                    <div class="faq-answer"><p>Chaque paire est fabriquée sur commande dans nos ateliers parisiens. Comptez 4 à 6 semaines. Vous pouvez suivre l'avancement depuis votre espace client.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">Les tiges sont-elles hypoallergéniques ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Oui, toutes les tiges de nos boucles puces et créoles sont en or massif 18 carats — le métal le plus toléré par la peau. L'or 18 carats Ginko ne contient aucun nickel et convient aux peaux les plus sensibles.</p></div>
+                    <div class="faq-answer"><p>Oui, toutes les tiges sont en or massif 18 carats — sans nickel, sans allergènes. L'or 18 carats Ginko convient aux peaux les plus sensibles.</p></div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Puis-je faire personnaliser le modèle (métal, pierre, taille) ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Absolument. Chaque boucle peut être déclinée dans votre choix de métal (or jaune, or blanc, or rose, platine) et de pierre. Pour une demande entièrement sur-mesure (forme personnalisée, combinaison unique), contactez-nous ou prenez rendez-vous en boutique.</p></div>
+                    <button class="faq-question">Puis-je personnaliser le modèle (métal, pierre, taille) ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Absolument. Chaque boucle peut être déclinée dans votre choix de métal et de pierre. Pour une demande entièrement sur-mesure, contactez-nous ou prenez rendez-vous en boutique.</p></div>
                 </div>
             </div>
         </div>
@@ -954,6 +1479,32 @@
         document.querySelectorAll('.filter-pill').forEach(function(b){b.classList.remove('active');});
         document.querySelectorAll('.filter-pill[data-filter="all"],.filter-pill[data-metal="all"]').forEach(function(b){b.classList.add('active');});
         document.getElementById('sortSelect').value='default'; applyFilters();
+    });
+
+    // ─── GUIDE MORPHOLOGIE OREILLE ────────────────────────────
+    var zones = document.querySelectorAll('.bo-zone');
+    var earPoints = document.querySelectorAll('.bo-ear-point');
+    var pointIds = { lobe:'pointLobe', helix:'pointHelix', antihelix:'pointAntihelix', tragus:'pointTragus' };
+
+    function activateZone(zone) {
+        // Mettre à jour les listes
+        zones.forEach(function(z){ z.classList.toggle('active', z.dataset.zone === zone); });
+        // Mettre à jour les points SVG — actif = couleur or, inactif = argent
+        earPoints.forEach(function(pt) {
+            var active = pt.dataset.zone === zone;
+            var circles = pt.querySelectorAll('circle');
+            if (circles.length >= 1) {
+                circles[0].setAttribute('fill', active ? '#d4a574' : '#a8aab8');
+                circles[0].setAttribute('opacity', active ? '0.9' : '0.7');
+            }
+        });
+    }
+
+    zones.forEach(function(z) {
+        z.addEventListener('click', function(){ activateZone(z.dataset.zone); });
+    });
+    earPoints.forEach(function(pt) {
+        pt.addEventListener('click', function(){ activateZone(pt.dataset.zone); });
     });
 
     // ─── FAQ ──────────────────────────────────────────────────
