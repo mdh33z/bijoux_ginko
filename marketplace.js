@@ -8,9 +8,11 @@
       const value = JSON.parse(window.localStorage.getItem(KEY) || "[]");
       return Array.isArray(value) ? value.filter(item =>
         item && typeof item === "object" &&
-        typeof item.title === "string" &&
-        typeof item.category === "string" &&
-        Number.isFinite(Number(item.price))
+        ["title", "category", "material", "city", "seller", "description"].every(field =>
+          typeof item[field] === "string" && item[field].trim().length > 0
+        ) &&
+        Number.isFinite(Number(item.price)) &&
+        Number(item.price) > 0
       ) : [];
     } catch (error) {
       return [];
@@ -131,8 +133,9 @@
     renderSellerListings();
   }
 
+  const currentPage = window.location.pathname.split("/").filter(Boolean).pop() || "index.html";
   document.querySelectorAll(".market-nav a").forEach(link => {
-    if (link.getAttribute("href") === window.location.pathname.split("/").pop()) {
+    if (link.getAttribute("href") === currentPage) {
       link.setAttribute("aria-current", "page");
     }
   });
