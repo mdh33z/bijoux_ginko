@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Catalogue de bijoux précieux proposés par des vendeurs au Maroc sur Ginko.">
+  <title>Catalogue — Ginko</title>
+  <link rel="stylesheet" href="marketplace.css">
+</head>
+<body class="marketplace">
+<main class="market-shell">
+  <header class="market-top">
+    <a class="market-brand" href="index.html" aria-label="Ginko accueil">GINKO</a>
+    <nav class="market-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a><a href="catalogue.html" aria-current="page">Catalogue</a><a href="espace-vendeur.html">Espace vendeur</a>
+    </nav>
+      <span class="market-currency" aria-label="Marché marocain, devise dirham marocain">Maroc · MAD</span>
+  </header>
+  <section class="market-hero">
+    <div class="eyebrow">La sélection Ginko · Maroc</div>
+    <h1>Des bijoux précieux,<br>des histoires uniques.</h1>
+    <p>Découvre les annonces de vendeurs particuliers. Les caractéristiques des bijoux sont déclarées par les vendeurs et devront être vérifiées avant toute transaction réelle.</p>
+    <div class="market-actions"><a class="btn" href="espace-vendeur.html">Proposer un bijou</a><a class="btn secondary" href="index.html">Retour à l’accueil</a></div>
+  </section>
+  <div class="market-note"><strong>Prototype :</strong> les annonces sont enregistrées uniquement dans le navigateur utilisé. Aucun compte, aucune vérification vendeur, commande ou paiement n’est actif.</div>
+  <h2 class="market-section-title">Le catalogue</h2>
+  <p class="market-subtitle">Filtre les annonces de démonstration par catégorie ou recherche un bijou.</p>
+  <div class="market-toolbar">
+    <input id="marketSearch" type="search" placeholder="Rechercher un bijou, une matière, une ville…" aria-label="Rechercher">
+    <select id="marketCategory" aria-label="Catégorie">
+      <option value="">Toutes les catégories</option><option value="Bague">Bagues</option><option value="Bracelet">Bracelets</option><option value="Collier">Colliers et pendentifs</option><option value="Boucles d’oreilles">Boucles d’oreilles</option><option value="Autre">Autres bijoux</option>
+    </select>
+    <select id="marketSort" aria-label="Trier par prix">
+      <option value="">Tri par défaut</option><option value="price-asc">Prix croissant</option><option value="price-desc">Prix décroissant</option>
+    </select>
+  </div>
+  <section class="market-grid" data-ginko-catalog aria-live="polite"></section>
+  <footer class="market-footer">Ginko — Prototype. Une vraie marketplace nécessitera la vérification des vendeurs, de la provenance et des caractéristiques des bijoux, ainsi qu’un cadre légal et des moyens de paiement adaptés au Maroc.</footer>
+</main>
+<script src="marketplace.js"></script>
+</body>
+</html>
