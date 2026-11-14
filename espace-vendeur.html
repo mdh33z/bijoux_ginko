@@ -1,2 +1,113 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Espace vendeur Ginko — prototype."><title>Espace vendeur — Ginko</title><link rel="stylesheet" href="marketplace.css"></head><body class="marketplace"><main class="market-shell"><header class="market-top"><a class="market-brand" href="index.html">GINKO</a><nav class="market-nav"><a href="index.html">Accueil</a><a href="catalogue.html">Catalogue</a><a href="espace-vendeur.html">Espace vendeur</a></nav>
-      <span class="market-currency" aria-label="Marché marocain, devise dirham marocain">Maroc · MAD</span></header><section class="market-hero"><div class="eyebrow">Ginko Seller · Maroc</div><h1>Votre bijou mérite<br>sa propre vitrine.</h1><p>Préparez une annonce pour présenter un bijou précieux. Cette première version permet de tester le parcours vendeur avant la création des vrais comptes.</p><div class="market-actions"><a class="btn" href="#deposer">Déposer une annonce</a><a class="btn secondary" href="catalogue.html">Voir le catalogue</a></div></section><div class="market-note"><strong>Prototype local :</strong> ce formulaire ne crée pas de compte et ne transmet aucune annonce à Ginko. Ne saisis pas de mot de passe ni de coordonnées personnelles.</div><div class="seller-layout"><aside class="seller-aside"><div class="eyebrow">Espace vendeur</div><h2>Votre activité</h2><p>La version complète comportera une inscription sécurisée, la gestion des annonces, les commandes et le suivi des commissions.</p><p><strong>Zone de lancement :</strong><br>Maroc · Prix en dirhams (MAD)</p></aside><section class="seller-panel" id="deposer"><h2>Déposer un bijou</h2><p class="market-subtitle">Remplis ces champs pour créer une annonce de démonstration.</p><form class="seller-form" id="sellerListingForm"><div class="field"><label for="sellerName">Nom affiché du vendeur</label><input id="sellerName" name="seller" maxlength="50" required placeholder="Ex. Boutique de Samira"></div><div class="field"><label for="listingTitle">Nom du bijou</label><input id="listingTitle" name="title" maxlength="80" required placeholder="Ex. Bague en or"></div><div class="field"><label for="listingCategory">Catégorie</label><select id="listingCategory" name="category" required><option value="">Choisir</option><option>Bague</option><option>Bracelet</option><option>Collier</option><option>Boucles d’oreilles</option><option>Autre</option></select></div><div class="field"><label for="listingMaterial">Matière et caractéristiques déclarées</label><input id="listingMaterial" name="material" maxlength="100" required placeholder="Ex. Or 18 carats, pierre…"><small>Les caractéristiques devront être vérifiées avant publication réelle.</small></div><div class="field"><label for="listingPrice">Prix demandé (MAD)</label><input id="listingPrice" name="price" type="number" min="1" max="100000000" step="1" required placeholder="Ex. 2500"></div><div class="field"><label for="listingCity">Ville</label><input id="listingCity" name="city" maxlength="60" required placeholder="Ex. Rabat"></div><div class="field full"><label for="listingDescription">Description</label><textarea id="listingDescription" name="description" maxlength="600" required placeholder="Décris l’état du bijou, son poids si connu, les documents disponibles…"></textarea></div><div class="field full"><button class="btn" type="submit">Enregistrer l’annonce de test</button><p id="sellerStatus" class="market-note" role="status" hidden></p></div></form><h2 class="market-section-title">Mes annonces sur cet appareil</h2><div class="seller-list" id="sellerListings" aria-live="polite"></div></section></div><footer class="market-footer">Avant le lancement réel : connecter une base de données et une authentification sécurisée, ajouter la modération, et faire vérifier les obligations légales et financières avec un adulte responsable.</footer></main><script src="marketplace.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Espace vendeur Ginko — préparez et gérez vos annonces de bijoux.">
+  <title>Espace vendeur — Ginko</title>
+  <link rel="stylesheet" href="marketplace.css">
+</head>
+<body class="marketplace">
+<main class="market-shell">
+  <header class="market-top">
+    <a class="market-brand" href="index.html" aria-label="Ginko accueil">GINKO</a>
+    <nav class="market-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="espace-vendeur.html" aria-current="page">Espace vendeur</a>
+    </nav>
+    <span class="market-currency" aria-label="Marché marocain, devise dirham marocain">Maroc · MAD</span>
+  </header>
+
+  <section class="market-hero seller-hero">
+    <div class="eyebrow">Ginko Seller · Maroc</div>
+    <h1>Votre vitrine commence ici.</h1>
+    <p>Préparez vos annonces, présentez vos bijoux avec soin et retrouvez les annonces enregistrées sur cet appareil. Ginko construit progressivement son espace vendeur.</p>
+    <div class="market-actions">
+      <a class="btn" href="#deposer">Créer une annonce</a>
+      <a class="btn secondary" href="catalogue.html">Découvrir le catalogue</a>
+    </div>
+    <div class="seller-hero-foot"><span>✧ Présentation soignée</span><span>◇ Prix en MAD</span><span>⌂ Marché marocain</span></div>
+  </section>
+
+  <div class="market-note seller-prototype-note">
+    <strong>Version de démonstration :</strong> les annonces sont enregistrées uniquement dans le navigateur de cet appareil. Elles ne sont pas publiées sur Internet et ne sont pas visibles par les autres visiteurs. N’ajoute pas de mot de passe ni de coordonnées personnelles.
+  </div>
+
+  <section class="seller-welcome">
+    <div>
+      <div class="eyebrow">Votre espace</div>
+      <h2 class="market-section-title">Préparez votre activité vendeur.</h2>
+      <p class="market-subtitle">Un bon descriptif aide les acheteurs à comprendre ce que vous proposez. Prenez le temps de renseigner les informations exactes et vérifiables.</p>
+    </div>
+    <div class="seller-status-card">
+      <span class="seller-status-dot"></span>
+      <div><strong>Mode démonstration</strong><small>Compte vendeur non activé</small></div>
+    </div>
+  </section>
+
+  <section class="seller-steps" aria-label="Étapes pour préparer une annonce">
+    <article class="seller-step"><span class="seller-step-number">01</span><div><h3>Présentez le bijou</h3><p>Choisissez un titre, une catégorie et indiquez la matière connue.</p></div></article>
+    <article class="seller-step"><span class="seller-step-number">02</span><div><h3>Donnez les détails</h3><p>Ajoutez un prix en MAD, une ville et une description précise.</p></div></article>
+    <article class="seller-step"><span class="seller-step-number">03</span><div><h3>Enregistrez votre test</h3><p>Retrouvez l’annonce dans la liste locale de cette page.</p></div></article>
+  </section>
+
+  <div class="seller-layout seller-main-layout">
+    <aside class="seller-aside seller-guidance">
+      <div class="eyebrow">Bien préparer son annonce</div>
+      <h2>Les détails font la différence.</h2>
+      <p>Une annonce claire inspire davantage confiance. Voici les informations utiles à préparer avant une future publication.</p>
+      <div class="seller-tip"><span>✧</span><div><strong>Décrivez précisément</strong><p>Précisez le type de bijou, la matière et les éventuelles pierres, uniquement si vous en êtes sûr.</p></div></div>
+      <div class="seller-tip"><span>◇</span><div><strong>Soyez transparent</strong><p>Indiquez l’état réel du bijou et signalez les défauts ou réparations connus.</p></div></div>
+      <div class="seller-tip"><span>▱</span><div><strong>Préparez des photos</strong><p>Pour la future version, privilégiez des photos nettes, bien éclairées et prises sous plusieurs angles.</p></div></div>
+      <div class="seller-tip"><span>✓</span><div><strong>Gardez les justificatifs</strong><p>Factures, certificats et documents pourront aider à vérifier certaines caractéristiques.</p></div></div>
+      <div class="seller-aside-foot"><strong>À retenir</strong><p>Ne présentez jamais une matière, un poids ou un certificat comme vérifié si ce n’est pas le cas.</p></div>
+    </aside>
+
+    <section class="seller-panel seller-form-panel" id="deposer">
+      <div class="seller-panel-heading">
+        <div><div class="eyebrow">Nouvelle annonce</div><h2>Présenter un bijou</h2><p class="market-subtitle">Les champs marqués sont nécessaires pour enregistrer cette annonce de démonstration.</p></div>
+        <span class="seller-panel-icon">✧</span>
+      </div>
+      <form class="seller-form" id="sellerListingForm">
+        <div class="seller-form-section"><span>01</span><div><h3>Informations principales</h3><p>Donnez un nom clair à votre bijou.</p></div></div>
+        <div class="field"><label for="sellerName">Nom affiché du vendeur</label><input id="sellerName" name="seller" maxlength="50" required placeholder="Ex. Atelier de Samira"></div>
+        <div class="field"><label for="listingTitle">Nom du bijou</label><input id="listingTitle" name="title" maxlength="80" required placeholder="Ex. Bague en or jaune"></div>
+        <div class="field"><label for="listingCategory">Catégorie</label><select id="listingCategory" name="category" required><option value="">Choisir une catégorie</option><option>Bague</option><option>Bracelet</option><option>Collier</option><option>Boucles d’oreilles</option><option>Autre</option></select></div>
+        <div class="field"><label for="listingMaterial">Matière et caractéristiques déclarées</label><input id="listingMaterial" name="material" maxlength="100" required placeholder="Ex. Argent, pierre bleue…"><small>Indique uniquement les caractéristiques que tu connais. Elles ne sont pas vérifiées par ce prototype.</small></div>
+
+        <div class="seller-form-section"><span>02</span><div><h3>Prix et localisation</h3><p>Renseignez un prix demandé et la ville du vendeur.</p></div></div>
+        <div class="field"><label for="listingPrice">Prix demandé <em>(MAD)</em></label><div class="seller-price-input"><input id="listingPrice" name="price" type="number" min="1" max="100000000" step="1" required placeholder="Ex. 2500"><span>DH</span></div></div>
+        <div class="field"><label for="listingCity">Ville</label><input id="listingCity" name="city" maxlength="60" required placeholder="Ex. Rabat"></div>
+
+        <div class="seller-form-section"><span>03</span><div><h3>Description du bijou</h3><p>Expliquez ce que l’acheteur doit savoir.</p></div></div>
+        <div class="field full"><label for="listingDescription">Description</label><textarea id="listingDescription" name="description" maxlength="600" required placeholder="Décris le bijou, son état, ses dimensions ou son poids si tu les connais, les documents disponibles et les éventuels défauts…"></textarea><small>Maximum 600 caractères. Évite les affirmations impossibles à justifier.</small></div>
+        <div class="seller-submit-area">
+          <p>En enregistrant, tu crées une annonce de test visible uniquement dans ce navigateur.</p>
+          <button class="btn" type="submit">Enregistrer l’annonce de test <span aria-hidden="true">→</span></button>
+          <p id="sellerStatus" class="market-note" role="status" hidden></p>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <section class="seller-listing-section">
+    <div class="seller-listing-heading"><div><div class="eyebrow">Votre suivi</div><h2 class="market-section-title">Mes annonces</h2><p class="market-subtitle">Les annonces enregistrées sur cet appareil apparaîtront ici.</p></div><span class="seller-local-label">Stockage local</span></div>
+    <div class="seller-list" id="sellerListings" aria-live="polite"></div>
+  </section>
+
+  <section class="seller-coming">
+    <div><div class="eyebrow">Prochaines évolutions</div><h2>Un espace vendeur plus complet.</h2><p>Ces outils sont prévus pour une prochaine version connectée. Ils ne sont pas encore disponibles.</p></div>
+    <div class="seller-coming-grid">
+      <article><span>01</span><h3>Profil vendeur</h3><p>Créer un compte et compléter les informations de sa boutique.</p><small>À venir</small></article>
+      <article><span>02</span><h3>Gestion des annonces</h3><p>Modifier, mettre en pause ou retirer ses annonces publiées.</p><small>À venir</small></article>
+      <article><span>03</span><h3>Commandes et ventes</h3><p>Suivre les demandes et les commandes depuis un tableau de bord.</p><small>À venir</small></article>
+      <article><span>04</span><h3>Suivi des commissions</h3><p>Consulter les frais et les montants liés aux ventes réalisées.</p><small>À venir</small></article>
+    </div>
+  </section>
+
+  <footer class="market-footer">Ginko est en développement. Avant le lancement réel, l’espace vendeur devra être relié à une base de données et à une authentification sécurisée, avec modération des annonces et vérification du cadre légal et financier.</footer>
+</main>
+<script src="marketplace.js"></script>
+</body>
+</html>
