@@ -75,6 +75,7 @@
         <div class="field"><label for="listingTitle">Nom du bijou</label><input id="listingTitle" name="title" maxlength="80" required placeholder="Ex. Bague en or jaune"></div>
         <div class="field"><label for="listingCategory">Catégorie</label><select id="listingCategory" name="category" required><option value="">Choisir une catégorie</option><option>Bague</option><option>Bracelet</option><option>Collier</option><option>Boucles d’oreilles</option><option>Autre</option></select></div>
         <div class="field"><label for="listingMaterial">Matière et caractéristiques déclarées</label><input id="listingMaterial" name="material" maxlength="100" required placeholder="Ex. Argent, pierre bleue…"><small>Indique uniquement les caractéristiques que tu connais. Elles ne sont pas vérifiées par ce prototype.</small></div>
+        <div class="field full"><label for="listingImage">Photo réelle du bijou</label><input id="listingImage" name="image" type="file" accept="image/jpeg,image/png,image/webp" required><small>Une seule photo du bijou, sans personne ni collage. Formats JPG, PNG ou WebP, 900 Ko maximum.</small></div>
 
         <div class="seller-form-section"><span>02</span><div><h3>Prix et localisation</h3><p>Renseignez un prix demandé et la ville du vendeur.</p></div></div>
         <div class="field"><label for="listingPrice">Prix demandé <em>(MAD)</em></label><div class="seller-price-input"><input id="listingPrice" name="price" type="number" min="1" max="100000000" step="1" required placeholder="Ex. 2500"><span>DH</span></div></div>
