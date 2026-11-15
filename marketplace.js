@@ -62,13 +62,30 @@
       listings.forEach(item => {
         const card = document.createElement("article");
         card.className = "market-card";
-        card.innerHTML = '<div class="market-card-visual" aria-hidden="true">✧</div>' +
-          '<div class="market-card-body"><span class="tag">' + escapeHTML(item.category) + '</span>' +
-          '<h3>' + escapeHTML(item.title) + '</h3><div class="market-meta">' +
-          escapeHTML(item.material) + ' · ' + escapeHTML(item.city) + '<br>Vendeur : ' +
-          escapeHTML(item.seller) + '</div><div class="market-price">' + money(item.price) +
-          '</div><div class="market-meta">' + escapeHTML(item.description) +
-          '</div><span class="tag">Annonce de démonstration</span></div>';
+        const symbols = {
+          "Bague": "◯",
+          "Bracelet": "∞",
+          "Collier": "◇",
+          "Boucles d’oreilles": "✧",
+          "Autre": "✳"
+        };
+        const symbol = symbols[item.category] || "✧";
+        card.innerHTML =
+          '<div class="market-card-visual" aria-hidden="true">' +
+            '<span class="card-visual-symbol">' + symbol + '</span>' +
+            '<span class="card-visual-label">Illustration décorative · Ginko</span>' +
+          '</div>' +
+          '<div class="market-card-body">' +
+            '<div class="market-card-topline"><span class="tag">' + escapeHTML(item.category) + '</span>' +
+            '<span class="market-card-kicker">Pièce proposée</span></div>' +
+            '<h3>' + escapeHTML(item.title) + '</h3>' +
+            '<div class="market-card-details"><span>' + escapeHTML(item.material) + '</span>' +
+            '<span>' + escapeHTML(item.city) + '</span></div>' +
+            '<p class="market-card-description">' + escapeHTML(item.description) + '</p>' +
+            '<div class="market-card-bottom"><div class="market-price">' + money(item.price) + '</div>' +
+            '<div class="market-card-seller">Proposé par<strong>' + escapeHTML(item.seller) + '</strong></div></div>' +
+            '<span class="market-card-demo">Annonce de démonstration</span>' +
+          '</div>';
         catalogue.appendChild(card);
       });
     };
