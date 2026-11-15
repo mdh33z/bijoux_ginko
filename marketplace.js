@@ -62,19 +62,11 @@
       listings.forEach(item => {
         const card = document.createElement("article");
         card.className = "market-card";
-        const symbols = {
-          "Bague": "◯",
-          "Bracelet": "∞",
-          "Collier": "◇",
-          "Boucles d’oreilles": "✧",
-          "Autre": "✳"
-        };
-        const symbol = symbols[item.category] || "✧";
+        const photoMarkup = item.image
+          ? '<div class="market-card-visual"><img class="market-card-photo" src="' + escapeHTML(item.image) + '" alt="Photo du bijou : ' + escapeHTML(item.title) + '"></div>'
+          : '<div class="market-card-visual market-card-no-photo"><span>Photo du bijou non fournie</span></div>';
         card.innerHTML =
-          '<div class="market-card-visual" aria-hidden="true">' +
-            '<span class="card-visual-symbol">' + symbol + '</span>' +
-            '<span class="card-visual-label">Illustration décorative · Ginko</span>' +
-          '</div>' +
+          photoMarkup +
           '<div class="market-card-body">' +
             '<div class="market-card-topline"><span class="tag">' + escapeHTML(item.category) + '</span>' +
             '<span class="market-card-kicker">Pièce proposée</span></div>' +
@@ -120,28 +112,52 @@
         status.hidden = false;
         return;
       }
-      const listing = {
-        title: String(data.get("title") || "").trim(),
-        category: String(data.get("category") || ""),
-        material: String(data.get("material") || "").trim(),
-        price,
-        city: String(data.get("city") || "").trim(),
-        seller: String(data.get("seller") || "").trim(),
-        description: String(data.get("description") || "").trim()
+      const imageInput = form.querySelector("#listingImage");
+      const imageFile = imageInput && imageInput.files[0];
+      if (!imageFile || !["image/jpeg", "image/png", "image/webp"].includes(imageFile.type)) {
+        status.textContent = "Ajoute une photo JPG, PNG ou WebP du bijou.";
+        status.hidden = false;
+        return;
+      }
+      if (imageFile.size > 900 * 1024) {
+        status.textContent = "La photo doit faire 900 Ko maximum. Réduis sa taille puis réessaie.";
+        status.hidden = false;
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        const listing = {
+          title: String(data.get("title") || "").trim(),
+          category: String(data.get("category") || ""),
+          material: String(data.get("material") || "").trim(),
+          price,
+          city: String(data.get("city") || "").trim(),
+          seller: String(data.get("seller") || "").trim(),
+          description: String(data.get("description") || "").trim(),
+          image: String(reader.result || "")
+        };
+        if (Object.values(listing).some(value => value === "")) {
+          status.textContent = "Complète tous les champs avant d’enregistrer l’annonce.";
+          status.hidden = false;
+          return;
+        }
+        const listings = readListings();
+        listings.unshift(listing);
+        if (!saveListings(listings)) {
+          status.textContent = "Le navigateur n’a pas pu enregistrer cette annonce. Vérifie ses réglages de stockage.";
+          status.hidden = false;
+          return;
+        }
+        form.reset();
+        renderSellerListings();
+        status.textContent = "Annonce enregistrée avec sa photo dans ce navigateur uniquement. Elle n’est pas publiée sur Internet.";
+        status.hidden = false;
       };
-      if (Object.values(listing).some(value => value === "")) {
-        status.textContent = "Complète tous les champs avant d’enregistrer l’annonce.";
+      reader.onerror = () => {
+        status.textContent = "La photo n’a pas pu être lue. Essaie avec un autre fichier.";
         status.hidden = false;
-        return;
-      }
-      const listings = readListings();
-      listings.unshift(listing);
-      if (!saveListings(listings)) {
-        status.textContent = "Le navigateur n’a pas pu enregistrer cette annonce. Vérifie ses réglages de stockage.";
-        status.hidden = false;
-        return;
-      }
-      form.reset();
+      };
+      reader.readAsDataURL(imageFile);
       renderSellerListings();
       status.textContent = "Annonce enregistrée dans ce navigateur uniquement. Elle n’est pas publiée sur Internet.";
       status.hidden = false;
