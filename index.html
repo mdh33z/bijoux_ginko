@@ -3,54 +3,97 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Ginko, la plateforme de découverte de bijoux précieux proposés par des vendeurs au Maroc.">
-  <title>Ginko — La marketplace des bijoux précieux</title>
+  <meta name="description" content="Ginko, une marketplace en construction pour découvrir des bijoux proposés par des vendeurs au Maroc.">
+  <meta name="theme-color" content="#f7f5f0">
+  <title>Ginko — Le bijou, autrement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="marketplace.css">
-  <style>
-    .home-hero{position:relative;overflow:hidden;min-height:510px;background:#171613;color:#fff;display:flex;align-items:center;padding:clamp(36px,8vw,96px);margin-bottom:34px}
-    .home-hero:after{content:"✧";position:absolute;right:8%;top:5%;font:clamp(180px,30vw,360px) Georgia,serif;color:rgba(185,149,91,.16);pointer-events:none}
-    .home-copy{position:relative;z-index:1;max-width:680px}.home-copy .eyebrow{color:#d1b27d}.home-copy h1{font:400 clamp(42px,6vw,76px)/1.03 Georgia,serif;margin:18px 0}.home-copy p{max-width:570px;color:#d4d0c8;line-height:1.8}
-    .home-links{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0 44px}.home-link{display:block;padding:26px;border:1px solid var(--line);text-decoration:none;background:#fff;transition:transform .2s,border-color .2s}.home-link:hover{transform:translateY(-3px);border-color:var(--gold)}.home-link .symbol{font:38px Georgia,serif;color:var(--gold)}.home-link h3{font:400 23px Georgia,serif;margin:14px 0 8px}.home-link p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}.home-info{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}.home-info article{padding:25px;background:var(--cream);border:1px solid var(--line)}.home-info h3{font:400 22px Georgia,serif;margin:0 0 8px}.home-info p{font-size:13px;color:var(--muted);line-height:1.7;margin:0}
-    @media(max-width:650px){.home-hero{min-height:430px}.home-links,.home-info{grid-template-columns:1fr}}
-  </style>
 </head>
-<body class="marketplace">
+<body class="marketplace home-redesign">
 <main class="market-shell">
   <header class="market-top">
-    <a class="market-brand" href="index.html" aria-label="Ginko accueil">GINKO</a>
+    <a class="market-brand" href="index.html" aria-label="Ginko, accueil">GINKO<span class="brand-period">.</span></a>
     <nav class="market-nav" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a><a href="catalogue.html">Catalogue</a><a href="espace-vendeur.html">Espace vendeur</a>
+      <a href="index.html" aria-current="page">Accueil</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="espace-vendeur.html">Espace vendeur</a>
     </nav>
-      <span class="market-currency" aria-label="Marché marocain, devise dirham marocain">Maroc · MAD</span>
+    <span class="market-currency">MAROC <span aria-hidden="true">·</span> MAD</span>
   </header>
-  <section class="home-hero">
-    <div class="home-copy">
-      <div class="eyebrow">La marketplace des bijoux précieux · Maroc</div>
-      <h1>Les bijoux ont une histoire. Trouvons-leur une place.</h1>
-      <p>Ginko met en relation les personnes qui souhaitent découvrir des bijoux précieux et celles qui souhaitent présenter leurs pièces. Explore le catalogue ou prépare une annonce.</p>
-      <div class="market-actions"><a class="btn" href="catalogue.html">Explorer le catalogue</a><a class="btn secondary" style="border-color:#d7c7aa;color:#fff" href="espace-vendeur.html">Présenter un bijou</a></div>
+
+  <section class="home-hero home-hero-new" aria-labelledby="home-title">
+    <div class="home-copy home-copy-new">
+      <div class="home-kicker"><span></span> L’univers du bijou au Maroc</div>
+      <h1 id="home-title">Le bijou a<br>son <em>caractère.</em></h1>
+      <p>Découvre des pièces proposées par des vendeurs, explore les styles et donne de la visibilité aux bijoux qui méritent d’être remarqués.</p>
+      <div class="market-actions home-actions-new">
+        <a class="btn home-primary" href="catalogue.html">Explorer les bijoux <span aria-hidden="true">↗</span></a>
+        <a class="home-text-link" href="espace-vendeur.html">Présenter une pièce <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="home-proofline"><span>01</span> Une nouvelle façon de découvrir le bijou.</div>
+    </div>
+    <div class="home-art" aria-label="Illustration abstraite inspirée des formes de la joaillerie" role="img">
+      <div class="art-orbit art-orbit-one"></div>
+      <div class="art-orbit art-orbit-two"></div>
+      <div class="art-stone"></div>
+      <div class="art-ring"><span></span></div>
+      <div class="art-caption"><span>GINKO OBJECTS</span><span>EST. 2026</span></div>
+      <div class="art-index">01 <i>—</i> 04</div>
     </div>
   </section>
-  <div class="eyebrow">Découvrir Ginko</div>
-  <h2 class="market-section-title">Un espace, deux façons de commencer.</h2>
-  <section class="home-links">
-    <a class="home-link" href="catalogue.html"><div class="symbol">⌕</div><h3>Découvrir les bijoux</h3><p>Parcours les annonces, recherche une pièce et explore les catégories disponibles.</p></a>
-    <a class="home-link" href="espace-vendeur.html"><div class="symbol">✧</div><h3>Présenter un bijou</h3><p>Prépare une annonce de démonstration pour découvrir le parcours vendeur Ginko.</p></a>
-    <a class="home-link" href="catalogue.html"><div class="symbol">◇</div><h3>Le marché marocain</h3><p>Une première expérience pensée pour des annonces et des prix en dirhams (MAD).</p></a>
+
+  <section class="home-intro" aria-labelledby="intro-title">
+    <div class="home-section-label">L’esprit Ginko <span>01 / 03</span></div>
+    <div class="home-intro-grid">
+      <h2 id="intro-title">Des pièces singulières.<br><em>Un espace pour les découvrir.</em></h2>
+      <p>Ginko rassemble dans un même univers des bijoux proposés par différents vendeurs. L’idée : rendre la découverte plus simple, plus claire et plus inspirante, avec un regard tourné vers le marché marocain.</p>
+    </div>
   </section>
-  <div class="eyebrow">Explorer par catégorie</div>
-  <h2 class="market-section-title">Trouver le type de bijou recherché.</h2>
-  <section class="home-links category-links">
-    <a class="home-link" href="bague.html"><h3>Bagues</h3><p>Voir les annonces de bagues.</p></a>
-    <a class="home-link" href="bracelets.html"><h3>Bracelets</h3><p>Voir les annonces de bracelets.</p></a>
-    <a class="home-link" href="pendentifs.html"><h3>Pendentifs et colliers</h3><p>Voir les annonces de pendentifs et colliers.</p></a>
-    <a class="home-link" href="boucles-doreilles.html"><h3>Boucles d’oreilles</h3><p>Voir les annonces de boucles d’oreilles.</p></a>
+
+  <section class="home-categories" aria-labelledby="categories-title">
+    <div class="home-section-heading">
+      <div><div class="home-section-label">À explorer <span>02 / 03</span></div><h2 id="categories-title">Trouve ton prochain coup de cœur.</h2></div>
+      <a class="home-view-all" href="catalogue.html">Voir le catalogue <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="home-category-grid">
+      <a class="home-category category-ring" href="bague.html">
+        <div class="category-art" aria-hidden="true"><span class="category-ring-shape"></span></div>
+        <div class="category-bottom"><div><span>01</span><h3>Bagues</h3></div><span class="category-arrow">↗</span></div>
+      </a>
+      <a class="home-category category-necklace" href="pendentifs.html">
+        <div class="category-art" aria-hidden="true"><span class="category-necklace-shape"></span></div>
+        <div class="category-bottom"><div><span>02</span><h3>Colliers & pendentifs</h3></div><span class="category-arrow">↗</span></div>
+      </a>
+      <a class="home-category category-bracelet" href="bracelets.html">
+        <div class="category-art" aria-hidden="true"><span class="category-bracelet-shape"></span></div>
+        <div class="category-bottom"><div><span>03</span><h3>Bracelets</h3></div><span class="category-arrow">↗</span></div>
+      </a>
+      <a class="home-category category-earrings" href="boucles-doreilles.html">
+        <div class="category-art" aria-hidden="true"><span class="category-earring-shape"></span></div>
+        <div class="category-bottom"><div><span>04</span><h3>Boucles d’oreilles</h3></div><span class="category-arrow">↗</span></div>
+      </a>
+    </div>
   </section>
-  <div class="home-info">
-    <article><h3>Un projet en construction</h3><p>Cette version est une première maquette fonctionnelle. Les annonces de test restent dans le navigateur et ne sont pas visibles par les autres visiteurs.</p></article>
-    <article><h3>La confiance avant tout</h3><p>Avant une ouverture réelle, Ginko devra mettre en place la vérification des vendeurs et des bijoux, la modération, une base de données sécurisée et un cadre de paiement adapté.</p></article>
-  </div>
-  <footer class="market-footer">© Ginko — Projet de marketplace en développement. Les annonces de démonstration ne constituent pas des offres de vente réelles. Aucune transaction ni aucun paiement n’est disponible à ce stade.</footer>
+
+  <section class="home-seller-banner">
+    <div class="seller-banner-mark" aria-hidden="true">G.</div>
+    <div><div class="home-section-label">Pour les vendeurs <span>03 / 03</span></div><h2>Une pièce à présenter ?<br><em>Elle a sa place ici.</em></h2><p>Prépare une annonce et découvre le parcours vendeur de Ginko.</p></div>
+    <a class="btn home-banner-button" href="espace-vendeur.html">Découvrir l’espace vendeur <span aria-hidden="true">↗</span></a>
+  </section>
+
+  <section class="home-project-note" aria-label="Informations sur le prototype">
+    <span class="note-mark">i</span>
+    <p><strong>Ginko est encore en construction.</strong> Les annonces de cette version sont des démonstrations enregistrées dans le navigateur. Elles ne sont pas publiées pour les autres visiteurs et aucune commande ni aucun paiement n’est disponible.</p>
+    <a href="catalogue.html">Comprendre le prototype <span aria-hidden="true">→</span></a>
+  </section>
+
+  <footer class="market-footer home-footer">
+    <a class="footer-brand" href="index.html">GINKO<span>.</span></a>
+    <span>Le bijou, autrement.</span>
+    <span>© Ginko 2026 · Projet en développement</span>
+  </footer>
 </main>
 </body>
 </html>
