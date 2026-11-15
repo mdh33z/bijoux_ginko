@@ -158,9 +158,6 @@
         status.hidden = false;
       };
       reader.readAsDataURL(imageFile);
-      renderSellerListings();
-      status.textContent = "Annonce enregistrée dans ce navigateur uniquement. Elle n’est pas publiée sur Internet.";
-      status.hidden = false;
     });
 
     renderSellerListings();
