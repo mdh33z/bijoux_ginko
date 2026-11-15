@@ -477,3 +477,6 @@ body.marketplace{font-family:var(--ginko-sans);background:var(--ginko-paper);col
 @media(prefers-reduced-motion:reduce){
  .home-category,.market-card{transition:none}
 }
+
+/* Le nouveau hero possède sa propre composition graphique. */
+.home-redesign .home-hero-new:after{content:none}
